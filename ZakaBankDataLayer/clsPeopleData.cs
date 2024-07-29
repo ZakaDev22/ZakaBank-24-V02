@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using ZakaBankDataLayer.Data_Global;
 
 
 namespace ZakaBankDataLayer
@@ -14,7 +15,7 @@ namespace ZakaBankDataLayer
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("usp_AddNewPerson", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_People_AddNewPerson", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@FirstName", firstName);
@@ -33,10 +34,20 @@ namespace ZakaBankDataLayer
                     };
                     cmd.Parameters.Add(outParameter);
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return (int)outParameter.Value;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle exception
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return -1;
+                    }
 
-                    return (int)outParameter.Value;
+
                 }
             }
         }
@@ -47,7 +58,7 @@ namespace ZakaBankDataLayer
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("usp_UpdatePerson", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_People_UpdatePerson", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PersonID", personID);
@@ -61,120 +72,175 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@ImagePath", imagePath);
 
-                    conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    try
+                    {
+                        conn.Open();
+                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle exception
 
-                    return (rowsAffected > 0);
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return false;
+                    }
+
+
                 }
             }
+
         }
 
         public static bool DeletePerson(int personID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("usp_DeletePerson", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_People_DeletePerson", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PersonID", personID);
 
-                    conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
 
-                    return (rowsAffected > 0);
+                    try
+                    {
+                        conn.Open();
+
+                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return false;
+                    }
                 }
             }
         }
 
         public static bool PersonExists(int personID)
         {
-            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("usp_PersonExistsByID", conn))
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@PersonID", personID);
 
-                    SqlParameter returnParameter = new SqlParameter("@Exists", SqlDbType.Bit)
+                    using (SqlCommand comd = new SqlCommand("sp_People_ExistsByID", conn))
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(returnParameter);
+                        comd.CommandType = CommandType.StoredProcedure;
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                        comd.Parameters.AddWithValue("@PersonID", personID);
 
-                    return (bool)returnParameter.Value;
+                        object result = comd.ExecuteScalar();
+
+                        return Convert.ToBoolean(result);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
             }
         }
 
+        // just in case We Need To Filter People By National Number
         public static bool PersonExistsByNationalNo(string nationalNo)
         {
-            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("usp_PersonExistsByNationalNo", conn))
+
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
-
-                    SqlParameter returnParameter = new SqlParameter("@Exists", SqlDbType.Bit)
+                    using (SqlCommand cmd = new SqlCommand("usp_PersonExistsByNationalNo", conn))
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(returnParameter);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                        SqlParameter returnParameter = new SqlParameter("@Exists", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(returnParameter);
 
-                    return (bool)returnParameter.Value;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        return (bool)returnParameter.Value;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
             }
         }
 
         public static DataTable GetAllPeople()
         {
-            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("usp_GetAllPeople", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
 
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_People_GetAllPeople", conn))
                     {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        return dt;
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                                dt.Load(da);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
         }
 
         public static DataTable GetPagedPeople(int pageNumber, int pageSize, out int totalCount)
         {
-            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            DataTable dataTable = new DataTable();
+            totalCount = 0;
+
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("usp_GetPagedPeople", conn))
+                using (SqlConnection connection = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
-                    cmd.Parameters.AddWithValue("@PageSize", pageSize);
-
-                    SqlParameter totalCountParam = new SqlParameter("@TotalCount", SqlDbType.Int)
+                    using (SqlCommand command = new SqlCommand("sp_People_GetAllPeopleByPages", connection))
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(totalCountParam);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@PageNumber", pageNumber);
+                        command.Parameters.AddWithValue("@PageSize", pageSize);
 
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        totalCount = (int)totalCountParam.Value;
-                        return dt;
+                        SqlParameter totalParam = new SqlParameter("@TotalCount", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        command.Parameters.Add(totalParam);
+
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dataTable.Load(reader);
+                        }
+
+                        totalCount = (int)totalParam.Value;
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dataTable;
         }
     }
 }

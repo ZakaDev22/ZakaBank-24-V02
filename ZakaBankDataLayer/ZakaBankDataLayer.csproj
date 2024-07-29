@@ -41,9 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataLayerSettings.cs" />
+    <Compile Include="clsAccountTypeData.cs" />
+    <Compile Include="clsClientsData.cs" />
+    <Compile Include="clsCountryData.cs" />
+    <Compile Include="clsCurrencyData.cs" />
+    <Compile Include="clsLoginRegisterData.cs" />
+    <Compile Include="clsTransactionData.cs" />
+    <Compile Include="clsTransferData.cs" />
+    <Compile Include="clsUsersData.cs" />
+    <Compile Include="Data Global\DataLayerSettings.cs" />
     <Compile Include="clsPeopleData.cs" />
+    <Compile Include="Data Global\ExLogClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
