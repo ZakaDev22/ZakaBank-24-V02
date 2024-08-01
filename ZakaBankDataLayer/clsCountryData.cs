@@ -5,10 +5,10 @@ using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
 {
-    internal class clsCountryData
+    public class clsCountryData
     {
 
-        public static int AddNewCountry(string countryName, string countryCode)
+        public static int AddNewCountry(string countryName, string countryCode, int currencyID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -17,11 +17,13 @@ namespace ZakaBankDataLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CountryName", countryName);
                     cmd.Parameters.AddWithValue("@CountryCode", countryCode);
+                    cmd.Parameters.AddWithValue("@CurrencyID", currencyID);
 
                     SqlParameter outParameter = new SqlParameter("@CountryID", SqlDbType.Int)
                     {
                         Direction = ParameterDirection.Output
                     };
+
                     cmd.Parameters.Add(outParameter);
 
                     try
@@ -39,16 +41,17 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateCountry(int countryId, string countryName, string countryCode)
+        public static bool UpdateCountry(int countryID, string countryName, string countryCode, int currencyID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Countries_UpdateCountry", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CountryID", countryId);
+                    cmd.Parameters.AddWithValue("@CountryID", countryID);
                     cmd.Parameters.AddWithValue("@CountryName", countryName);
                     cmd.Parameters.AddWithValue("@CountryCode", countryCode);
+                    cmd.Parameters.AddWithValue("@CurrencyID", currencyID);
 
                     try
                     {
@@ -64,14 +67,84 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteCountry(int countryId)
+        public static bool FindCountryByID(int countryID, ref string countryName, ref string countryCode, ref int currencyID)
+        {
+            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Countries_FindByID", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CountryID", countryID);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                countryName = reader["CountryName"].ToString();
+                                countryCode = reader["CountryCode"].ToString();
+                                currencyID = Convert.ToInt32(reader["CurrencyID"]);
+                                return true;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool FindCountryByName(string countryName, ref int countryID, ref string countryCode, ref int currencyID)
+        {
+            countryID = 0;
+            countryCode = string.Empty;
+            currencyID = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Countries_FindByName", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CountryName", countryName);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                countryID = Convert.ToInt32(reader["CountryID"]);
+                                countryCode = reader["CountryCode"].ToString();
+                                currencyID = Convert.ToInt32(reader["CurrencyID"]);
+                                return true;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool DeleteCountry(int countryID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Countries_DeleteCountry", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CountryID", countryId);
+                    cmd.Parameters.AddWithValue("@CountryID", countryID);
 
                     try
                     {
@@ -87,7 +160,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool CountryExists(int countryId)
+        public static bool CountryExists(int countryID)
         {
             try
             {
@@ -96,10 +169,9 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Countries_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@CountryID", countryId);
+                        cmd.Parameters.AddWithValue("@CountryID", countryID);
 
                         object result = cmd.ExecuteScalar();
-
                         return Convert.ToBoolean(result);
                     }
                 }
@@ -149,7 +221,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Countries_GetAllCountriesByPages", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Countries_GetPagedCountries", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
@@ -179,6 +251,5 @@ namespace ZakaBankDataLayer
 
             return dataTable;
         }
-
     }
 }

@@ -7,19 +7,20 @@ namespace ZakaBankDataLayer
 {
     public class clsClientsData
     {
-        /////////////////
 
-        public static int AddNewClient(int personId, string accountNumber, decimal balance, DateTime createdDate)
+        public static int AddNewClient(int personID, string accountNumber, string pinCode, decimal balance, int addedByUserID, int accountTypeID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Clients_AddNewClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@PersonID", personId);
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                    cmd.Parameters.AddWithValue("@PinCode", pinCode);
                     cmd.Parameters.AddWithValue("@Balance", balance);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
+                    cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeID);
 
                     SqlParameter outParameter = new SqlParameter("@ClientID", SqlDbType.Int)
                     {
@@ -42,22 +43,25 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateClient(int clientId, string accountNumber, decimal balance, DateTime updatedDate)
+        public static bool UpdateClient(int clientID, int personID, string accountNumber, string pinCode, decimal balance, int addedByUserID, int accountTypeID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Clients_UpdateClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ClientID", clientId);
+                    cmd.Parameters.AddWithValue("@ClientID", clientID);
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                    cmd.Parameters.AddWithValue("@PinCode", pinCode);
                     cmd.Parameters.AddWithValue("@Balance", balance);
-                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
+                    cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeID);
 
                     try
                     {
                         conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                        return (cmd.ExecuteNonQuery() > 0);
                     }
                     catch (Exception ex)
                     {
@@ -68,19 +72,19 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteClient(int clientId)
+        public static bool DeleteClient(int clientID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Clients_DeleteClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ClientID", clientId);
+                    cmd.Parameters.AddWithValue("@ClientID", clientID);
 
                     try
                     {
                         conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        return cmd.ExecuteNonQuery() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -91,7 +95,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool ClientExists(int clientId)
+        public static bool ClientExists(int clientID)
         {
             try
             {
@@ -100,10 +104,10 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Clients_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ClientID", clientId);
+                        cmd.Parameters.AddWithValue("@ClientID", clientID);
 
+                        conn.Open();
                         object result = cmd.ExecuteScalar();
-
                         return Convert.ToBoolean(result);
                     }
                 }
@@ -113,6 +117,43 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 return false;
             }
+        }
+
+        public static bool FindClientByID(int clientID, ref int personID, ref string accountNumber, ref string pinCode, ref decimal balance, ref int addedByUserID, ref int accountTypeID, ref bool isDeleted)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Clients_FindByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ClientID", clientID);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                da.Read();
+                                personID = Convert.ToInt32(da["PersonID"]);
+                                accountNumber = da["AccountNumber"].ToString();
+                                pinCode = da["PinCode"].ToString();
+                                balance = Convert.ToDecimal(da["Balance"]);
+                                addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
+                                accountTypeID = Convert.ToInt32(da["AccountTypeID"]);
+                                isDeleted = Convert.ToBoolean(da["IsDeleted"]);
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return false;
         }
 
         public static DataTable GetAllClients()
@@ -183,8 +224,5 @@ namespace ZakaBankDataLayer
 
             return dataTable;
         }
-
-        ///////////////
-
     }
 }

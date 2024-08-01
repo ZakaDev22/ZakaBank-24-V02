@@ -10,8 +10,8 @@ namespace ZakaBankDataLayer
     public static class clsPeopleData
     {
 
-        public static int AddNewPerson(string firstName, string lastName, string nationalNo, DateTime dateOfBirth,
-                                        short gender, string address, string phone, string email, string imagePath)
+        public static int AddNewPerson(string firstName, string lastName, DateTime dateOfBirth,
+                                        short gender, string address, string phone, string email, string imagePath, int countryId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -20,13 +20,13 @@ namespace ZakaBankDataLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@FirstName", firstName);
                     cmd.Parameters.AddWithValue("@LastName", lastName);
-                    cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
                     cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
                     cmd.Parameters.AddWithValue("@Gender", gender);
                     cmd.Parameters.AddWithValue("@Address", address);
                     cmd.Parameters.AddWithValue("@Phone", phone);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+                    cmd.Parameters.AddWithValue("@CountryID", countryId);
 
                     SqlParameter outParameter = new SqlParameter("@PersonID", SqlDbType.Int)
                     {
@@ -52,9 +52,9 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdatePerson(int personID, string firstName, string lastName, string nationalNo,
+        public static bool UpdatePerson(int personID, string firstName, string lastName,
                                         DateTime dateOfBirth, short gender, string address, string phone,
-                                        string email, string imagePath)
+                                        string email, string imagePath, int countryId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -64,13 +64,13 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@FirstName", firstName);
                     cmd.Parameters.AddWithValue("@LastName", lastName);
-                    cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
                     cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
                     cmd.Parameters.AddWithValue("@Gender", gender);
                     cmd.Parameters.AddWithValue("@Address", address);
                     cmd.Parameters.AddWithValue("@Phone", phone);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+                    cmd.Parameters.AddWithValue("@CountryID", countryId);
 
                     try
                     {
@@ -142,29 +142,36 @@ namespace ZakaBankDataLayer
             }
         }
 
-        // just in case We Need To Filter People By National Number
-        public static bool PersonExistsByNationalNo(string nationalNo)
+        public static bool FindPersonByID(int personID, ref string firstName, ref string lastName,
+                                        ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone,
+                                        ref string email, ref string imagePath, ref int countryID)
         {
             try
             {
-
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("usp_PersonExistsByNationalNo", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_People_FindByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@NationalNo", nationalNo);
-
-                        SqlParameter returnParameter = new SqlParameter("@Exists", SqlDbType.Bit)
+                        cmd.Parameters.AddWithValue("@PersonID", personID);
+                        using (SqlDataReader da = cmd.ExecuteReader())
                         {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(returnParameter);
+                            if (da.HasRows)
+                            {
+                                da.Read();
+                                firstName = da["FirstName"].ToString();
+                                lastName = da["LastName"].ToString();
+                                dateOfBirth = Convert.ToDateTime(da["DateOfBirth"]);
+                                gender = Convert.ToInt16(da["Gender"]);
+                                address = da["Address"].ToString();
+                                phone = da["Phone"].ToString();
+                                email = da["Email"].ToString();
+                                imagePath = da["ImagePath"].ToString();
+                                countryID = Convert.ToInt32(da["CountryID"]);
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-
-                        return (bool)returnParameter.Value;
+                                return true;
+                            }
+                        }
                     }
                 }
             }
@@ -173,6 +180,7 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 return false;
             }
+            return false;
         }
 
         public static DataTable GetAllPeople()

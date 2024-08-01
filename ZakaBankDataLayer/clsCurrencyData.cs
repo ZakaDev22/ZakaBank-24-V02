@@ -68,6 +68,75 @@ namespace ZakaBankDataLayer
             }
         }
 
+        public static bool FindCurrencyByCode(string currencyCode, ref int CurrencyID, ref string currencyName, ref decimal exchangeRate)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Currencies_FindByCode", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@CurrencyCode", currencyCode);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                CurrencyID = Convert.ToInt32(da["CurrencyID"]);
+                                currencyName = da["CurrencyName"].ToString();
+                                exchangeRate = Convert.ToDecimal(da["ExchangeRate"]);
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+            return false;
+        }
+
+        public static bool FindCurrencyByName(string currencyName, ref int CurrencyID, ref string currencyCode, ref decimal exchangeRate)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Currencies_FindCurrencyByName", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@CurrencyName", currencyName);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                CurrencyID = Convert.ToInt32(da["CurrencyID"]);
+                                currencyCode = da["CurrencyCode"].ToString();
+                                exchangeRate = Convert.ToDecimal(da["ExchangeRate"]);
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+            return false;
+        }
+
+
         public static bool DeleteCurrency(int currencyId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))

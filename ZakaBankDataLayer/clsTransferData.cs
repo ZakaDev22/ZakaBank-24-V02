@@ -8,20 +8,20 @@ namespace ZakaBankDataLayer
     public class clsTransferData
     {
 
-        //////////////
 
-        public static int AddNewTransfer(int senderClientId, int receiverClientId, decimal amount, DateTime transferDate, string description)
+        public static int AddNewTransfer(int fromAccountID, int toAccountID, decimal amount, DateTime transferDate, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Transfers_AddNewTransfer", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@SenderClientID", senderClientId);
-                    cmd.Parameters.AddWithValue("@ReceiverClientID", receiverClientId);
+                    cmd.Parameters.AddWithValue("@FromAccountID", fromAccountID);
+                    cmd.Parameters.AddWithValue("@ToAccountID", toAccountID);
                     cmd.Parameters.AddWithValue("@Amount", amount);
                     cmd.Parameters.AddWithValue("@TransferDate", transferDate);
                     cmd.Parameters.AddWithValue("@Description", description);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
                     SqlParameter outParameter = new SqlParameter("@TransferID", SqlDbType.Int)
                     {
@@ -44,19 +44,20 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateTransfer(int transferId, int senderClientId, int receiverClientId, decimal amount, DateTime transferDate, string description)
+        public static bool UpdateTransfer(int transferID, int fromAccountID, int toAccountID, decimal amount, DateTime transferDate, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Transfers_UpdateTransfer", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@TransferID", transferId);
-                    cmd.Parameters.AddWithValue("@SenderClientID", senderClientId);
-                    cmd.Parameters.AddWithValue("@ReceiverClientID", receiverClientId);
+                    cmd.Parameters.AddWithValue("@TransferID", transferID);
+                    cmd.Parameters.AddWithValue("@FromAccountID", fromAccountID);
+                    cmd.Parameters.AddWithValue("@ToAccountID", toAccountID);
                     cmd.Parameters.AddWithValue("@Amount", amount);
                     cmd.Parameters.AddWithValue("@TransferDate", transferDate);
                     cmd.Parameters.AddWithValue("@Description", description);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
                     try
                     {
@@ -72,14 +73,14 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteTransfer(int transferId)
+        public static bool DeleteTransfer(int transferID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Transfers_DeleteTransfer", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@TransferID", transferId);
+                    cmd.Parameters.AddWithValue("@TransferID", transferID);
 
                     try
                     {
@@ -95,7 +96,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool TransferExists(int transferId)
+        public static bool TransferExists(int transferID)
         {
             try
             {
@@ -104,8 +105,9 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Transfers_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@TransferID", transferId);
+                        cmd.Parameters.AddWithValue("@TransferID", transferID);
 
+                        conn.Open();
                         object result = cmd.ExecuteScalar();
 
                         return Convert.ToBoolean(result);
@@ -188,8 +190,42 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
+        public static bool FindTransferByID(int transferID, ref int fromAccountID, ref int toAccountID, ref decimal amount, ref DateTime transferDate, ref string description, ref int addedByUserID)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Transfers_FindByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TransferID", transferID);
 
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                da.Read();
+                                fromAccountID = Convert.ToInt32(da["FromAccountID"]);
+                                toAccountID = Convert.ToInt32(da["ToAccountID"]);
+                                amount = Convert.ToDecimal(da["Amount"]);
+                                transferDate = Convert.ToDateTime(da["TransferDate"]);
+                                description = da["Description"].ToString();
+                                addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
 
-        ///////////////
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return false;
+        }
     }
 }
+

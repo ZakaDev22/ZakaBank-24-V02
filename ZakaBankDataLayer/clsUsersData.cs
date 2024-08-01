@@ -8,23 +8,22 @@ namespace ZakaBankDataLayer
     public class clsUsersData
     {
 
-        ///////////
-
-
-        public static int AddNewUser(string username, string password, string email, int permissions, int addedByUserId)
+        public static int AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Users_AddNewUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
+                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
-                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserId);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
-                    SqlParameter outParameter = new SqlParameter("@UserID", SqlDbType.Int)
+                    SqlParameter outParameter = new SqlParameter("@ID", SqlDbType.Int)
                     {
                         Direction = ParameterDirection.Output
                     };
@@ -45,40 +44,21 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateUser(int userId, string username, string email, int permissions)
+        public static bool UpdateUser(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Users_UpdateUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@UserID", userId);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
+                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
-
-                    try
-                    {
-                        conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
-                    }
-                    catch (Exception ex)
-                    {
-                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                        return false;
-                    }
-                }
-            }
-        }
-
-        public static bool DeleteUser(int userId)
-        {
-            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_Users_DeleteUser", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
                     try
                     {
@@ -94,7 +74,30 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UserExists(int userId)
+        public static bool DeleteUser(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Users_DeleteUser", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    try
+                    {
+                        conn.Open();
+                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public static bool UserExists(int id)
         {
             try
             {
@@ -103,8 +106,9 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Users_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@UserID", userId);
+                        cmd.Parameters.AddWithValue("@ID", id);
 
+                        conn.Open();
                         object result = cmd.ExecuteScalar();
 
                         return Convert.ToBoolean(result);
@@ -130,6 +134,7 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
+                        conn.Open();
                         using (SqlDataReader da = cmd.ExecuteReader())
                         {
                             if (da.HasRows)
@@ -186,6 +191,42 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
-        ////////
+        public static bool FindUserByID(int id, ref int personID, ref string userName, ref string passwordHash, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_FindByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", id);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                da.Read();
+                                personID = Convert.ToInt32(da["PersonID"]);
+                                userName = da["UserName"].ToString();
+                                passwordHash = da["PasswordHash"].ToString();
+                                createdDate = Convert.ToDateTime(da["CreatedDate"]);
+                                updatedDate = Convert.ToDateTime(da["UpdatedDate"]);
+                                permissions = Convert.ToInt32(da["Permissions"]);
+                                addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return false;
+        }
     }
 }

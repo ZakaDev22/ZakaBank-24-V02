@@ -8,7 +8,7 @@ namespace ZakaBankDataLayer
     public class clsAccountTypeData
     {
 
-        public static int AddNewAccountType(string accountTypeName)
+        public static int AddNewAccountType(string accountTypeName, string description)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -16,6 +16,7 @@ namespace ZakaBankDataLayer
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@AccountTypeName", accountTypeName);
+                    cmd.Parameters.AddWithValue("@Description", description); // Add Description
 
                     SqlParameter outParameter = new SqlParameter("@AccountTypeID", SqlDbType.Int)
                     {
@@ -38,7 +39,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateAccountType(int accountTypeId, string accountTypeName)
+        public static bool UpdateAccountType(int accountTypeId, string accountTypeName, string description)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -47,6 +48,7 @@ namespace ZakaBankDataLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeId);
                     cmd.Parameters.AddWithValue("@AccountTypeName", accountTypeName);
+                    cmd.Parameters.AddWithValue("@Description", description); // Add Description
 
                     try
                     {
@@ -95,6 +97,8 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeId);
+
+                        conn.Open(); // Add this line to open the connection
 
                         object result = cmd.ExecuteScalar();
 
@@ -178,5 +182,37 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
+        public static bool FindAccountTypeByID(int accountTypeId, ref string accountTypeName, ref string description)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_AccountTypes_FindByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeId);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.HasRows)
+                            {
+                                da.Read();
+                                accountTypeName = da["AccountTypeName"].ToString();
+                                description = da["Description"].ToString(); // Retrieve Description
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+            return false;
+        }
     }
 }

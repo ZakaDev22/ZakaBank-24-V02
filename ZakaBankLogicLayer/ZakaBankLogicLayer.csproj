@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsAccountTypes.cs" />
+    <Compile Include="clsClients.cs" />
+    <Compile Include="clsCountry.cs" />
+    <Compile Include="clsCurrency.cs" />
+    <Compile Include="clsLoginRegisters.cs" />
     <Compile Include="clsPeople.cs" />
+    <Compile Include="clsTransactions.cs" />
+    <Compile Include="clsTransfers.cs" />
+    <Compile Include="clsUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
