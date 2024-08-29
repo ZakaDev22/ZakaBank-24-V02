@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ZakaBank_24.Main_And_Login_Forms;
 
 namespace ZakaBank_24
 {
@@ -13,7 +14,9 @@ namespace ZakaBank_24
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            //  Application.Run(new LoginForm());
+
+            Application.Run(new MainForm());
         }
     }
 }

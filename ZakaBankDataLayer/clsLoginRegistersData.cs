@@ -9,41 +9,48 @@ namespace ZakaBankDataLayer
     {
 
 
-        public static void InsertLoginRegister(int userID, DateTime? loginDateTime, DateTime? logOutDateTime)
+        public static int InsertLoginRegister(int userID, DateTime? loginDateTime)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_Insert", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_AddNew", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserID", userID);
                     cmd.Parameters.AddWithValue("@LoginDateTime", loginDateTime.HasValue ? (object)loginDateTime.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@LogOutDateTime", logOutDateTime.HasValue ? (object)logOutDateTime.Value : DBNull.Value);
+
+                    SqlParameter outParameter = new SqlParameter("@LoginID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outParameter);
 
                     try
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
+                        return (int)outParameter.Value;
                     }
                     catch (Exception ex)
                     {
                         ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return -1;
                     }
                 }
             }
         }
 
-        public static bool UpdateLoginRegister(int id, int userID, DateTime loginDateTime, DateTime? logOutDateTime)
+        public static bool UpdateLoginRegister(int userID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_Update", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_UpdateLogout", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+
                     cmd.Parameters.AddWithValue("@UserID", userID);
-                    cmd.Parameters.AddWithValue("@LoginDateTime", loginDateTime);
-                    cmd.Parameters.AddWithValue("@LogOutDateTime", logOutDateTime.HasValue ? (object)logOutDateTime.Value : DBNull.Value);
+
 
                     try
                     {
@@ -146,7 +153,7 @@ namespace ZakaBankDataLayer
 
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_GetAll", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_GetAllLogins", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -175,7 +182,7 @@ namespace ZakaBankDataLayer
 
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_GetPaged", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_GetAllRegistersLoginsByPages", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PageNumber", pageNumber);

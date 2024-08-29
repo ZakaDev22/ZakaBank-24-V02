@@ -2,12 +2,13 @@
 using System;
 
 using System.Windows.Forms;
+using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Global_Classes
 {
     public class clsGlobal
     {
-        //  public static clsUsers _CurrentUser;
+        public static clsUsers _CurrentUser;
 
         // Specify the Registry key and path
         // static variabels for Registry Methods

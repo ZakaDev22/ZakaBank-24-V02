@@ -129,7 +129,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Transfers_GetAllTransfers", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Transfars_GetAllTransfers", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
