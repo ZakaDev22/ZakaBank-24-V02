@@ -191,7 +191,7 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
-        public static bool FindUserByID(int id, ref int personID, ref string userName, ref string passwordHash, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID)
+        public static bool FindUserByID(int id, ref int personID, ref string userName, ref string passwordHash, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID, ref bool isactive)
         {
             try
             {
@@ -215,6 +215,46 @@ namespace ZakaBankDataLayer
                                 updatedDate = Convert.ToDateTime(da["UpdatedDate"]);
                                 permissions = Convert.ToInt32(da["Permissions"]);
                                 addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
+                                isactive = Convert.ToBoolean(da["IsActive"]);
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return false;
+        }
+
+
+        public static bool FindByUserNameAndPassword(string UserName, string Password, ref int userID, ref int personID, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID, ref bool isActive)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_FindByUserNameAndPassword", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserName", UserName);
+                        cmd.Parameters.AddWithValue("@Password", Password);
+
+                        conn.Open();
+                        using (SqlDataReader da = cmd.ExecuteReader())
+                        {
+                            if (da.Read())
+                            {
+                                userID = (int)da["UserID"];
+                                personID = Convert.ToInt32(da["PersonID"]);
+                                createdDate = Convert.ToDateTime(da["CreatedDate"]);
+                                updatedDate = Convert.ToDateTime(da["UpdatedDate"]);
+                                permissions = Convert.ToInt32(da["Permissions"]);
+                                addedByUserID = da["AddedByUserID"] == DBNull.Value ? -1 : Convert.ToInt32(da["AddedByUserID"]);
+                                isActive = Convert.ToBoolean(da["IsActive"]);
 
                                 return true;
                             }

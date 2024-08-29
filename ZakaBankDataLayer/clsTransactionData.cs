@@ -158,7 +158,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Transactions_GetAllTransactionsByPages", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Transaction_GetAllTransactionsByPages", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PageNumber", pageNumber);

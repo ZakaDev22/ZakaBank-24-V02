@@ -31,14 +31,15 @@ namespace ZakaBankLogicLayer
 
         private bool _AddNewLoginRegister()
         {
-            clsLoginRegistersData.InsertLoginRegister(UserID, LoginDateTime, LogOutDateTime);
-            // Assuming Insert operation always succeeds if no exceptions
-            return true;
+            this.ID = clsLoginRegistersData.InsertLoginRegister(UserID, LoginDateTime);
+
+            return (this.ID != -1);
         }
 
+        // i will call this method the moment The Current User Will LogOut From The System to Save The Logout Time
         private bool _UpdateLoginRegister()
         {
-            return clsLoginRegistersData.UpdateLoginRegister(ID, UserID, LoginDateTime, LogOutDateTime);
+            return clsLoginRegistersData.UpdateLoginRegister(UserID);
         }
 
         public bool Save()

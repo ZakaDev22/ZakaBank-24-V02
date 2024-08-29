@@ -154,17 +154,18 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PersonID", personID);
+
+                        conn.Open();
                         using (SqlDataReader da = cmd.ExecuteReader())
                         {
-                            if (da.HasRows)
+                            if (da.Read())
                             {
-                                da.Read();
                                 firstName = da["FirstName"].ToString();
                                 lastName = da["LastName"].ToString();
-                                dateOfBirth = Convert.ToDateTime(da["DateOfBirth"]);
+                                dateOfBirth = da["DateOfBirth"] == DBNull.Value ? DateTime.Now : DateTime.Parse(da["DateOfBirth"].ToString());
                                 gender = Convert.ToInt16(da["Gender"]);
                                 address = da["Address"].ToString();
-                                phone = da["Phone"].ToString();
+                                phone = da["PhoneNumber"].ToString();
                                 email = da["Email"].ToString();
                                 imagePath = da["ImagePath"].ToString();
                                 countryID = Convert.ToInt32(da["CountryID"]);
@@ -195,6 +196,7 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
+                        conn.Open();
                         using (SqlDataReader da = cmd.ExecuteReader())
                         {
                             if (da.HasRows)

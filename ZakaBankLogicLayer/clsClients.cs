@@ -4,7 +4,7 @@ using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
 {
-    internal class clsClients
+    public class clsClients
     {
 
         public enum enMode { AddNew = 0, Update = 1 };

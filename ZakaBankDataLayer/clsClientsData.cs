@@ -164,7 +164,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Clients_GetAllClients", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetAllClients", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -194,7 +194,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Clients_GetAllClientsByPages", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetAllClientsByPages", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PageNumber", pageNumber);

@@ -19,12 +19,16 @@ namespace ZakaBankLogicLayer
         public int Permissions { get; set; }
         public int AddedByUserID { get; set; }
 
+        public bool IsActive { get; set; }
+
+        public clsPeople _PersonInfo;
+
         public clsUsers()
         {
             Mode = enMode.AddNew;
         }
 
-        public clsUsers(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID)
+        public clsUsers(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID, bool isActive)
         {
             ID = id;
             PersonID = personID;
@@ -35,6 +39,9 @@ namespace ZakaBankLogicLayer
             Permissions = permissions;
             AddedByUserID = addedByUserID;
             Mode = enMode.Update;
+            IsActive = isActive;
+
+            _PersonInfo = clsPeople.FindByPersonID(PersonID);
         }
 
         private bool _AddNewUser()
@@ -79,14 +86,34 @@ namespace ZakaBankLogicLayer
             DateTime updatedDate = DateTime.MinValue;
             int permissions = 0;
             int addedByUserID = 0;
+            bool isActive = false;
 
-            bool isFound = clsUsersData.FindUserByID(id, ref personID, ref userName, ref passwordHash, ref createdDate, ref updatedDate, ref permissions, ref addedByUserID);
+            bool isFound = clsUsersData.FindUserByID(id, ref personID, ref userName, ref passwordHash, ref createdDate, ref updatedDate, ref permissions, ref addedByUserID, ref isActive);
 
             if (isFound)
-                return new clsUsers(id, personID, userName, passwordHash, createdDate, updatedDate, permissions, addedByUserID);
+                return new clsUsers(id, personID, userName, passwordHash, createdDate, updatedDate, permissions, addedByUserID, isActive);
             else
                 return null;
         }
+
+        public static clsUsers FindByUserNameAndPassword(string UserName, string Password)
+        {
+            int userID = 0;
+            int personID = 0;
+            DateTime createdDate = DateTime.MinValue;
+            DateTime updatedDate = DateTime.MinValue;
+            int permissions = 0;
+            int addedByUserID = 0;
+            bool isActive = false;
+
+            bool isFound = clsUsersData.FindByUserNameAndPassword(UserName, Password, ref userID, ref personID, ref createdDate, ref updatedDate, ref permissions, ref addedByUserID, ref isActive);
+
+            if (isFound)
+                return new clsUsers(userID, personID, UserName, Password, createdDate, updatedDate, permissions, addedByUserID, isActive);
+            else
+                return null;
+        }
+
 
         public static bool Delete(int id)
         {
