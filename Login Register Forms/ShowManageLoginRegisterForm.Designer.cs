@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -52,12 +54,10 @@
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvLoginRegisters)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -74,6 +74,41 @@
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(808, 71);
             this.guna2CustomGradientPanel4.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
+            this.pictureBox1.Location = new System.Drawing.Point(400, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnCLose
+            // 
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(727, 5);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(73, 63);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -127,7 +162,7 @@
             this.lbRecords.AutoSize = true;
             this.lbRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRecords.ForeColor = System.Drawing.Color.Red;
-            this.lbRecords.Location = new System.Drawing.Point(159, 538);
+            this.lbRecords.Location = new System.Drawing.Point(132, 555);
             this.lbRecords.Name = "lbRecords";
             this.lbRecords.Size = new System.Drawing.Size(19, 20);
             this.lbRecords.TabIndex = 149;
@@ -137,7 +172,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 538);
+            this.label2.Location = new System.Drawing.Point(40, 555);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 148;
@@ -153,7 +188,7 @@
             this.btnPageNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPageNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPageNumber.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPageNumber.Location = new System.Drawing.Point(382, 526);
+            this.btnPageNumber.Location = new System.Drawing.Point(368, 543);
             this.btnPageNumber.Name = "btnPageNumber";
             this.btnPageNumber.Size = new System.Drawing.Size(67, 44);
             this.btnPageNumber.TabIndex = 147;
@@ -171,7 +206,7 @@
             this.djvLoginRegisters.Location = new System.Drawing.Point(39, 233);
             this.djvLoginRegisters.Name = "djvLoginRegisters";
             this.djvLoginRegisters.ReadOnly = true;
-            this.djvLoginRegisters.Size = new System.Drawing.Size(712, 275);
+            this.djvLoginRegisters.Size = new System.Drawing.Size(712, 302);
             this.djvLoginRegisters.TabIndex = 146;
             // 
             // lbSize
@@ -321,7 +356,7 @@
             this.btnLeft.FlatAppearance.BorderSize = 0;
             this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLeft.Location = new System.Drawing.Point(309, 526);
+            this.btnLeft.Location = new System.Drawing.Point(295, 543);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(67, 44);
             this.btnLeft.TabIndex = 151;
@@ -337,47 +372,12 @@
             this.btnRight.FlatAppearance.BorderSize = 0;
             this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRight.Location = new System.Drawing.Point(455, 527);
+            this.btnRight.Location = new System.Drawing.Point(441, 544);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(67, 44);
             this.btnRight.TabIndex = 150;
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
-            this.pictureBox1.Location = new System.Drawing.Point(400, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(727, 5);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(73, 63);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // ShowManageLoginRegisterForm
             // 
@@ -406,10 +406,10 @@
             this.Text = "ShowManageLoginRegisterForm";
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvLoginRegisters)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

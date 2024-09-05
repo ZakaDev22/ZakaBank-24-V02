@@ -153,6 +153,36 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap People_64 {
+            get {
+                object obj = ResourceManager.GetObject("People 64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Person_32 {
+            get {
+                object obj = ResourceManager.GetObject("Person 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_out_32__2 {
+            get {
+                object obj = ResourceManager.GetObject("sign_out 32 -2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap teacher__2_ {
             get {
                 object obj = ResourceManager.GetObject("teacher (2)", resourceCulture);
