@@ -71,7 +71,7 @@ namespace ZakaBankLogicLayer
             {
                 DataRow row = dt.Rows[0];
                 return new clsLoginRegisters(
-                    Convert.ToInt32(row["ID"]),
+                    Convert.ToInt32(row["LoginRegisterID"]),
                     Convert.ToInt32(row["UserID"]),
                     Convert.ToDateTime(row["LoginDateTime"]),
                     row["LogOutDateTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["LogOutDateTime"])

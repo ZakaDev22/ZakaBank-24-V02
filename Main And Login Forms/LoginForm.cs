@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ZakaBank_24.Global_Classes;
-using ZakaBank_24.Login_Register_Forms;
+using ZakaBank_24.Main_And_Login_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24
@@ -17,17 +17,7 @@ namespace ZakaBank_24
 
         private void btnCLose_Click(object sender, EventArgs e)
         {
-            _loginRegister.Mode = clsLoginRegisters.enMode.Update;
-
-            if (_loginRegister.Save())
-            {
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("error, something went wrong with login Register Record Update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
+            this.Close();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -72,9 +62,6 @@ namespace ZakaBank_24
 
                 }
 
-                //  ShowMainScreenFormcs frm = new ShowMainScreenFormcs(this);
-                // this.Hide();
-                // frm.ShowDialog();
 
                 _loginRegister = new clsLoginRegisters();
 
@@ -84,8 +71,10 @@ namespace ZakaBank_24
                 if (_loginRegister.Save())
                 {
                     //      
-                    ShowManageLoginRegisterForm frm = new ShowManageLoginRegisterForm();
+                    MainForm frm = new MainForm(this, _loginRegister.ID);
+                    this.Hide();
                     frm.ShowDialog();
+
                 }
                 else
                 {

@@ -9,15 +9,17 @@ namespace ZakaBank_24.Login_Register_Forms
     public partial class ShowManageLoginRegisterForm : Form
     {
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 11;
         private int totalRecords = 0;
         private DataTable dt;
+
 
         public ShowManageLoginRegisterForm()
         {
             InitializeComponent();
 
             rbByPages.Checked = true;
+
         }
 
 

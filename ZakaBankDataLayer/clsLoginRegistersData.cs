@@ -98,7 +98,7 @@ namespace ZakaBankDataLayer
                 using (SqlCommand cmd = new SqlCommand("sp_LoginRegisters_FindByID", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@LoginRegisterID", id);
 
                     try
                     {
