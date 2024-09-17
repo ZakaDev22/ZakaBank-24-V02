@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBankLogicLayer;
 
@@ -19,30 +20,46 @@ namespace ZakaBank_24.Login_Register_Forms
             InitializeComponent();
 
             rbByPages.Checked = true;
-
+            cbFilterBy.SelectedIndex = 0;
         }
 
 
-        private void _RefresgDataGridView()
+        private async Task _RefreshDataGridViewData()
         {
 
-
-            if (rbByPages.Checked)
+            try
             {
-                // Load the paged data
-                dt = clsLoginRegisters.GetPaged(currentPage, pageSize, out totalRecords);
-                djvLoginRegisters.DataSource = dt;
-                UpdatePaginationButtons();
-                lbRecords.Text = djvLoginRegisters.RowCount.ToString();
-            }
-            else
-            {
-                // Load all data
-                dt = clsLoginRegisters.GetAll();
-                djvLoginRegisters.DataSource = dt;
-                lbRecords.Text = djvLoginRegisters.RowCount.ToString();
-            }
+                if (rbByPages.Checked)
+                {
+                    // Load the paged data
+                    var tuple = await clsLoginRegisters.GetPagedLoginRegisters(currentPage, pageSize);
+                    totalRecords = tuple.TotalCount;
+                    dt = tuple.dataTable;
 
+                }
+                else
+                {
+                    dt = await clsTransfers.GetAllTransfersAsync();
+                }
+
+                djvLoginRegisters.DataSource = null; // Clear existing data
+                djvLoginRegisters.DataSource = dt;
+                lbRecords.Text = djvLoginRegisters.RowCount.ToString();
+
+                FormatDataGridView();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log error, show message to user)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// This Method formats the data grid view.
+        /// </summary>
+        private void FormatDataGridView()
+        {
             if (djvLoginRegisters.RowCount > 0)
             {
                 // LoginRegisterID , UserID , Users.Username , LoginDateTime , LogoutDateTime
@@ -69,6 +86,10 @@ namespace ZakaBank_24.Login_Register_Forms
             btnPageNumber.Text = currentPage.ToString();
         }
 
+
+
+
+
         /// <summary>
         /// Updates the enabled state and background color of the pagination buttons based on the current page and total records.
         /// </summary>
@@ -84,8 +105,12 @@ namespace ZakaBank_24.Login_Register_Forms
             btnRight.BackColor = btnRight.Enabled ? Color.GreenYellow : Color.Red;
         }
 
-        private void rbByPages_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Updates the visibility of the pagination controls based on whether pagination is enabled.
+        /// </summary>
+        private void UpdatePaginationControls()
         {
+            // Show or hide pagination controls based on whether pagination is enabled
             if (rbByPages.Checked)
             {
                 lbSize.Visible = true;
@@ -102,15 +127,19 @@ namespace ZakaBank_24.Login_Register_Forms
                 btnRight.Visible = false;
                 btnPageNumber.Visible = false;
             }
-
-            cbFilterBy.SelectedIndex = 0;
-            _RefresgDataGridView();
+            UpdatePaginationButtons();
         }
 
-        private void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        private async void rbByPages_CheckedChanged(object sender, EventArgs e)
+        {
+            await _RefreshDataGridViewData();
+            UpdatePaginationControls();
+        }
+
+        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             pageSize = int.Parse(cbPageSize.Text);
-            _RefresgDataGridView();
+            await _RefreshDataGridViewData();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
@@ -160,31 +189,26 @@ namespace ZakaBank_24.Login_Register_Forms
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterBy.SelectedIndex == 0)
-                txtFilterValue.Visible = false;
-            else
-            {
-                txtFilterValue.Clear();
-                txtFilterValue.Visible = true;
-                txtFilterValue.Focus();
-            }
+            txtFilterValue.Visible = cbFilterBy.SelectedIndex != 0;
         }
 
-        private void btnRight_Click(object sender, EventArgs e)
+        private async void btnRight_Click(object sender, EventArgs e)
         {
             if (currentPage * pageSize < totalRecords)
             {
                 currentPage++;
-                _RefresgDataGridView();
+                await _RefreshDataGridViewData();
+                UpdatePaginationControls();
             }
         }
 
-        private void btnLeft_Click(object sender, EventArgs e)
+        private async void btnLeft_Click(object sender, EventArgs e)
         {
             if (currentPage > 1)
             {
                 currentPage--;
-                _RefresgDataGridView();
+                await _RefreshDataGridViewData();
+                UpdatePaginationControls();
             }
         }
 

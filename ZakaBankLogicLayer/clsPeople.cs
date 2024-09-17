@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -14,26 +14,23 @@ namespace ZakaBankLogicLayer
         public int PersonID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public short Gender { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public short? Gender { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string ImagePath { get; set; }
-
-        public int CountryID { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
+        public int? CountryID { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
         public clsPeople()
         {
             Mode = enMode.AddNew;
         }
 
-        public clsPeople(int personID, string firstName, string lastName, DateTime dateOfBirth, short gender,
-                         string address, string phone, string email, string imagePath, int countryID, DateTime createdDate, DateTime updatedDate)
+        public clsPeople(int personID, string firstName, string lastName, DateTime? dateOfBirth, short? gender,
+                         string address, string phone, string email, string imagePath, int? countryID, DateTime? createdDate, DateTime? updatedDate)
         {
             PersonID = personID;
             FirstName = firstName;
@@ -51,86 +48,81 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewPerson()
+        private async Task<bool> _AddNewPersonAsync()
         {
-
-            this.PersonID = clsPeopleData.AddNewPerson(FirstName, LastName, DateOfBirth, Gender,
-                                                       Address, Phone, Email, ImagePath, CountryID);
+            this.PersonID = await clsPeopleData.AddNewPersonAsync(FirstName, LastName, DateOfBirth, Gender, Address, Phone, Email, ImagePath, CountryID);
             return (this.PersonID != -1);
-
         }
 
-        private bool _UpdatePerson()
+        private async Task<bool> _UpdatePersonAsync()
         {
-
-            return clsPeopleData.UpdatePerson(PersonID, FirstName, LastName, DateOfBirth, Gender,
-                                                     Address, Phone, Email, ImagePath, CountryID);
+            return await clsPeopleData.UpdatePersonAsync(PersonID, FirstName, LastName, DateOfBirth, Gender, Address, Phone, Email, ImagePath, CountryID);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
                     {
-                        if (_AddNewPerson())
+                        if (await _AddNewPersonAsync())
                         {
                             Mode = enMode.Update;
                             return true;
                         }
-
                         break;
                     }
                 case enMode.Update:
-                    return _UpdatePerson();
+                    return await _UpdatePersonAsync();
                 default:
                     throw new InvalidOperationException("Unknown mode.");
             }
-
             return false;
         }
 
-        public static clsPeople FindByPersonID(int personID)
+        public static async Task<clsPeople> FindByPersonIDAsync(int personID)
         {
-            string FirstName = string.Empty;
-            string LastName = string.Empty;
-            DateTime DateOfBirth = DateTime.Now;
-            short Gender = 0;
-            string Address = string.Empty;
-            string Phone = string.Empty;
-            string Email = string.Empty;
-            string ImagePath = string.Empty;
-            int countryID = 0;
+            DataTable dt = await clsPeopleData.FindPersonByIDAsync(personID);
 
-            bool IsFound = clsPeopleData.FindPersonByID(personID, ref FirstName, ref LastName, ref DateOfBirth,
-                                                        ref Gender, ref Address, ref Phone, ref Email, ref ImagePath, ref countryID);
-
-            if (IsFound)
-                return new clsPeople(personID, FirstName, LastName, DateOfBirth, Gender, Address, Phone, Email, ImagePath, countryID, DateTime.Now, DateTime.Now);
-            else
-                return null;
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                return new clsPeople(
+                    Convert.ToInt32(row["PersonID"]),
+                    Convert.ToString(row["FirstName"]),
+                    Convert.ToString(row["LastName"]),
+                    row["DateOfBirth"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["DateOfBirth"]) : null,
+                    row["Gender"] != DBNull.Value ? (short?)Convert.ToInt16(row["Gender"]) : null,
+                    Convert.ToString(row["Address"]),
+                    Convert.ToString(row["PhoneNumber"]),
+                    Convert.ToString(row["Email"]),
+                    Convert.ToString(row["ImagePath"]),
+                    row["CountryID"] != DBNull.Value ? (int?)Convert.ToInt32(row["CountryID"]) : null,
+                    row["CreatedDate"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["CreatedDate"]) : null,
+                    row["UpdatedDate"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["UpdatedDate"]) : null
+                );
+            }
+            return null;
         }
 
-
-
-        public static bool Delete(int personID)
+        public static async Task<bool> DeletePersonAsync(int personID)
         {
-            return clsPeopleData.DeletePerson(personID);
+            return await clsPeopleData.DeletePersonAsync(personID);
         }
 
-        public static bool ExistsByID(int personID)
+        public static async Task<bool> ExistsByIDAsync(int personID)
         {
-            return clsPeopleData.PersonExists(personID);
+            return await clsPeopleData.PersonExistsAsync(personID);
         }
 
-        public static DataTable GetAllPeople()
+        public static async Task<DataTable> GetAllPeopleAsync()
         {
-            return clsPeopleData.GetAllPeople();
+            return await clsPeopleData.GetAllPeopleAsync();
         }
 
-        public static DataTable GetPagedPeople(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int TotalCount)> GetPagedPeopleAsync(int pageNumber, int pageSize)
         {
-            return clsPeopleData.GetPagedPeople(pageNumber, pageSize, out totalCount);
+            return await clsPeopleData.GetPeopleByPageAsync(pageNumber, pageSize);
         }
 
     }

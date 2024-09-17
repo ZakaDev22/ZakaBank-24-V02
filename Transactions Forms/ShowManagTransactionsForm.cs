@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBankLogicLayer;
 
@@ -20,26 +21,43 @@ namespace ZakaBank_24.Transactions_Forms
             rbByPages.Checked = true;
         }
 
-        private void _RefresgDataGridView()
+        private async Task _RefreshDataGridViewData()
         {
 
-
-            if (rbByPages.Checked)
+            try
             {
-                // Load the paged data
-                dt = clsTransactions.GetPagedTransactions(currentPage, pageSize, out totalRecords);
-                djvTransactions.DataSource = dt;
-                UpdatePaginationButtons();
-                lbRecords.Text = djvTransactions.RowCount.ToString();
-            }
-            else
-            {
-                // Load all data
-                dt = clsTransactions.GetAllTransactions();
-                djvTransactions.DataSource = dt;
-                lbRecords.Text = djvTransactions.RowCount.ToString();
-            }
+                if (rbByPages.Checked)
+                {
+                    // Load the paged data
+                    var tuple = await clsTransactions.GetPagedTransactionsAsync(currentPage, pageSize);
+                    totalRecords = tuple.totalCount;
+                    dt = tuple.dataTable;
 
+                }
+                else
+                {
+                    dt = await clsTransactions.GetAllTransactionsAsync();
+                }
+
+                djvTransactions.DataSource = null; // Clear existing data
+                djvTransactions.DataSource = dt;
+                lbRecords.Text = djvTransactions.RowCount.ToString();
+
+                FormatDataGridView();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log error, show message to user)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// This Method formats the data grid view.
+        /// </summary>
+        private void FormatDataGridView()
+        {
             if (djvTransactions.RowCount > 0)
             {
 
@@ -71,6 +89,7 @@ namespace ZakaBank_24.Transactions_Forms
             btnPageNumber.Text = currentPage.ToString();
         }
 
+
         /// <summary>
         /// Updates the enabled state and background color of the pagination buttons based on the current page and total records.
         /// </summary>
@@ -86,8 +105,16 @@ namespace ZakaBank_24.Transactions_Forms
             btnRight.BackColor = btnRight.Enabled ? Color.GreenYellow : Color.Red;
         }
 
-        private void rbByPages_CheckedChanged(object sender, EventArgs e)
+        private async void rbByPages_CheckedChanged(object sender, EventArgs e)
         {
+            await _RefreshDataGridViewData();
+
+            UpdatePaginationControls(); // Update pagination controls based on whether pagination is enabled
+        }
+
+        private void UpdatePaginationControls()
+        {
+            // Show or hide pagination controls based on whether pagination is enabled
             if (rbByPages.Checked)
             {
                 lbSize.Visible = true;
@@ -95,6 +122,7 @@ namespace ZakaBank_24.Transactions_Forms
                 btnLeft.Visible = true;
                 btnRight.Visible = true;
                 btnPageNumber.Visible = true;
+                UpdatePaginationButtons();
             }
             else
             {
@@ -104,31 +132,20 @@ namespace ZakaBank_24.Transactions_Forms
                 btnRight.Visible = false;
                 btnPageNumber.Visible = false;
             }
-
-            cbFilterBy.SelectedIndex = 0;
-            _RefresgDataGridView();
         }
 
 
-
-        private void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
-            _RefresgDataGridView();
+            await _RefreshDataGridViewData();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterBy.SelectedIndex == 0)
-            {
-                txtFilterValue.Visible = false;
-            }
-            else
-            {
-                txtFilterValue.Visible = true;
-                txtFilterValue.Clear();
-                txtFilterValue.Focus();
-            }
+            txtFilterValue.Visible = cbFilterBy.SelectedIndex != 0;
+            txtFilterValue.Clear();
+            if (txtFilterValue.Visible) txtFilterValue.Focus();
         }
 
         private void btnAddNewTransaction_Click(object sender, EventArgs e)
@@ -137,21 +154,23 @@ namespace ZakaBank_24.Transactions_Forms
                                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
-        private void btnRight_Click(object sender, EventArgs e)
+        private async void btnRight_Click(object sender, EventArgs e)
         {
             if (currentPage * pageSize < totalRecords)
             {
                 currentPage++;
-                _RefresgDataGridView();
+                await _RefreshDataGridViewData();
+                UpdatePaginationControls();
             }
         }
 
-        private void btnLeft_Click(object sender, EventArgs e)
+        private async void btnLeft_Click(object sender, EventArgs e)
         {
             if (currentPage > 1)
             {
                 currentPage--;
-                _RefresgDataGridView();
+                await _RefreshDataGridViewData();
+                UpdatePaginationControls();
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -30,23 +31,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewCountry()
+        private async Task<bool> _AddNewCountryAsync()
         {
-            this.CountryID = clsCountryData.AddNewCountry(CountryName, CountryCode, CurrencyID);
+            this.CountryID = await clsCountryData.AddNewCountryAsync(CountryName, CountryCode, CurrencyID);
             return (this.CountryID != -1);
         }
 
-        private bool _UpdateCountry()
+        private async Task<bool> _UpdateCountryAsync()
         {
-            return clsCountryData.UpdateCountry(CountryID, CountryName, CountryCode, CurrencyID);
+            return await clsCountryData.UpdateCountryAsync(CountryID, CountryName, CountryCode, CurrencyID);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewCountry())
+                    if (await _AddNewCountryAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -54,7 +55,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateCountry();
+                    return await _UpdateCountryAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -63,38 +64,41 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsCountry FindByCountryID(int countryID)
+        public static async Task<clsCountry> FindByCountryID(int countryID)
         {
-            string countryName = string.Empty;
-            string countryCode = string.Empty;
-            int currencyID = 0;
+            var dt = await clsCountryData.FindCountryByIDAsync(countryID);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsCountry(
+                                           Convert.ToInt32(row["CountryID"]),
+                                           Convert.ToString(row["CountryName"]),
+                                           Convert.ToString(row["CountryCode"]),
+                                           Convert.ToInt32(row["CurrencyID"])
 
-            bool isFound = clsCountryData.FindCountryByID(countryID, ref countryName, ref countryCode, ref currencyID);
-
-            if (isFound)
-                return new clsCountry(countryID, countryName, countryCode, currencyID);
-            else
-                return null;
+                                          );
+            }
+            return null;
         }
 
-        public static bool Delete(int countryID)
+        public static async Task<bool> DeleteAsync(int countryID)
         {
-            return clsCountryData.DeleteCountry(countryID);
+            return await clsCountryData.DeleteCountryAsync(countryID);
         }
 
-        public static bool ExistsByID(int countryID)
+        public static async Task<bool> ExistsByIDAsync(int countryID)
         {
-            return clsCountryData.CountryExists(countryID);
+            return await clsCountryData.CountryExists(countryID);
         }
 
-        public static DataTable GetAllCountries()
+        public static async Task<DataTable> GetAllCountriesAsync()
         {
-            return clsCountryData.GetAllCountries();
+            return await clsCountryData.GetAllCountries();
         }
 
-        public static DataTable GetPagedCountries(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedCountries(int pageNumber, int pageSize)
         {
-            return clsCountryData.GetPagedCountries(pageNumber, pageSize, out totalCount);
+            return await clsCountryData.GetPagedCountries(pageNumber, pageSize);
         }
     }
 }

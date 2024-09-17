@@ -20,7 +20,7 @@ namespace ZakaBank_24
             this.Close();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
             {
@@ -30,7 +30,7 @@ namespace ZakaBank_24
                 return;
             }
 
-            clsUsers user = clsUsers.FindByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            clsUsers user = await clsUsers.FindByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
 
             if (user is null)
             {
@@ -68,7 +68,7 @@ namespace ZakaBank_24
                 _loginRegister.UserID = user.ID;
                 _loginRegister.LoginDateTime = DateTime.Now;
 
-                if (_loginRegister.Save())
+                if (await _loginRegister.Save())
                 {
                     //      
                     MainForm frm = new MainForm(this, _loginRegister.ID);

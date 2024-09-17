@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -35,23 +36,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewTransfer()
+        private async Task<bool> _AddNewTransferAsync()
         {
-            this.TransferID = clsTransferData.AddNewTransfer(FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
+            this.TransferID = await clsTransferData.AddNewTransferAsync(FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
             return (this.TransferID != -1);
         }
 
-        private bool _UpdateTransfer()
+        private async Task<bool> _UpdateTransferAsync()
         {
-            return clsTransferData.UpdateTransfer(TransferID, FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
+            return await clsTransferData.UpdateTransferAsync(TransferID, FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewTransfer())
+                    if (await _AddNewTransferAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -59,7 +60,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateTransfer();
+                    return await _UpdateTransferAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -68,41 +69,45 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsTransfers FindByTransferID(int transferID)
+        public static async Task<clsTransfers> FindByTransferIDAsync(int transferID)
         {
-            int fromAccountID = 0;
-            int toAccountID = 0;
-            decimal amount = 0;
-            DateTime transferDate = DateTime.MinValue;
-            string description = string.Empty;
-            int addedByUserID = 0;
+            var dt = await clsTransferData.FindTransferByIDAsync(transferID);
 
-            bool isFound = clsTransferData.FindTransferByID(transferID, ref fromAccountID, ref toAccountID, ref amount, ref transferDate, ref description, ref addedByUserID);
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
 
-            if (isFound)
-                return new clsTransfers(transferID, fromAccountID, toAccountID, amount, transferDate, description, addedByUserID);
+                return new clsTransfers(Convert.ToInt32(row["TransferID"]),
+                                        Convert.ToInt32(row["FromAccountID"]),
+                                        Convert.ToInt32(row["ToAccountID"]),
+                                        Convert.ToDecimal(row["Amount"]),
+                                        Convert.ToDateTime(row["TransferDate"]),
+                                        Convert.ToString(row["Description"]),
+                                        Convert.ToInt32(row["AddedByUserID"])
+                                          );
+            }
             else
                 return null;
         }
 
-        public static bool Delete(int transferID)
+        public static async Task<bool> DeleteAsync(int transferID)
         {
-            return clsTransferData.DeleteTransfer(transferID);
+            return await clsTransferData.DeleteTransferAsync(transferID);
         }
 
-        public static bool ExistsByID(int transferID)
+        public static async Task<bool> ExistsByIDAsync(int transferID)
         {
-            return clsTransferData.TransferExists(transferID);
+            return await clsTransferData.TransferExistsAsync(transferID);
         }
 
-        public static DataTable GetAllTransfers()
+        public static async Task<DataTable> GetAllTransfersAsync()
         {
-            return clsTransferData.GetAllTransfers();
+            return await clsTransferData.GetAllTransfersAsync();
         }
 
-        public static DataTable GetPagedTransfers(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dtaTable, int totalCount)> GetPagedTransfersAsync(int pageNumber, int pageSize)
         {
-            return clsTransferData.GetPagedTransfers(pageNumber, pageSize, out totalCount);
+            return await clsTransferData.GetPagedTransfersAsync(pageNumber, pageSize);
         }
     }
 }

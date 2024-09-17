@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
@@ -8,7 +9,7 @@ namespace ZakaBankDataLayer
     public class clsAccountTypeData
     {
 
-        public static int AddNewAccountType(string accountTypeName, string description)
+        public static async Task<int> AddNewAccountTypeAsync(string accountTypeName, string description)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -26,8 +27,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                        await conn.OpenAsync();
+                        await cmd.ExecuteScalarAsync();
                         return (int)outParameter.Value;
                     }
                     catch (Exception ex)
@@ -39,7 +40,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateAccountType(int accountTypeId, string accountTypeName, string description)
+        public static async Task<bool> UpdateAccountTypeAsync(int accountTypeId, string accountTypeName, string description)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -52,8 +53,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -64,7 +65,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteAccountType(int accountTypeId)
+        public static async Task<bool> DeleteAccountTypeAsync(int accountTypeId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -75,8 +76,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -87,7 +88,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool AccountTypeExists(int accountTypeId)
+        public static async Task<bool> AccountTypeExistsAsync(int accountTypeId)
         {
             try
             {
@@ -98,9 +99,9 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeId);
 
-                        conn.Open(); // Add this line to open the connection
+                        await conn.OpenAsync(); // Add this line to open the connection
 
-                        object result = cmd.ExecuteScalar();
+                        object result = await cmd.ExecuteScalarAsync();
 
                         return Convert.ToBoolean(result);
                     }
@@ -113,9 +114,9 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static DataTable GetAllAccountTypes()
+        public static async Task<DataTable> GetAllAccountTypesAsync()
         {
-            DataTable dt = new DataTable();
+            var dt = new DataTable();
 
             try
             {
@@ -125,11 +126,10 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                                dt.Load(da);
+                            dt.Load(da);
                         }
                     }
                 }
@@ -142,10 +142,10 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedAccountTypes(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable, int)> GetPagedAccountTypesAsync(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
-            totalCount = 0;
+            int totalCount = 0;
 
             try
             {
@@ -163,14 +163,13 @@ namespace ZakaBankDataLayer
                         };
                         cmd.Parameters.Add(totalParam);
 
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                                dataTable.Load(reader);
+                            dataTable.Load(reader);
                         }
 
-                        totalCount = (int)totalParam.Value;
+                        totalCount = totalParam.Value == DBNull.Value ? 0 : (int)totalParam.Value;
                     }
                 }
             }
@@ -179,11 +178,12 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
 
-            return dataTable;
+            return (dataTable, totalCount);
         }
 
-        public static bool FindAccountTypeByID(int accountTypeId, ref string accountTypeName, ref string description)
+        public static async Task<bool> FindAccountTypeByIDAsync(int accountTypeId)
         {
+            var dt = new DataTable();
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -193,16 +193,10 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@AccountTypeID", accountTypeId);
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                            {
-                                da.Read();
-                                accountTypeName = da["AccountTypeName"].ToString();
-                                description = da["Description"].ToString(); // Retrieve Description
-                                return true;
-                            }
+                            dt.Load(da);
                         }
                     }
                 }

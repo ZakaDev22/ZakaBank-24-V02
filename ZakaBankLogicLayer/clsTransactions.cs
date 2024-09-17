@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -36,23 +37,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewTransaction()
+        private async Task<bool> _AddNewTransactionAsync()
         {
-            this.TransactionID = clsTransactionData.AddNewTransaction(ClientID, Amount, TransactionTypeID, Description, TransactionDate, AddedByUserID);
+            this.TransactionID = await clsTransactionData.AddNewTransactionAsync(ClientID, Amount, TransactionTypeID, Description, TransactionDate, AddedByUserID);
             return (this.TransactionID != -1);
         }
 
-        private bool _UpdateTransaction()
+        private async Task<bool> _UpdateTransactionAsync()
         {
-            return clsTransactionData.UpdateTransaction(TransactionID, ClientID, Amount, TransactionTypeID, Description, TransactionDate, AddedByUserID);
+            return await clsTransactionData.UpdateTransactionAsync(TransactionID, ClientID, Amount, TransactionTypeID, Description, TransactionDate, AddedByUserID);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewTransaction())
+                    if (await _AddNewTransactionAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -60,7 +61,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateTransaction();
+                    return await _UpdateTransactionAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -69,41 +70,45 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsTransactions FindByTransactionID(int transactionID)
+        public static async Task<clsTransactions> FindByTransactionIDAsync(int transactionID)
         {
-            int clientID = 0;
-            decimal amount = 0;
-            int transactionTypeID = 0;
-            string description = string.Empty;
-            DateTime transactionDate = DateTime.MinValue;
-            int addedByUserID = 0;
+            var dt = await clsTransactionData.FindTransactionByIDAsync(transactionID);
 
-            bool isFound = clsTransactionData.FindTransactionByID(transactionID, ref clientID, ref amount, ref transactionTypeID, ref description, ref transactionDate, ref addedByUserID);
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
 
-            if (isFound)
-                return new clsTransactions(transactionID, clientID, amount, transactionTypeID, description, transactionDate, addedByUserID);
+                return new clsTransactions(Convert.ToInt32(row["TransactionID"]),
+                                             Convert.ToInt32(row["ClientID"]),
+                                             Convert.ToInt32(row["Amount"]),
+                                             Convert.ToInt32(row["TransactionTypeID"]),
+                                             Convert.ToString(row["Description"]),
+                                             Convert.ToDateTime(row["TransactionDate"]),
+                                             Convert.ToInt32(row["AddedByUser"])
+                                          );
+            }
             else
                 return null;
         }
 
-        public static bool Delete(int transactionID)
+        public static async Task<bool> DeleteAsync(int transactionID)
         {
-            return clsTransactionData.DeleteTransaction(transactionID);
+            return await clsTransactionData.DeleteTransactionAsync(transactionID);
         }
 
-        public static bool ExistsByID(int transactionID)
+        public static async Task<bool> ExistsByIDAsync(int transactionID)
         {
-            return clsTransactionData.TransactionExists(transactionID);
+            return await clsTransactionData.TransactionExistsAsync(transactionID);
         }
 
-        public static DataTable GetAllTransactions()
+        public static async Task<DataTable> GetAllTransactionsAsync()
         {
-            return clsTransactionData.GetAllTransactions();
+            return await clsTransactionData.GetAllTransactionsAsync();
         }
 
-        public static DataTable GetPagedTransactions(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedTransactionsAsync(int pageNumber, int pageSize)
         {
-            return clsTransactionData.GetPagedTransactions(pageNumber, pageSize, out totalCount);
+            return await clsTransactionData.GetPagedTransactionsAsync(pageNumber, pageSize);
         }
     }
 }

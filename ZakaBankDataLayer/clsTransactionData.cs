@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
 {
     public class clsTransactionData
     {
-
-        public static int AddNewTransaction(int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
+        public static async Task<int> AddNewTransactionAsync(int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -30,8 +30,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                        await conn.OpenAsync();
+                        await cmd.ExecuteNonQueryAsync();
                         return (int)outParameter.Value;
                     }
                     catch (Exception ex)
@@ -43,7 +43,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateTransaction(int transactionID, int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
+        public static async Task<bool> UpdateTransactionAsync(int transactionID, int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -60,8 +60,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                        await conn.OpenAsync();
+                        return (await cmd.ExecuteNonQueryAsync() > 0);
                     }
                     catch (Exception ex)
                     {
@@ -72,7 +72,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteTransaction(int transactionID)
+        public static async Task<bool> DeleteTransactionAsync(int transactionID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -83,8 +83,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -95,7 +95,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool TransactionExists(int transactionID)
+        public static async Task<bool> TransactionExistsAsync(int transactionID)
         {
             try
             {
@@ -106,8 +106,8 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@TransactionID", transactionID);
 
-                        conn.Open();
-                        object result = cmd.ExecuteScalar();
+                        await conn.OpenAsync();
+                        object result = await cmd.ExecuteScalarAsync();
 
                         return Convert.ToBoolean(result);
                     }
@@ -120,7 +120,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static DataTable GetAllTransactions()
+        public static async Task<DataTable> GetAllTransactionsAsync()
         {
             DataTable dt = new DataTable();
 
@@ -132,11 +132,10 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                                dt.Load(da);
+                            dt.Load(da); // Load the data into the table
                         }
                     }
                 }
@@ -149,11 +148,10 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedTransactions(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable, int)> GetPagedTransactionsAsync(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
-            totalCount = 0;
-
+            int totalCount = 0;
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -170,11 +168,10 @@ namespace ZakaBankDataLayer
                         };
                         cmd.Parameters.Add(totalParam);
 
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                                dataTable.Load(reader);
+                            dataTable.Load(reader); // Load the data into the table
                         }
 
                         totalCount = (int)totalParam.Value;
@@ -186,11 +183,12 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
 
-            return dataTable;
+            return (dataTable, totalCount);
         }
 
-        public static bool FindTransactionByID(int transactionID, ref int clientID, ref decimal amount, ref int transactionTypeID, ref string description, ref DateTime transactionDate, ref int addedByUserID)
+        public static async Task<DataTable> FindTransactionByIDAsync(int transactionID)
         {
+            DataTable dt = new DataTable();
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -200,21 +198,10 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@TransactionID", transactionID);
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                            {
-                                da.Read();
-                                clientID = Convert.ToInt32(da["ClientID"]);
-                                amount = Convert.ToDecimal(da["Amount"]);
-                                transactionTypeID = Convert.ToInt32(da["TransactionTypeID"]);
-                                description = da["Description"].ToString();
-                                transactionDate = Convert.ToDateTime(da["TransactionDate"]);
-                                addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
-
-                                return true;
-                            }
+                            dt.Load(da);
                         }
                     }
                 }
@@ -223,7 +210,7 @@ namespace ZakaBankDataLayer
             {
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
-            return false;
+            return dt;
         }
     }
 }

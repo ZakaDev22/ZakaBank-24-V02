@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -37,23 +38,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewClient()
+        private async Task<bool> _AddNewClientAsync()
         {
-            this.ClientID = clsClientsData.AddNewClient(PersonID, AccountNumber, PinCode, Balance, AddedByUserID, AccountTypeID);
+            this.ClientID = await clsClientsData.AddNewClientAsync(PersonID, AccountNumber, PinCode, Balance, AddedByUserID, AccountTypeID);
             return (this.ClientID != -1);
         }
 
-        private bool _UpdateClient()
+        private async Task<bool> _UpdateClientAsync()
         {
-            return clsClientsData.UpdateClient(ClientID, PersonID, AccountNumber, PinCode, Balance, AddedByUserID, AccountTypeID);
+            return await clsClientsData.UpdateClientAsync(ClientID, PersonID, AccountNumber, PinCode, Balance, AddedByUserID, AccountTypeID);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewClient())
+                    if (await _AddNewClientAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -61,7 +62,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateClient();
+                    return await _UpdateClientAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -70,42 +71,46 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsClients FindByClientID(int clientID)
+        public static async Task<clsClients> FindByClientIDAsync(int clientID)
         {
-            int personID = 0;
-            string accountNumber = string.Empty;
-            string pinCode = string.Empty;
-            decimal balance = 0;
-            int addedByUserID = 0;
-            int accountTypeID = 0;
-            bool isDeleted = false;
+            DataTable dt = await clsClientsData.FindClientByIDAsync(clientID);
 
-            bool isFound = clsClientsData.FindClientByID(clientID, ref personID, ref accountNumber, ref pinCode, ref balance, ref addedByUserID, ref accountTypeID, ref isDeleted);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
 
-            if (isFound)
-                return new clsClients(clientID, personID, accountNumber, pinCode, balance, addedByUserID, accountTypeID, isDeleted);
+                return new clsClients(Convert.ToInt32(row["ClientID"]),
+                                      Convert.ToInt32(row["PersonID"]),
+                                      row["AccountNumber"].ToString(),
+                                      row["PinCode"].ToString(),
+                                      Convert.ToDecimal(row["Balance"]),
+                                      Convert.ToInt32(row["AddedByUserID"]),
+                                      Convert.ToInt32(row["AccountTypeID"]),
+                                      Convert.ToBoolean(row["IsDeleted"]));
+            }
             else
                 return null;
         }
 
-        public static bool Delete(int clientID)
+        public static async Task<bool> DeleteAsync(int clientID)
         {
-            return clsClientsData.DeleteClient(clientID);
+            return await clsClientsData.DeleteClientAsync(clientID);
         }
 
-        public static bool ExistsByID(int clientID)
+        public static async Task<bool> ExistsByIDAsync(int clientID)
         {
-            return clsClientsData.ClientExists(clientID);
+            return await clsClientsData.ClientExistsAsync(clientID);
         }
 
-        public static DataTable GetAllClients()
+        public static async Task<DataTable> GetAllClientsAsync()
         {
-            return clsClientsData.GetAllClients();
+            return await clsClientsData.GetAllClientsAsync();
         }
 
-        public static DataTable GetPagedClients(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedClientsAsync(int pageNumber, int pageSize)
         {
-            return clsClientsData.GetPagedClients(pageNumber, pageSize, out totalCount);
+            var result = await clsClientsData.GetPagedClientsAsync(pageNumber, pageSize);
+            return (result.Item1, result.Item2);
         }
     }
 }

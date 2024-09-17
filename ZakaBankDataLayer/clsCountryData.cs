@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
@@ -8,7 +9,7 @@ namespace ZakaBankDataLayer
     public class clsCountryData
     {
 
-        public static int AddNewCountry(string countryName, string countryCode, int currencyID)
+        public static async Task<int> AddNewCountryAsync(string countryName, string countryCode, int currencyID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -28,8 +29,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                        await conn.OpenAsync();
+                        await cmd.ExecuteNonQueryAsync();
                         return (int)outParameter.Value;
                     }
                     catch (Exception ex)
@@ -41,7 +42,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateCountry(int countryID, string countryName, string countryCode, int currencyID)
+        public static async Task<bool> UpdateCountryAsync(int countryID, string countryName, string countryCode, int currencyID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -55,8 +56,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -67,8 +68,9 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool FindCountryByID(int countryID, ref string countryName, ref string countryCode, ref int currencyID)
+        public static async Task<DataTable> FindCountryByIDAsync(int countryID)
         {
+            var dt = new DataTable();
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Countries_FindByID", conn))
@@ -78,16 +80,10 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
-                            {
-                                countryName = reader["CountryName"].ToString();
-                                countryCode = reader["CountryCode"].ToString();
-                                currencyID = Convert.ToInt32(reader["CurrencyID"]);
-                                return true;
-                            }
+                            dt.Load(reader);
                         }
                     }
                     catch (Exception ex)
@@ -97,15 +93,12 @@ namespace ZakaBankDataLayer
                 }
             }
 
-            return false;
+            return dt;
         }
 
-        public static bool FindCountryByName(string countryName, ref int countryID, ref string countryCode, ref int currencyID)
+        public static async Task<DataTable> FindCountryByNameAsync(string countryName)
         {
-            countryID = 0;
-            countryCode = string.Empty;
-            currencyID = 0;
-
+            var dt = new DataTable();
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Countries_FindByName", conn))
@@ -115,16 +108,10 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
-                            {
-                                countryID = Convert.ToInt32(reader["CountryID"]);
-                                countryCode = reader["CountryCode"].ToString();
-                                currencyID = Convert.ToInt32(reader["CurrencyID"]);
-                                return true;
-                            }
+                            dt.Load(reader);
                         }
                     }
                     catch (Exception ex)
@@ -134,10 +121,10 @@ namespace ZakaBankDataLayer
                 }
             }
 
-            return false;
+            return dt;
         }
 
-        public static bool DeleteCountry(int countryID)
+        public static async Task<bool> DeleteCountryAsync(int countryID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -148,8 +135,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -160,7 +147,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool CountryExists(int countryID)
+        public static async Task<bool> CountryExists(int countryID)
         {
             try
             {
@@ -171,7 +158,8 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@CountryID", countryID);
 
-                        object result = cmd.ExecuteScalar();
+                        await conn.OpenAsync();
+                        object result = await cmd.ExecuteScalarAsync();
                         return Convert.ToBoolean(result);
                     }
                 }
@@ -183,9 +171,9 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static DataTable GetAllCountries()
+        public static async Task<DataTable> GetAllCountries()
         {
-            DataTable dt = new DataTable();
+            var dt = new DataTable();
 
             try
             {
@@ -195,11 +183,10 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                                dt.Load(da);
+                            dt.Load(da);
                         }
                     }
                 }
@@ -212,10 +199,10 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedCountries(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable, int)> GetPagedCountries(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
-            totalCount = 0;
+            int totalCount = 0;
 
             try
             {
@@ -233,14 +220,13 @@ namespace ZakaBankDataLayer
                         };
                         cmd.Parameters.Add(totalParam);
 
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                                dataTable.Load(reader);
+                            dataTable.Load(reader);
                         }
 
-                        totalCount = (int)totalParam.Value;
+                        totalCount = totalParam.Value == DBNull.Value ? 0 : (int)totalParam.Value;
                     }
                 }
             }
@@ -249,7 +235,7 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
 
-            return dataTable;
+            return (dataTable, totalCount);
         }
     }
 }
