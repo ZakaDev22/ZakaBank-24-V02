@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -27,23 +28,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewAccountType()
+        private async Task<bool> _AddNewAccountTypeAsync()
         {
-            this.AccountTypeID = clsAccountTypeData.AddNewAccountType(Name, Description);
+            this.AccountTypeID = await clsAccountTypeData.AddNewAccountTypeAsync(Name, Description);
             return (this.AccountTypeID != -1);
         }
 
-        private bool _UpdateAccountType()
+        private async Task<bool> _UpdateAccountTypeAsync()
         {
-            return clsAccountTypeData.UpdateAccountType(AccountTypeID, Name, Description);
+            return await clsAccountTypeData.UpdateAccountTypeAsync(AccountTypeID, Name, Description);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewAccountType())
+                    if (await _AddNewAccountTypeAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -51,7 +52,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateAccountType();
+                    return await _UpdateAccountTypeAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -60,37 +61,39 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsAccountTypes FindByAccountTypeID(int accountTypeID)
+        public static async Task<clsAccountTypes> FindByAccountTypeIDAsync(int accountTypeID)
         {
-            string name = string.Empty;
-            string description = string.Empty;
-
-            bool isFound = clsAccountTypeData.FindAccountTypeByID(accountTypeID, ref name, ref description);
-
-            if (isFound)
-                return new clsAccountTypes(accountTypeID, name, description);
-            else
-                return null;
+            var dt = await clsLoginRegistersData.FindByID(accountTypeID);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsAccountTypes(
+                                            Convert.ToInt32(row["AccountTypeID"]),
+                                            Convert.ToString(row["Name"]),
+                                            Convert.ToString(row["Description"])
+                                          );
+            }
+            return null;
         }
 
-        public static bool Delete(int accountTypeID)
+        public static async Task<bool> DeleteAsync(int accountTypeID)
         {
-            return clsAccountTypeData.DeleteAccountType(accountTypeID);
+            return await clsAccountTypeData.DeleteAccountTypeAsync(accountTypeID);
         }
 
-        public static bool ExistsByID(int accountTypeID)
+        public static async Task<bool> ExistsByID(int accountTypeID)
         {
-            return clsAccountTypeData.AccountTypeExists(accountTypeID);
+            return await clsAccountTypeData.AccountTypeExistsAsync(accountTypeID);
         }
 
-        public static DataTable GetAllAccountTypes()
+        public static async Task<DataTable> GetAllAccountTypesAsync()
         {
-            return clsAccountTypeData.GetAllAccountTypes();
+            return await clsAccountTypeData.GetAllAccountTypesAsync();
         }
 
-        public static DataTable GetPagedAccountTypes(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedAccountTypes(int pageNumber, int pageSize)
         {
-            return clsAccountTypeData.GetPagedAccountTypes(pageNumber, pageSize, out totalCount);
+            return await clsAccountTypeData.GetPagedAccountTypesAsync(pageNumber, pageSize);
         }
     }
 }

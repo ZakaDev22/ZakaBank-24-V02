@@ -206,6 +206,7 @@
             this.Name = "SHowManageAccountTypesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SHowManageAccountTypesForm";
+            this.Load += new System.EventHandler(this.SHowManageAccountTypesForm_Load);
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvAccountTypes)).EndInit();

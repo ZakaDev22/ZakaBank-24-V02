@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
@@ -8,20 +9,28 @@ namespace ZakaBankDataLayer
     public class clsUsersData
     {
 
-        public static int AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID)
+        private static void AddNullableParameter(SqlCommand cmd, string paramName, object value)
+        {
+            cmd.Parameters.AddWithValue(paramName, value ?? DBNull.Value);
+        }
+
+        public static async Task<int> AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Users_AddNewUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@UserName", userName);
                     cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
                     cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
-                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
+
+                    // nullable parameters
+                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
+                    AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
 
                     SqlParameter outParameter = new SqlParameter("@ID", SqlDbType.Int)
                     {
@@ -31,9 +40,10 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        return (int)outParameter.Value;
+                        await conn.OpenAsync();
+                        await cmd.ExecuteNonQueryAsync();
+                        int personId = outParameter.Value != DBNull.Value ? (int)outParameter.Value : -1;
+                        return personId;
                     }
                     catch (Exception ex)
                     {
@@ -44,26 +54,31 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateUser(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime updatedDate, int permissions, int addedByUserID)
+        public static async Task<bool> UpdateUser(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_Users_UpdateUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    cmd.Parameters.AddWithValue("@UserID", id);
+
                     cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@UserName", userName);
                     cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
                     cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
                     cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
-                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
+
+                    // nullable parameters
+                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
+                    AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
 
                     try
                     {
-                        conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -74,7 +89,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteUser(int id)
+        public static async Task<bool> DeleteUser(int id)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -85,8 +100,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -97,7 +112,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UserExists(int id)
+        public static async Task<bool> UserExists(int id)
         {
             try
             {
@@ -108,8 +123,8 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", id);
 
-                        conn.Open();
-                        object result = cmd.ExecuteScalar();
+                        await conn.OpenAsync();
+                        object result = await cmd.ExecuteScalarAsync();
 
                         return Convert.ToBoolean(result);
                     }
@@ -122,7 +137,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static DataTable GetAllUsers()
+        public static async Task<DataTable> GetAllUsers()
         {
             DataTable dt = new DataTable();
 
@@ -134,11 +149,10 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                                dt.Load(da);
+                            dt.Load(da);
                         }
                     }
                 }
@@ -151,10 +165,10 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedUsers(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable, int)> GetPagedUsers(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
-            totalCount = 0;
+            int totalCount = 0;
 
             try
             {
@@ -172,11 +186,10 @@ namespace ZakaBankDataLayer
                         };
                         cmd.Parameters.Add(totalParam);
 
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                                dataTable.Load(reader);
+                            dataTable.Load(reader);
                         }
 
                         totalCount = (int)totalParam.Value;
@@ -188,11 +201,12 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
 
-            return dataTable;
+            return (dataTable, totalCount);
         }
 
-        public static bool FindUserByID(int id, ref int personID, ref string userName, ref string passwordHash, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID, ref bool isactive)
+        public static async Task<DataTable> FindUserByID(int id)
         {
+            DataTable dataTable = new DataTable();
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -202,23 +216,10 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", id);
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                            {
-                                da.Read();
-                                personID = Convert.ToInt32(da["PersonID"]);
-                                userName = da["UserName"].ToString();
-                                passwordHash = da["PasswordHash"].ToString();
-                                createdDate = Convert.ToDateTime(da["CreatedDate"]);
-                                updatedDate = Convert.ToDateTime(da["UpdatedDate"]);
-                                permissions = Convert.ToInt32(da["Permissions"]);
-                                addedByUserID = Convert.ToInt32(da["AddedByUserID"]);
-                                isactive = Convert.ToBoolean(da["IsActive"]);
-
-                                return true;
-                            }
+                            dataTable.Load(da);
                         }
                     }
                 }
@@ -227,12 +228,13 @@ namespace ZakaBankDataLayer
             {
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
-            return false;
+            return dataTable;
         }
 
 
-        public static bool FindByUserNameAndPassword(string UserName, string Password, ref int userID, ref int personID, ref DateTime createdDate, ref DateTime updatedDate, ref int permissions, ref int addedByUserID, ref bool isActive)
+        public static async Task<DataTable> FindByUserNameAndPassword(string UserName, string Password)
         {
+            DataTable dataTable = new DataTable();
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -243,21 +245,10 @@ namespace ZakaBankDataLayer
                         cmd.Parameters.AddWithValue("@UserName", UserName);
                         cmd.Parameters.AddWithValue("@Password", Password);
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.Read())
-                            {
-                                userID = (int)da["UserID"];
-                                personID = Convert.ToInt32(da["PersonID"]);
-                                createdDate = Convert.ToDateTime(da["CreatedDate"]);
-                                updatedDate = Convert.ToDateTime(da["UpdatedDate"]);
-                                permissions = Convert.ToInt32(da["Permissions"]);
-                                addedByUserID = da["AddedByUserID"] == DBNull.Value ? -1 : Convert.ToInt32(da["AddedByUserID"]);
-                                isActive = Convert.ToBoolean(da["IsActive"]);
-
-                                return true;
-                            }
+                            dataTable.Load(da);
                         }
                     }
                 }
@@ -266,7 +257,7 @@ namespace ZakaBankDataLayer
             {
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
-            return false;
+            return dataTable;
         }
     }
 }

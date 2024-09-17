@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -30,23 +31,23 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewCurrency()
+        private async Task<bool> _AddNewCurrencyAsync()
         {
-            this.CurrencyID = clsCurrencyData.AddNewCurrency(CurrencyCode, CurrencyName, ExchangeRate);
+            this.CurrencyID = await clsCurrencyData.AddNewCurrencyAsync(CurrencyCode, CurrencyName, ExchangeRate);
             return (this.CurrencyID != -1);
         }
 
-        private bool _UpdateCurrency()
+        private async Task<bool> _UpdateCurrencyAsync()
         {
-            return clsCurrencyData.UpdateCurrency(CurrencyID, CurrencyCode, CurrencyName, ExchangeRate);
+            return await clsCurrencyData.UpdateCurrencyAsync(CurrencyID, CurrencyCode, CurrencyName, ExchangeRate);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewCurrency())
+                    if (await _AddNewCurrencyAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -54,7 +55,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateCurrency();
+                    return await _UpdateCurrencyAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -63,52 +64,60 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsCurrency FindByCurrencyCode(string currencyCode)
+        public static async Task<clsCurrency> FindByCurrencyCode(string currencyCode)
         {
-            int currencyID = -1;
-            string currencyName = string.Empty;
-            decimal exchangeRate = 0;
+            var dt = await clsCurrencyData.FindCurrencyByCodeAsync(currencyCode);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsCurrency(
+                                           Convert.ToInt32(row["CurrencyID"]),
+                                           Convert.ToString(row["CurrencyCode"]),
+                                           Convert.ToString(row["CurrencyName"]),
+                                           Convert.ToDecimal(row["ExchangeRate"])
 
-            bool isFound = clsCurrencyData.FindCurrencyByCode(currencyCode, ref currencyID, ref currencyName, ref exchangeRate);
 
-            if (isFound)
-                return new clsCurrency(currencyID, currencyCode, currencyName, exchangeRate);
-            else
-                return null;
+                                          );
+            }
+            return null;
         }
 
-        public static clsCurrency FindByCurrencyName(string currencyName)
+        public static async Task<clsCurrency> FindByCurrencyName(string currencyName)
         {
-            int currencyID = -1;
-            string currencyCode = string.Empty;
-            decimal exchangeRate = 0;
+            var dt = await clsCurrencyData.FindCurrencyByNameAsync(currencyName);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsCurrency(
+                                           Convert.ToInt32(row["CurrencyID"]),
+                                           Convert.ToString(row["CurrencyCode"]),
+                                           Convert.ToString(row["CurrencyName"]),
+                                           Convert.ToDecimal(row["ExchangeRate"])
 
-            bool isFound = clsCurrencyData.FindCurrencyByName(currencyName, ref currencyID, ref currencyCode, ref exchangeRate);
 
-            if (isFound)
-                return new clsCurrency(currencyID, currencyCode, currencyName, exchangeRate);
-            else
-                return null;
+                                          );
+            }
+            return null;
         }
 
-        public static bool Delete(int currencyID)
+        public static async Task<bool> DeleteAsync(int currencyID)
         {
-            return clsCurrencyData.DeleteCurrency(currencyID);
+            return await clsCurrencyData.DeleteCurrencyAsync(currencyID);
         }
 
-        public static bool ExistsByID(int currencyID)
+        public static async Task<bool> ExistsByIDAsync(int currencyID)
         {
-            return clsCurrencyData.CurrencyExists(currencyID);
+            return await clsCurrencyData.CurrencyExistsAsync(currencyID);
         }
 
-        public static DataTable GetAllCurrencies()
+        public static async Task<DataTable> GetAllCurrenciesAsync()
         {
-            return clsCurrencyData.GetAllCurrencies();
+            return await clsCurrencyData.GetAllCurrenciesAsync();
         }
 
-        public static DataTable GetPagedCurrencies(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedCurrenciesAsync(int pageNumber, int pageSize)
         {
-            return clsCurrencyData.GetPagedCurrencies(pageNumber, pageSize, out totalCount);
+            return await clsCurrencyData.GetPagedCurrencies(pageNumber, pageSize);
         }
     }
 }

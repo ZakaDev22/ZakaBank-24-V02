@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 
@@ -9,24 +10,35 @@ namespace ZakaBankDataLayer
 
     public static class clsPeopleData
     {
+        private static void AddNullableParameter(SqlCommand cmd, string paramName, object value)
+        {
+            cmd.Parameters.AddWithValue(paramName, value ?? DBNull.Value);
+        }
 
-        public static int AddNewPerson(string firstName, string lastName, DateTime dateOfBirth,
-                                        short gender, string address, string phone, string email, string imagePath, int countryId)
+        public static async Task<int> AddNewPersonAsync(string firstName, string lastName, DateTime? dateOfBirth,
+                                                  short? gender, string address, string phone, string email, string imagePath, int? countryId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_People_AddNewPerson", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Required fields
                     cmd.Parameters.AddWithValue("@FirstName", firstName);
                     cmd.Parameters.AddWithValue("@LastName", lastName);
-                    cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                    cmd.Parameters.AddWithValue("@Gender", gender);
-                    cmd.Parameters.AddWithValue("@Address", address);
-                    cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@ImagePath", imagePath);
-                    cmd.Parameters.AddWithValue("@CountryID", countryId);
+
+                    // Nullable fields with helper method
+                    AddNullableParameter(cmd, "@DateOfBirth", dateOfBirth);
+                    AddNullableParameter(cmd, "@Gender", gender);
+                    AddNullableParameter(cmd, "@CountryID", countryId);
+
+                    // Optional string fields
+                    AddNullableParameter(cmd, "@Address", address);
+                    AddNullableParameter(cmd, "@Phone", phone);
+                    AddNullableParameter(cmd, "@Email", email);
+                    AddNullableParameter(cmd, "@ImagePath", imagePath);
+
 
                     SqlParameter outParameter = new SqlParameter("@PersonID", SqlDbType.Int)
                     {
@@ -36,62 +48,62 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        return (int)outParameter.Value;
+                        await conn.OpenAsync();  // Open the connection asynchronously
+                        await cmd.ExecuteNonQueryAsync();  // Execute the command asynchronously
+                        int personId = outParameter.Value != DBNull.Value ? (int)outParameter.Value : -1;
+                        return personId;
                     }
                     catch (Exception ex)
                     {
-                        // Handle exception
                         ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                        return -1;
+                        return -1;  // Handle exception and return error code
                     }
-
-
                 }
             }
         }
 
-        public static bool UpdatePerson(int personID, string firstName, string lastName,
-                                        DateTime dateOfBirth, short gender, string address, string phone,
-                                        string email, string imagePath, int countryId)
+
+        public static async Task<bool> UpdatePersonAsync(int? personID, string firstName, string lastName,
+                                                  DateTime? dateOfBirth, short? gender, string address, string phone,
+                                                  string email, string imagePath, int? countryId)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_People_UpdatePerson", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Required fields
                     cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@FirstName", firstName);
                     cmd.Parameters.AddWithValue("@LastName", lastName);
-                    cmd.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                    cmd.Parameters.AddWithValue("@Gender", gender);
-                    cmd.Parameters.AddWithValue("@Address", address);
-                    cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@ImagePath", imagePath);
-                    cmd.Parameters.AddWithValue("@CountryID", countryId);
+
+                    // Nullable fields with helper method
+                    AddNullableParameter(cmd, "@DateOfBirth", dateOfBirth);
+                    AddNullableParameter(cmd, "@Gender", gender);
+                    AddNullableParameter(cmd, "@CountryID", countryId);
+
+                    // Optional string fields
+                    AddNullableParameter(cmd, "@Address", address);
+                    AddNullableParameter(cmd, "@Phone", phone);
+                    AddNullableParameter(cmd, "@Email", email);
+                    AddNullableParameter(cmd, "@ImagePath", imagePath);
 
                     try
                     {
-                        conn.Open();
-                        return (Convert.ToByte(cmd.ExecuteNonQuery()) > 0);
+                        await conn.OpenAsync();
+                        return (await cmd.ExecuteNonQueryAsync() > 0);
                     }
                     catch (Exception ex)
                     {
-                        // Handle exception
-
                         ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                         return false;
                     }
-
-
                 }
             }
-
         }
 
-        public static bool DeletePerson(int personID)
+        public static async Task<bool> DeletePersonAsync(int personID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -100,12 +112,10 @@ namespace ZakaBankDataLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PersonID", personID);
 
-
                     try
                     {
-                        conn.Open();
-
-                        return Convert.ToBoolean(cmd.ExecuteNonQuery());
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -116,7 +126,8 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool PersonExists(int personID)
+
+        public static async Task<bool> PersonExistsAsync(int personID)
         {
             try
             {
@@ -129,7 +140,8 @@ namespace ZakaBankDataLayer
 
                         comd.Parameters.AddWithValue("@PersonID", personID);
 
-                        object result = comd.ExecuteScalar();
+                        await conn.OpenAsync();
+                        object result = await comd.ExecuteScalarAsync();
 
                         return Convert.ToBoolean(result);
                     }
@@ -142,10 +154,9 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool FindPersonByID(int personID, ref string firstName, ref string lastName,
-                                        ref DateTime dateOfBirth, ref short gender, ref string address, ref string phone,
-                                        ref string email, ref string imagePath, ref int countryID)
+        public static async Task<DataTable> FindPersonByIDAsync(int personID)
         {
+            DataTable dt = new DataTable();
             try
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
@@ -155,23 +166,10 @@ namespace ZakaBankDataLayer
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PersonID", personID);
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())  // Asynchronously execute reader
                         {
-                            if (da.Read())
-                            {
-                                firstName = da["FirstName"].ToString();
-                                lastName = da["LastName"].ToString();
-                                dateOfBirth = da["DateOfBirth"] == DBNull.Value ? DateTime.Now : DateTime.Parse(da["DateOfBirth"].ToString());
-                                gender = Convert.ToInt16(da["Gender"]);
-                                address = da["Address"].ToString();
-                                phone = da["PhoneNumber"].ToString();
-                                email = da["Email"].ToString();
-                                imagePath = da["ImagePath"].ToString();
-                                countryID = Convert.ToInt32(da["CountryID"]);
-
-                                return true;
-                            }
+                            dt.Load(da); // load The DataTable
                         }
                     }
                 }
@@ -179,12 +177,12 @@ namespace ZakaBankDataLayer
             catch (Exception ex)
             {
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                return false;
             }
-            return false;
+            return dt;
         }
 
-        public static DataTable GetAllPeople()
+
+        public static async Task<DataTable> GetAllPeopleAsync()
         {
             DataTable dt = new DataTable();
 
@@ -196,11 +194,10 @@ namespace ZakaBankDataLayer
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        conn.Open();
-                        using (SqlDataReader da = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
                         {
-                            if (da.HasRows)
-                                dt.Load(da);
+                            dt.Load(da); // load The DataTable
                         }
                     }
                 }
@@ -213,10 +210,11 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedPeople(int pageNumber, int pageSize, out int totalCount)
+
+        public static async Task<(DataTable, int)> GetPeopleByPageAsync(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
-            totalCount = 0;
+            int totalCount = 0;
 
             try
             {
@@ -234,14 +232,14 @@ namespace ZakaBankDataLayer
                         };
                         command.Parameters.Add(totalParam);
 
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
-                                dataTable.Load(reader);
+                            dataTable.Load(reader); // load The DataTable
                         }
 
-                        totalCount = (int)totalParam.Value;
+                        totalCount = totalParam.Value != DBNull.Value ? (int)totalParam.Value : 0;
+
                     }
                 }
             }
@@ -250,7 +248,7 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
 
-            return dataTable;
+            return (dataTable, totalCount);
         }
     }
 }

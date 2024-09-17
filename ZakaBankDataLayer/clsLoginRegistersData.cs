@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using ZakaBankDataLayer.Data_Global;
 
 namespace ZakaBankDataLayer
@@ -9,7 +10,7 @@ namespace ZakaBankDataLayer
     {
 
 
-        public static int InsertLoginRegister(int userID, DateTime? loginDateTime)
+        public static async Task<int> InsertLoginRegister(int userID, DateTime? loginDateTime)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -28,8 +29,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                        await conn.OpenAsync();
+                        await cmd.ExecuteNonQueryAsync();
                         return (int)outParameter.Value;
                     }
                     catch (Exception ex)
@@ -41,7 +42,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool UpdateLoginRegister(int userID)
+        public static async Task<bool> UpdateLoginRegister(int userID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -54,8 +55,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return cmd.ExecuteNonQuery() > 0;
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -66,7 +67,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static bool DeleteLoginRegister(int id)
+        public static async Task<bool> DeleteLoginRegister(int id)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -77,8 +78,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        return cmd.ExecuteNonQuery() > 0;
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {
@@ -89,7 +90,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static DataTable FindByID(int id)
+        public static async Task<DataTable> FindByID(int id)
         {
             DataTable dt = new DataTable();
 
@@ -102,8 +103,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
                             dt.Load(reader);
                         }
@@ -118,7 +119,7 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable FindByUserID(int userID)
+        public static async Task<DataTable> FindByUserID(int userID)
         {
             DataTable dt = new DataTable();
 
@@ -131,8 +132,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
                             dt.Load(reader);
                         }
@@ -147,7 +148,7 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetAllLoginRegisters()
+        public static async Task<DataTable> GetAllLoginRegisters()
         {
             DataTable dt = new DataTable();
 
@@ -159,8 +160,8 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
                             dt.Load(reader);
                         }
@@ -175,10 +176,10 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
-        public static DataTable GetPagedLoginRegisters(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable, int)> GetPagedLoginRegisters(int pageNumber, int pageSize)
         {
             DataTable dt = new DataTable();
-            totalCount = 0;
+            int totalCount = 0;
 
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -196,12 +197,13 @@ namespace ZakaBankDataLayer
 
                     try
                     {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
                             dt.Load(reader);
                         }
-                        totalCount = (int)totalCountParam.Value;
+
+                        totalCount = totalCountParam.Value == DBNull.Value ? 0 : (int)totalCountParam.Value;
                     }
                     catch (Exception ex)
                     {
@@ -210,7 +212,7 @@ namespace ZakaBankDataLayer
                 }
             }
 
-            return dt;
+            return (dt, totalCount);
         }
     }
 }

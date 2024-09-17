@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBank_24.Account_Types;
 using ZakaBank_24.Client_Forms;
@@ -24,14 +23,24 @@ namespace ZakaBank_24.Main_And_Login_Forms
             this._loginForm = loginform;
             RegiterID = registerID;
 
-            _loginRegister = clsLoginRegisters.FindByID(RegiterID);
+            FillTheLoginRegisterInfo(registerID);
         }
 
-        private void _Logout()
+        /// <summary>
+        /// Fill The Login Register Info
+        /// </summary>
+        /// <param name="registerID"></param>
+        private async void FillTheLoginRegisterInfo(int registerID)
+        {
+            _loginRegister = await clsLoginRegisters.FindByID(RegiterID);
+        }
+
+
+        private async void _Logout()
         {
             _loginRegister.LogOutDateTime = DateTime.Now;
 
-            if (!_loginRegister.Save())
+            if (!await _loginRegister.Save())
                 MessageBox.Show("error, something went wrong with login Register Record Update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             _loginForm.Show();
@@ -41,23 +50,22 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private async void _RefreshDashboardInformation()
         {
-            var peopleTask = Task.Run(() => clsPeople.GetAllPeople().Rows.Count);
-            var usersTask = Task.Run(() => clsUsers.GetAllUsers().Rows.Count);
-            var clientsTask = Task.Run(() => clsClients.GetAllClients().Rows.Count);
-            var transactionsTask = Task.Run(() => clsTransactions.GetAllTransactions().Rows.Count);
-            var transfersTask = Task.Run(() => clsTransfers.GetAllTransfers().Rows.Count);
-            var registersTask = Task.Run(() => clsLoginRegisters.GetAll().Rows.Count);
-            var accountTypesTask = Task.Run(() => clsAccountTypes.GetAllAccountTypes().Rows.Count);
+            var peopleTask = await clsPeople.GetAllPeopleAsync();
+            var usersTask = await clsUsers.GetAllUsers();
+            var clientsTask = await clsClients.GetAllClientsAsync();
+            var transactionsTask = await clsTransactions.GetAllTransactionsAsync();
+            var transfersTask = await clsTransfers.GetAllTransfersAsync();
+            var registersTask = await clsLoginRegisters.GetAllLoginRegisters();
+            var accountTypesTask = await clsAccountTypes.GetAllAccountTypesAsync();
 
-            await Task.WhenAll(peopleTask, usersTask, clientsTask, transactionsTask, transfersTask, registersTask, accountTypesTask);
 
-            lbPeople.Text = peopleTask.Result.ToString();
-            lbUsers.Text = usersTask.Result.ToString();
-            lbClients.Text = clientsTask.Result.ToString();
-            lbTransactions.Text = transactionsTask.Result.ToString();
-            lbTransfers.Text = transfersTask.Result.ToString();
-            lbRegisters.Text = registersTask.Result.ToString();
-            lbAccountType.Text = accountTypesTask.Result.ToString();
+            lbPeople.Text = peopleTask.Rows.Count.ToString();
+            lbUsers.Text = usersTask.Rows.Count.ToString();
+            lbClients.Text = clientsTask.Rows.Count.ToString();
+            lbTransactions.Text = transactionsTask.Rows.Count.ToString();
+            lbTransfers.Text = transfersTask.Rows.Count.ToString();
+            lbRegisters.Text = registersTask.Rows.Count.ToString();
+            lbAccountType.Text = accountTypesTask.Rows.Count.ToString();
         }
 
 

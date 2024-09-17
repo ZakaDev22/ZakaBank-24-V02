@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBankLogicLayer;
 
@@ -12,32 +14,49 @@ namespace ZakaBank_24.Account_Types
         {
             InitializeComponent();
 
-            _RefreshDataGridView();
         }
 
-        private void _RefreshDataGridView()
+        private async Task _RefreshDataGridViewData()
         {
-            dt = clsAccountTypes.GetAllAccountTypes();
-            djvAccountTypes.DataSource = dt;
 
-            if (djvAccountTypes.Rows.Count > 0)
+            try
             {
-                djvAccountTypes.Columns[0].HeaderText = "Account Type ID";
-                djvAccountTypes.Columns[0].Width = 120;
 
-                djvAccountTypes.Columns[1].HeaderText = "Name";
-                djvAccountTypes.Columns[1].Width = 120;
+                dt = await clsAccountTypes.GetAllAccountTypesAsync();
 
-                djvAccountTypes.Columns[2].HeaderText = "Description";
-                djvAccountTypes.Columns[2].Width = 300;
+
+                djvAccountTypes.DataSource = null; // Clear existing data
+                djvAccountTypes.DataSource = dt;
+                lbRecords.Text = djvAccountTypes.RowCount.ToString();
+
+                if (djvAccountTypes.Rows.Count > 0)
+                {
+                    djvAccountTypes.Columns[0].HeaderText = "Account Type ID";
+                    djvAccountTypes.Columns[0].Width = 120;
+
+                    djvAccountTypes.Columns[1].HeaderText = "Name";
+                    djvAccountTypes.Columns[1].Width = 120;
+
+                    djvAccountTypes.Columns[2].HeaderText = "Description";
+                    djvAccountTypes.Columns[2].Width = 300;
+                }
+
             }
-
-            lbRecords.Text = djvAccountTypes.Rows.Count.ToString();
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log error, show message to user)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCLose_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private async void SHowManageAccountTypesForm_Load(object sender, EventArgs e)
+        {
+            await _RefreshDataGridViewData();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBankLogicLayer;
 
@@ -18,14 +19,41 @@ namespace ZakaBank_24
             InitializeComponent();
 
             rbByPages.Checked = true;
-            _RefresgAllPeople();
         }
 
-        private void _RefresgAllPeople()
+        private async Task _RefreshAllPeople()
         {
-            dt = clsPeople.GetAllPeople();
-            djvPeople.DataSource = dt;
 
+            try
+            {
+                if (rbByPages.Checked)
+                {
+                    var result = await clsPeople.GetPagedPeopleAsync(currentPage, pageSize);
+                    totalRecords = result.TotalCount;
+                    dt = result.dataTable;
+
+                }
+                else
+                {
+                    dt = await clsPeople.GetAllPeopleAsync();
+                }
+
+                djvPeople.DataSource = null; // Clear existing data
+                djvPeople.DataSource = dt;
+                lbRecords.Text = djvPeople.RowCount.ToString();
+
+                FormatDataGridView();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log error, show message to user)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void FormatDataGridView()
+        {
             if (djvPeople.RowCount > 0)
             {
                 djvPeople.Columns[0].HeaderText = "Person ID";
@@ -52,25 +80,6 @@ namespace ZakaBank_24
                 djvPeople.Columns[7].HeaderText = "Email";
                 djvPeople.Columns[7].Width = 155;
             }
-
-            if (rbByPages.Checked)
-            {
-                // Load the paged data
-                dt = clsPeople.GetPagedPeople(currentPage, pageSize, out totalRecords);
-                djvPeople.DataSource = dt;
-                UpdatePaginationButtons();
-                lbRecords.Text = djvPeople.RowCount.ToString();
-            }
-            else
-            {
-                // Load all data
-                dt = clsPeople.GetAllPeople();
-                djvPeople.DataSource = dt;
-                lbRecords.Text = djvPeople.RowCount.ToString();
-            }
-
-            // Set the text of the page number button to the current page number
-            btnPageNumber.Text = currentPage.ToString();
         }
 
         /// <summary>
@@ -93,16 +102,17 @@ namespace ZakaBank_24
             this.Close();
         }
 
-        private void rbByPages_CheckedChanged(object sender, EventArgs e)
+        private void UpdatePaginationControls()
         {
+            // Show or hide pagination controls based on whether pagination is enabled
             if (rbByPages.Checked)
             {
-                cbPageSize.SelectedIndex = 0;
                 lbSize.Visible = true;
                 cbPageSize.Visible = true;
                 btnLeft.Visible = true;
                 btnRight.Visible = true;
                 btnPageNumber.Visible = true;
+                UpdatePaginationButtons();
             }
             else
             {
@@ -112,48 +122,49 @@ namespace ZakaBank_24
                 btnRight.Visible = false;
                 btnPageNumber.Visible = false;
             }
-
-            cbFilterBy.SelectedIndex = 0;
-            _RefresgAllPeople();
         }
 
-        private void btnRight_Click(object sender, EventArgs e)
+        private async void rbByPages_CheckedChanged(object sender, EventArgs e)
+        {
+
+            await _RefreshAllPeople();
+
+            UpdatePaginationControls();
+
+        }
+
+        private async void btnRight_Click(object sender, EventArgs e)
         {
 
             if (currentPage * pageSize < totalRecords)
             {
                 currentPage++;
-                _RefresgAllPeople();
+                await _RefreshAllPeople();
+                UpdatePaginationControls();
             }
         }
 
-        private void btnLeft_Click(object sender, EventArgs e)
+        private async void btnLeft_Click(object sender, EventArgs e)
         {
             if (currentPage > 1)
             {
                 currentPage--;
-                _RefresgAllPeople();
+                await _RefreshAllPeople();
+                UpdatePaginationControls();
             }
         }
 
-        private void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
-            _RefresgAllPeople();
+            await _RefreshAllPeople();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterBy.SelectedIndex == 0)
-            {
-                txtFilterValue.Visible = false;
-            }
-            else
-            {
-                txtFilterValue.Visible = true;
-                txtFilterValue.Clear();
-                txtFilterValue.Focus();
-            }
+            txtFilterValue.Visible = cbFilterBy.SelectedIndex != 0;
+            txtFilterValue.Clear();
+            if (txtFilterValue.Visible) txtFilterValue.Focus();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)

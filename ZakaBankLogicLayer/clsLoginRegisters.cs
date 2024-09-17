@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
 namespace ZakaBankLogicLayer
@@ -29,25 +30,25 @@ namespace ZakaBankLogicLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewLoginRegister()
+        private async Task<bool> _AddNewLoginRegisterAsync()
         {
-            this.ID = clsLoginRegistersData.InsertLoginRegister(UserID, LoginDateTime);
+            this.ID = await clsLoginRegistersData.InsertLoginRegister(UserID, LoginDateTime);
 
             return (this.ID != -1);
         }
 
         // i will call this method the moment The Current User Will LogOut From The System to Save The Logout Time
-        private bool _UpdateLoginRegister()
+        private async Task<bool> _UpdateLoginRegisterAsync()
         {
-            return clsLoginRegistersData.UpdateLoginRegister(UserID);
+            return await clsLoginRegistersData.UpdateLoginRegister(UserID);
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewLoginRegister())
+                    if (await _AddNewLoginRegisterAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -55,7 +56,7 @@ namespace ZakaBankLogicLayer
                     break;
 
                 case enMode.Update:
-                    return _UpdateLoginRegister();
+                    return await _UpdateLoginRegisterAsync();
 
                 default:
                     throw new InvalidOperationException("Unknown mode.");
@@ -64,9 +65,9 @@ namespace ZakaBankLogicLayer
             return false;
         }
 
-        public static clsLoginRegisters FindByID(int id)
+        public static async Task<clsLoginRegisters> FindByID(int id)
         {
-            DataTable dt = clsLoginRegistersData.FindByID(id);
+            var dt = await clsLoginRegistersData.FindByID(id);
             if (dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];
@@ -80,30 +81,30 @@ namespace ZakaBankLogicLayer
             return null;
         }
 
-        public static DataTable FindByUserID(int userID)
+        public static async Task<DataTable> FindByUserIDAsync(int userID)
         {
-            return clsLoginRegistersData.FindByUserID(userID);
+            return await clsLoginRegistersData.FindByUserID(userID);
         }
 
-        public static bool Delete(int id)
+        public static async Task<bool> DeleteAsync(int id)
         {
-            return clsLoginRegistersData.DeleteLoginRegister(id);
+            return await clsLoginRegistersData.DeleteLoginRegister(id);
         }
 
-        public static bool ExistsByID(int id)
+        public static async Task<bool> ExistsByIDAsync(int id)
         {
-            DataTable dt = clsLoginRegistersData.FindByID(id);
+            var dt = await clsLoginRegistersData.FindByID(id);
             return dt.Rows.Count > 0;
         }
 
-        public static DataTable GetAll()
+        public static async Task<DataTable> GetAllLoginRegisters()
         {
-            return clsLoginRegistersData.GetAllLoginRegisters();
+            return await clsLoginRegistersData.GetAllLoginRegisters();
         }
 
-        public static DataTable GetPaged(int pageNumber, int pageSize, out int totalCount)
+        public static async Task<(DataTable dataTable, int TotalCount)> GetPagedLoginRegisters(int pageNumber, int pageSize)
         {
-            return clsLoginRegistersData.GetPagedLoginRegisters(pageNumber, pageSize, out totalCount);
+            return await clsLoginRegistersData.GetPagedLoginRegisters(pageNumber, pageSize);
         }
     }
 }
