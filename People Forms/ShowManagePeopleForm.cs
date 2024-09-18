@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.People_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24
@@ -231,11 +232,12 @@ namespace ZakaBank_24
             cbFilterBy.SelectedIndex = 0;
         }
 
-        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        private async void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             // Show Add Edite Person Form
-            // AddEditePersonForm addEditePersonForm = new AddEditePersonForm();
-            // addEditePersonForm.ShowDialog();
+            ShowAddEditePeopleForm frm = new ShowAddEditePeopleForm();
+            frm.ShowDialog();
+            await _RefreshAllPeople();
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)

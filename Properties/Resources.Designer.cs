@@ -83,6 +83,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close {
+            get {
+                object obj = ResourceManager.GetObject("Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_64 {
             get {
                 object obj = ResourceManager.GetObject("Close 64", resourceCulture);
@@ -116,6 +126,16 @@ namespace ZakaBank_24.Properties {
         internal static System.Drawing.Bitmap Hopstarter_Sleek_Xp_Basic_User_Group_256 {
             get {
                 object obj = ResourceManager.GetObject("Hopstarter-Sleek-Xp-Basic-User-Group.256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Male {
+            get {
+                object obj = ResourceManager.GetObject("Male", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
