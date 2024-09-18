@@ -73,6 +73,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_128 {
+            get {
+                object obj = ResourceManager.GetObject("Add-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ApplicationTitle {
             get {
                 object obj = ResourceManager.GetObject("ApplicationTitle", resourceCulture);
@@ -103,6 +113,26 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Delete_128 {
+            get {
+                object obj = ResourceManager.GetObject("Delete-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female {
+            get {
+                object obj = ResourceManager.GetObject("Female", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hopstarter_Button_Button_Next_72 {
             get {
                 object obj = ResourceManager.GetObject("Hopstarter-Button-Button-Next.72", resourceCulture);
@@ -126,6 +156,16 @@ namespace ZakaBank_24.Properties {
         internal static System.Drawing.Bitmap Hopstarter_Sleek_Xp_Basic_User_Group_256 {
             get {
                 object obj = ResourceManager.GetObject("Hopstarter-Sleek-Xp-Basic-User-Group.256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Info_128 {
+            get {
+                object obj = ResourceManager.GetObject("Info-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +233,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Save_32 {
+            get {
+                object obj = ResourceManager.GetObject("Save-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sign_out_32__2 {
             get {
                 object obj = ResourceManager.GetObject("sign_out 32 -2", resourceCulture);
@@ -206,6 +256,16 @@ namespace ZakaBank_24.Properties {
         internal static System.Drawing.Bitmap teacher__2_ {
             get {
                 object obj = ResourceManager.GetObject("teacher (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Update_128 {
+            get {
+                object obj = ResourceManager.GetObject("Update-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

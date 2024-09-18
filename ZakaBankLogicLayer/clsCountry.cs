@@ -81,6 +81,23 @@ namespace ZakaBankLogicLayer
             return null;
         }
 
+        public static async Task<clsCountry> FindByCountryName(string countryName)
+        {
+            var dt = await clsCountryData.FindCountryByNameAsync(countryName);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsCountry(
+                                           Convert.ToInt32(row["CountryID"]),
+                                           Convert.ToString(row["CountryName"]),
+                                           Convert.ToString(row["CountryCode"]),
+                                           Convert.ToInt32(row["CurrencyID"])
+
+                                          );
+            }
+            return null;
+        }
+
         public static async Task<bool> DeleteAsync(int countryID)
         {
             return await clsCountryData.DeleteCountryAsync(countryID);

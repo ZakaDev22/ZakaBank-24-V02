@@ -234,5 +234,23 @@
   <ItemGroup>
     <None Include="Resources\Male.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Update-128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
