@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text;
 using System.Threading.Tasks;
 using ZakaBankDataLayer;
 
@@ -23,6 +24,13 @@ namespace ZakaBankLogicLayer
         public int? CountryID { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+
+        public string FullName()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            return stringBuilder.Append(FirstName + " " + LastName).ToString();
+        }
 
         public clsPeople()
         {

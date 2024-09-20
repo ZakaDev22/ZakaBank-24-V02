@@ -14,7 +14,7 @@ namespace ZakaBankDataLayer
             cmd.Parameters.AddWithValue(paramName, value ?? DBNull.Value);
         }
 
-        public static async Task<int> AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
+        public static async Task<int> AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, int permissions, int? addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -29,7 +29,6 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
 
                     // nullable parameters
-                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
                     AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
 
                     SqlParameter outParameter = new SqlParameter("@ID", SqlDbType.Int)
@@ -54,7 +53,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static async Task<bool> UpdateUser(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
+        public static async Task<bool> UpdateUser(int id, string userName, string passwordHash, int permissions)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -64,16 +63,11 @@ namespace ZakaBankDataLayer
 
                     cmd.Parameters.AddWithValue("@UserID", id);
 
-                    cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@UserName", userName);
                     cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
 
-                    // nullable parameters
-                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
-                    AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
+
 
                     try
                     {

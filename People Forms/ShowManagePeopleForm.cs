@@ -257,7 +257,8 @@ namespace ZakaBank_24
 
         private void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Future Coming Soon !", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowPersonDetailsForm frm = new ShowPersonDetailsForm((int)djvPeople.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
         }
 
         private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,6 +288,12 @@ namespace ZakaBank_24
             {
                 MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void findPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowFindPersonForm frm = new ShowFindPersonForm();
+            frm.ShowDialog();
         }
     }
 }

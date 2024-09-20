@@ -58,12 +58,19 @@
     <Compile Include="Account Types\SHowManageAccountTypesForm.Designer.cs">
       <DependentUpon>SHowManageAccountTypesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Client Forms\ShowAddEditCLientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client Forms\ShowAddEditCLientsForm.Designer.cs">
+      <DependentUpon>ShowAddEditCLientsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client Forms\ShowManageClientsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Client Forms\ShowManageClientsForm.Designer.cs">
       <DependentUpon>ShowManageClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global Classes\clsLogExceptionsClass.cs" />
     <Compile Include="Login Register Forms\ShowManageLoginRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,11 +92,35 @@
     <Compile Include="Main And Login Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="People Forms\ctrlPersonInfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People Forms\ctrlPersonInfoCard.Designer.cs">
+      <DependentUpon>ctrlPersonInfoCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People Forms\ctrlPersonInfoCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People Forms\ctrlPersonInfoCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlPersonInfoCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="People Forms\ShowAddEditePeopleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="People Forms\ShowAddEditePeopleForm.Designer.cs">
       <DependentUpon>ShowAddEditePeopleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People Forms\ShowFindPersonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People Forms\ShowFindPersonForm.Designer.cs">
+      <DependentUpon>ShowFindPersonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People Forms\ShowPersonDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People Forms\ShowPersonDetailsForm.Designer.cs">
+      <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +141,12 @@
     </Compile>
     <Compile Include="Transfer Forms\ShowManageTransfersForm.Designer.cs">
       <DependentUpon>ShowManageTransfersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Forms\ShowAddEditeUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Forms\ShowAddEditeUsersForm.Designer.cs">
+      <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User Forms\ShowMangaeUsersForm.cs">
       <SubType>Form</SubType>
@@ -132,8 +169,20 @@
     <EmbeddedResource Include="Main And Login Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="People Forms\ctrlPersonInfoCard.resx">
+      <DependentUpon>ctrlPersonInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People Forms\ctrlPersonInfoCardWithFilter.resx">
+      <DependentUpon>ctrlPersonInfoCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People Forms\ShowAddEditePeopleForm.resx">
       <DependentUpon>ShowAddEditePeopleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People Forms\ShowFindPersonForm.resx">
+      <DependentUpon>ShowFindPersonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People Forms\ShowPersonDetailsForm.resx">
+      <DependentUpon>ShowPersonDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -153,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transfer Forms\ShowManageTransfersForm.resx">
       <DependentUpon>ShowManageTransfersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ShowAddEditeUsersForm.resx">
+      <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Forms\ShowMangaeUsersForm.resx">
       <DependentUpon>ShowMangaeUsersForm.cs</DependentUpon>
@@ -251,6 +303,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Update-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Name-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gender-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Address-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Country-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DateOfBirth-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ID-256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,13 +54,13 @@ namespace ZakaBankLogicLayer
 
         private async Task<bool> _AddNewUser()
         {
-            this.ID = await clsUsersData.AddNewUser(PersonID, UserName, PassWordHash, CreatedDate, UpdatedDate, Permissions, AddedByUserID);
+            this.ID = await clsUsersData.AddNewUser(PersonID, UserName, PassWordHash, CreatedDate, Permissions, AddedByUserID);
             return (this.ID != -1);
         }
 
         private async Task<bool> _UpdateUser()
         {
-            return await clsUsersData.UpdateUser(ID, PersonID, UserName, PassWordHash, CreatedDate, UpdatedDate, Permissions, AddedByUserID);
+            return await clsUsersData.UpdateUser(ID, UserName, PassWordHash, Permissions);
         }
 
         public async Task<bool> SaveAsync()
