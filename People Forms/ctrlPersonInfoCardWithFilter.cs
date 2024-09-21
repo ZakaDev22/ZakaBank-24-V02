@@ -78,6 +78,11 @@ namespace ZakaBank_24.People_Forms
             }
         }
 
+        public void ClearTextBox()
+        {
+            txtFilterBy.Clear();
+        }
+
         public int PersonID
         {
             get { return ctrlPersonInfoCard1.PersonID; }

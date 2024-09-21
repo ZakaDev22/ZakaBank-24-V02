@@ -116,10 +116,11 @@
             this.txtFilterBy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFilterBy.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.txtFilterBy.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterBy.Location = new System.Drawing.Point(232, 56);
+            this.txtFilterBy.Location = new System.Drawing.Point(233, 56);
+            this.txtFilterBy.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtFilterBy.Name = "txtFilterBy";
             this.txtFilterBy.PasswordChar = '\0';
-            this.txtFilterBy.PlaceholderText = "Enter The Person ID Hir";
+            this.txtFilterBy.PlaceholderText = "Enter The Person ID Here";
             this.txtFilterBy.SelectedText = "";
             this.txtFilterBy.Size = new System.Drawing.Size(286, 42);
             this.txtFilterBy.TabIndex = 0;

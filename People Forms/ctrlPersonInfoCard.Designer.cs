@@ -389,6 +389,7 @@
             // 
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Image = global::ZakaBank_24.Properties.Resources.Male;
             this.pbPersonImage.InitialImage = null;
             this.pbPersonImage.Location = new System.Drawing.Point(635, 79);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

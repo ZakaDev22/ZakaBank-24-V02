@@ -157,6 +157,9 @@
     <EmbeddedResource Include="Account Types\SHowManageAccountTypesForm.resx">
       <DependentUpon>SHowManageAccountTypesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Client Forms\ShowAddEditCLientsForm.resx">
+      <DependentUpon>ShowAddEditCLientsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Client Forms\ShowManageClientsForm.resx">
       <DependentUpon>ShowManageClientsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,6 +333,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ID-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Permission-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pernission-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transfer-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginRegister-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Types-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

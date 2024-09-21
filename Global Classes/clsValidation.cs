@@ -92,5 +92,7 @@ namespace ZakaBank_24.Global_Classes
         {
             return phoneNumber.All(char.IsDigit) && phoneNumber.Length == 10;
         }
+
+
     }
 }
