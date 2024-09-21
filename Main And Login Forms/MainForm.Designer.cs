@@ -80,6 +80,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnReports = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnAccountTypes = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLoginRegisters = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -98,7 +99,6 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReports = new Guna.UI2.WinForms.Guna2GradientButton();
             this.FindUsertoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.guna2CustomGradientPanel5.SuspendLayout();
@@ -157,10 +157,10 @@
             this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
             this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
             this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.OrangeRed;
-            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.Aquamarine;
-            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Indigo;
+            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
+            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Black;
+            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Silver;
             this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(0, 38);
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(1170, 73);
@@ -813,6 +813,36 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnReports
+            // 
+            this.btnReports.Animated = true;
+            this.btnReports.AnimatedGIF = true;
+            this.btnReports.AutoRoundedCorners = true;
+            this.btnReports.BorderColor = System.Drawing.Color.White;
+            this.btnReports.BorderRadius = 21;
+            this.btnReports.BorderThickness = 1;
+            this.btnReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReports.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReports.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReports.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnReports.FillColor = System.Drawing.Color.Blue;
+            this.btnReports.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnReports.FocusedColor = System.Drawing.Color.Red;
+            this.btnReports.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReports.ForeColor = System.Drawing.Color.White;
+            this.btnReports.Image = global::ZakaBank_24.Properties.Resources.Reports_64;
+            this.btnReports.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnReports.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnReports.Location = new System.Drawing.Point(24, 414);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.PressedColor = System.Drawing.Color.GreenYellow;
+            this.btnReports.Size = new System.Drawing.Size(192, 45);
+            this.btnReports.TabIndex = 17;
+            this.btnReports.Text = "  Reports";
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.Animated = true;
@@ -1166,36 +1196,6 @@
             this.signOutToolStripMenuItem.Size = new System.Drawing.Size(233, 36);
             this.signOutToolStripMenuItem.Text = "Sign Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
-            // 
-            // btnReports
-            // 
-            this.btnReports.Animated = true;
-            this.btnReports.AnimatedGIF = true;
-            this.btnReports.AutoRoundedCorners = true;
-            this.btnReports.BorderColor = System.Drawing.Color.White;
-            this.btnReports.BorderRadius = 21;
-            this.btnReports.BorderThickness = 1;
-            this.btnReports.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReports.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReports.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReports.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReports.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReports.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReports.FillColor = System.Drawing.Color.Blue;
-            this.btnReports.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnReports.FocusedColor = System.Drawing.Color.Red;
-            this.btnReports.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
-            this.btnReports.ForeColor = System.Drawing.Color.White;
-            this.btnReports.Image = global::ZakaBank_24.Properties.Resources.Reports_64;
-            this.btnReports.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnReports.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnReports.Location = new System.Drawing.Point(24, 414);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.PressedColor = System.Drawing.Color.GreenYellow;
-            this.btnReports.Size = new System.Drawing.Size(192, 45);
-            this.btnReports.TabIndex = 17;
-            this.btnReports.Text = "  Reports";
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // FindUsertoolStripMenuItem2
             // 

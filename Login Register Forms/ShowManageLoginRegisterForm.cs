@@ -39,7 +39,7 @@ namespace ZakaBank_24.Login_Register_Forms
                 }
                 else
                 {
-                    dt = await clsTransfers.GetAllTransfersAsync();
+                    dt = await clsLoginRegisters.GetAllLoginRegisters();
                 }
 
                 djvLoginRegisters.DataSource = null; // Clear existing data
@@ -190,6 +190,10 @@ namespace ZakaBank_24.Login_Register_Forms
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtFilterValue.Visible = cbFilterBy.SelectedIndex != 0;
+            txtFilterValue.Clear();
+
+            if (txtFilterValue.Visible) txtFilterValue.Focus();
+
         }
 
         private async void btnRight_Click(object sender, EventArgs e)

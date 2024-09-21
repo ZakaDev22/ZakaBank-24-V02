@@ -90,7 +90,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             pnClickedButton.Top = btnClients.Top;
             ShowManageClientsForm frm = new ShowManageClientsForm();
-            frm.Show();
+            frm.ShowDialog();
             pnClickedButton.Top = btnDashboard.Top;
         }
 
@@ -98,7 +98,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             pnClickedButton.Top = btnUsers.Top;
             ShowMangaeUsersForm frm = new ShowMangaeUsersForm();
-            frm.Show();
+            frm.ShowDialog();
             pnClickedButton.Top = btnDashboard.Top;
         }
 
@@ -106,7 +106,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             pnClickedButton.Top = btnTransactions.Top;
             ShowManagTransactionsForm frm = new ShowManagTransactionsForm();
-            frm.Show();
+            frm.ShowDialog();
             pnClickedButton.Top = btnDashboard.Top;
         }
 
@@ -115,37 +115,18 @@ namespace ZakaBank_24.Main_And_Login_Forms
             pnClickedButton.Top = btnTransfers.Top;
             ShowManageTransfersForm frm = new ShowManageTransfersForm();
 
-            frm.Show();
+            frm.ShowDialog();
 
             pnClickedButton.Top = btnDashboard.Top;
         }
 
-        //private async Task _ShowLoginRegisterFormAndWaitAsync()
-        //{
-        //    pnClickedButton.Top = btnLoginRegisters.Top;
-
-        //    var tcs = new TaskCompletionSource<bool>();
-        //    var frm = new ShowManageLoginRegisterForm();
-
-        //    // Handle form closed event
-        //    frm.FormClosed += (s, e) => tcs.SetResult(true);
-
-        //    // Show form modally
-        //    frm.ShowDialog();
-
-        //    // Await until the form is closed
-        //    await tcs.Task;
-
-        //    // After the form is closed, execute the remaining code
-        //    pnClickedButton.Top = btnDashboard.Top;
-        //}
 
         private void btnLoginRegisters_Click(object sender, System.EventArgs e)
         {
             pnClickedButton.Top = btnLoginRegisters.Top;
 
             var frm = new ShowManageLoginRegisterForm();
-            frm.Show();
+            frm.ShowDialog();
 
             pnClickedButton.Top = btnDashboard.Top;
         }
@@ -160,7 +141,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             pnClickedButton.Top = btnAccountTypes.Top;
             SHowManageAccountTypesForm frm = new SHowManageAccountTypesForm();
-            frm.Show();
+            frm.ShowDialog();
 
             pnClickedButton.Top = btnDashboard.Top;
         }

@@ -13,7 +13,7 @@ namespace ZakaBankDataLayer
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Clients_AddNewClient", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_Client_AddNewClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PersonID", personID);
@@ -48,7 +48,7 @@ namespace ZakaBankDataLayer
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Clients_UpdateClient", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_Client_UpdateClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ClientID", clientID);
@@ -77,7 +77,7 @@ namespace ZakaBankDataLayer
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Clients_DeleteClient", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_Client_DeleteClient", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ClientID", clientID);
@@ -102,10 +102,34 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Clients_ExistsByID", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ClientID", clientID);
+
+                        await conn.OpenAsync();
+                        object result = await cmd.ExecuteScalarAsync();
+                        return Convert.ToBoolean(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+        }
+
+        public static async Task<bool> ExistsByPersonIDAsync(int personID)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Clients_ExistsByPersonID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PersonID", personID);
 
                         await conn.OpenAsync();
                         object result = await cmd.ExecuteScalarAsync();
@@ -127,7 +151,7 @@ namespace ZakaBankDataLayer
             {
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_Clients_FindByID", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_FindByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ClientID", clientID);

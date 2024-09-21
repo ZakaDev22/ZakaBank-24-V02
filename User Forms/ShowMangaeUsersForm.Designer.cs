@@ -41,7 +41,7 @@
             this.cbPageSize = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbByPages = new System.Windows.Forms.RadioButton();
-            this.rbAllPeople = new System.Windows.Forms.RadioButton();
+            this.rbByAll = new System.Windows.Forms.RadioButton();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,10 +51,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.djvUsers = new System.Windows.Forms.DataGridView();
-            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -63,6 +59,10 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.findUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -230,7 +230,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.rbByPages);
-            this.groupBox1.Controls.Add(this.rbAllPeople);
+            this.groupBox1.Controls.Add(this.rbByAll);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(35, 119);
             this.groupBox1.Name = "groupBox1";
@@ -253,18 +253,18 @@
             this.rbByPages.UseVisualStyleBackColor = true;
             this.rbByPages.CheckedChanged += new System.EventHandler(this.rbByPages_CheckedChanged);
             // 
-            // rbAllPeople
+            // rbByAll
             // 
-            this.rbAllPeople.AutoSize = true;
-            this.rbAllPeople.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbAllPeople.ForeColor = System.Drawing.Color.Teal;
-            this.rbAllPeople.Location = new System.Drawing.Point(17, 20);
-            this.rbAllPeople.Name = "rbAllPeople";
-            this.rbAllPeople.Size = new System.Drawing.Size(89, 22);
-            this.rbAllPeople.TabIndex = 0;
-            this.rbAllPeople.TabStop = true;
-            this.rbAllPeople.Text = "All People";
-            this.rbAllPeople.UseVisualStyleBackColor = true;
+            this.rbByAll.AutoSize = true;
+            this.rbByAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbByAll.ForeColor = System.Drawing.Color.Teal;
+            this.rbByAll.Location = new System.Drawing.Point(17, 20);
+            this.rbByAll.Name = "rbByAll";
+            this.rbByAll.Size = new System.Drawing.Size(63, 22);
+            this.rbByAll.TabIndex = 0;
+            this.rbByAll.TabStop = true;
+            this.rbByAll.Text = "By All";
+            this.rbByAll.UseVisualStyleBackColor = true;
             // 
             // cbFilterBy
             // 
@@ -392,30 +392,6 @@
             this.djvUsers.Size = new System.Drawing.Size(779, 275);
             this.djvUsers.TabIndex = 120;
             // 
-            // guna2DragControl2
-            // 
-            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl2.TargetControl = this;
-            this.guna2DragControl2.UseTransparentDrag = true;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel4;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 25;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // guna2AnimateWindow1
-            // 
-            this.guna2AnimateWindow1.Interval = 250;
-            this.guna2AnimateWindow1.TargetForm = this;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -429,7 +405,7 @@
             this.toolStripMenuItem2,
             this.findUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 176);
             // 
             // personDetailsToolStripMenuItem
             // 
@@ -480,6 +456,30 @@
             this.findUserToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
             this.findUserToolStripMenuItem.Text = "Find User";
             this.findUserToolStripMenuItem.Click += new System.EventHandler(this.findUserToolStripMenuItem_Click);
+            // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this;
+            this.guna2DragControl2.UseTransparentDrag = true;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel4;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 25;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // guna2AnimateWindow1
+            // 
+            this.guna2AnimateWindow1.Interval = 250;
+            this.guna2AnimateWindow1.TargetForm = this;
             // 
             // ShowMangaeUsersForm
             // 
@@ -534,7 +534,7 @@
         private System.Windows.Forms.ComboBox cbPageSize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbByPages;
-        private System.Windows.Forms.RadioButton rbAllPeople;
+        private System.Windows.Forms.RadioButton rbByAll;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;
