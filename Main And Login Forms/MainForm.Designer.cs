@@ -73,13 +73,13 @@
             this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.lbPeople = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2CirclePictureBox7 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox6 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox5 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox4 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox3 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnAccountTypes = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLoginRegisters = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -98,6 +98,8 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReports = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.FindUsertoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.guna2CustomGradientPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -118,13 +120,13 @@
             this.guna2CircleProgressBar2.SuspendLayout();
             this.pnPeopleCount.SuspendLayout();
             this.guna2CircleProgressBar1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2AnimateWindow1
@@ -225,6 +227,7 @@
             // guna2CustomGradientPanel5
             // 
             this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
             this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
             this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
             this.guna2CustomGradientPanel5.Controls.Add(this.btnAccountTypes);
@@ -252,7 +255,7 @@
             this.pnClickedButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pnClickedButton.FillColor3 = System.Drawing.Color.Crimson;
             this.pnClickedButton.FillColor4 = System.Drawing.Color.Crimson;
-            this.pnClickedButton.Location = new System.Drawing.Point(3, 55);
+            this.pnClickedButton.Location = new System.Drawing.Point(0, 6);
             this.pnClickedButton.Name = "pnClickedButton";
             this.pnClickedButton.Size = new System.Drawing.Size(18, 45);
             this.pnClickedButton.TabIndex = 16;
@@ -276,8 +279,8 @@
             // upcamingFuteresToolStripMenuItem
             // 
             this.upcamingFuteresToolStripMenuItem.Name = "upcamingFuteresToolStripMenuItem";
-            this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(239, 34);
-            this.upcamingFuteresToolStripMenuItem.Text = "New Futeres Coming Soon..";
+            this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(121, 34);
+            this.upcamingFuteresToolStripMenuItem.Text = "ATM Futures";
             // 
             // splitContainer1
             // 
@@ -321,7 +324,7 @@
             // 
             this.guna2CircleProgressBar7.Animated = true;
             this.guna2CircleProgressBar7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar7.Controls.Add(this.guna2CirclePictureBox7);
+            this.guna2CircleProgressBar7.Controls.Add(this.pictureBox6);
             this.guna2CircleProgressBar7.EnsureVisible = true;
             this.guna2CircleProgressBar7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar7.FillThickness = 3;
@@ -382,7 +385,7 @@
             // 
             this.guna2CircleProgressBar6.Animated = true;
             this.guna2CircleProgressBar6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar6.Controls.Add(this.guna2CirclePictureBox6);
+            this.guna2CircleProgressBar6.Controls.Add(this.pictureBox7);
             this.guna2CircleProgressBar6.EnsureVisible = true;
             this.guna2CircleProgressBar6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar6.FillThickness = 3;
@@ -454,7 +457,7 @@
             // 
             this.guna2CircleProgressBar5.Animated = true;
             this.guna2CircleProgressBar5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar5.Controls.Add(this.guna2CirclePictureBox5);
+            this.guna2CircleProgressBar5.Controls.Add(this.pictureBox5);
             this.guna2CircleProgressBar5.EnsureVisible = true;
             this.guna2CircleProgressBar5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar5.FillThickness = 3;
@@ -515,7 +518,7 @@
             // 
             this.guna2CircleProgressBar4.Animated = true;
             this.guna2CircleProgressBar4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar4.Controls.Add(this.guna2CirclePictureBox4);
+            this.guna2CircleProgressBar4.Controls.Add(this.pictureBox4);
             this.guna2CircleProgressBar4.EnsureVisible = true;
             this.guna2CircleProgressBar4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar4.FillThickness = 3;
@@ -576,7 +579,7 @@
             // 
             this.guna2CircleProgressBar3.Animated = true;
             this.guna2CircleProgressBar3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar3.Controls.Add(this.guna2CirclePictureBox3);
+            this.guna2CircleProgressBar3.Controls.Add(this.pictureBox3);
             this.guna2CircleProgressBar3.EnsureVisible = true;
             this.guna2CircleProgressBar3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar3.FillThickness = 3;
@@ -637,7 +640,7 @@
             // 
             this.guna2CircleProgressBar2.Animated = true;
             this.guna2CircleProgressBar2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar2.Controls.Add(this.guna2CirclePictureBox2);
+            this.guna2CircleProgressBar2.Controls.Add(this.pictureBox2);
             this.guna2CircleProgressBar2.EnsureVisible = true;
             this.guna2CircleProgressBar2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar2.FillThickness = 3;
@@ -685,10 +688,10 @@
             this.pnPeopleCount.Controls.Add(this.guna2CircleProgressBar1);
             this.pnPeopleCount.Controls.Add(this.lbPeople);
             this.pnPeopleCount.Controls.Add(this.label1);
-            this.pnPeopleCount.FillColor = System.Drawing.SystemColors.WindowText;
-            this.pnPeopleCount.FillColor2 = System.Drawing.Color.Gold;
-            this.pnPeopleCount.FillColor3 = System.Drawing.Color.Red;
-            this.pnPeopleCount.FillColor4 = System.Drawing.Color.YellowGreen;
+            this.pnPeopleCount.FillColor = System.Drawing.Color.Aquamarine;
+            this.pnPeopleCount.FillColor2 = System.Drawing.Color.Red;
+            this.pnPeopleCount.FillColor3 = System.Drawing.Color.DarkBlue;
+            this.pnPeopleCount.FillColor4 = System.Drawing.Color.LemonChiffon;
             this.pnPeopleCount.Location = new System.Drawing.Point(42, 54);
             this.pnPeopleCount.Name = "pnPeopleCount";
             this.pnPeopleCount.Size = new System.Drawing.Size(113, 175);
@@ -698,7 +701,7 @@
             // 
             this.guna2CircleProgressBar1.Animated = true;
             this.guna2CircleProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar1.Controls.Add(this.guna2CirclePictureBox1);
+            this.guna2CircleProgressBar1.Controls.Add(this.pictureBox1);
             this.guna2CircleProgressBar1.EnsureVisible = true;
             this.guna2CircleProgressBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.guna2CircleProgressBar1.FillThickness = 3;
@@ -740,96 +743,75 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "People";
             // 
-            // guna2CirclePictureBox7
+            // pictureBox6
             // 
-            this.guna2CirclePictureBox7.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox7.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox7.ImageRotate = 0F;
-            this.guna2CirclePictureBox7.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox7.Name = "guna2CirclePictureBox7";
-            this.guna2CirclePictureBox7.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox7.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox7.TabIndex = 0;
-            this.guna2CirclePictureBox7.TabStop = false;
+            this.pictureBox6.Image = global::ZakaBank_24.Properties.Resources.Types_64;
+            this.pictureBox6.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
             // 
-            // guna2CirclePictureBox6
+            // pictureBox7
             // 
-            this.guna2CirclePictureBox6.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox6.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox6.ImageRotate = 0F;
-            this.guna2CirclePictureBox6.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox6.Name = "guna2CirclePictureBox6";
-            this.guna2CirclePictureBox6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox6.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox6.TabIndex = 0;
-            this.guna2CirclePictureBox6.TabStop = false;
+            this.pictureBox7.Image = global::ZakaBank_24.Properties.Resources.LoginRegister_64;
+            this.pictureBox7.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 1;
+            this.pictureBox7.TabStop = false;
             // 
-            // guna2CirclePictureBox5
+            // pictureBox5
             // 
-            this.guna2CirclePictureBox5.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox5.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox5.ImageRotate = 0F;
-            this.guna2CirclePictureBox5.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
-            this.guna2CirclePictureBox5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox5.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox5.TabIndex = 0;
-            this.guna2CirclePictureBox5.TabStop = false;
+            this.pictureBox5.Image = global::ZakaBank_24.Properties.Resources.Transfer_64;
+            this.pictureBox5.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 2;
+            this.pictureBox5.TabStop = false;
             // 
-            // guna2CirclePictureBox4
+            // pictureBox4
             // 
-            this.guna2CirclePictureBox4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox4.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox4.ImageRotate = 0F;
-            this.guna2CirclePictureBox4.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
-            this.guna2CirclePictureBox4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox4.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox4.TabIndex = 0;
-            this.guna2CirclePictureBox4.TabStop = false;
+            this.pictureBox4.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
+            this.pictureBox4.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
             // 
-            // guna2CirclePictureBox3
+            // pictureBox3
             // 
-            this.guna2CirclePictureBox3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox3.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox3.ImageRotate = 0F;
-            this.guna2CirclePictureBox3.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
-            this.guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox3.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox3.TabIndex = 0;
-            this.guna2CirclePictureBox3.TabStop = false;
+            this.pictureBox3.Image = global::ZakaBank_24.Properties.Resources.Client_48;
+            this.pictureBox3.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
-            // guna2CirclePictureBox2
+            // pictureBox2
             // 
-            this.guna2CirclePictureBox2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox2.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox2.ImageRotate = 0F;
-            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            this.guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox2.TabIndex = 0;
-            this.guna2CirclePictureBox2.TabStop = false;
+            this.pictureBox2.Image = global::ZakaBank_24.Properties.Resources.Users_64;
+            this.pictureBox2.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
-            // guna2CirclePictureBox1
+            // pictureBox1
             // 
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::ZakaBank_24.Properties.Resources.People_64;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2CirclePictureBox1.TabIndex = 0;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Person_32;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // btnLogout
             // 
@@ -880,10 +862,10 @@
             this.btnAccountTypes.FocusedColor = System.Drawing.Color.Red;
             this.btnAccountTypes.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnAccountTypes.ForeColor = System.Drawing.Color.White;
-            this.btnAccountTypes.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnAccountTypes.Image = global::ZakaBank_24.Properties.Resources.Types_64;
             this.btnAccountTypes.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccountTypes.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnAccountTypes.Location = new System.Drawing.Point(27, 412);
+            this.btnAccountTypes.Location = new System.Drawing.Point(24, 363);
             this.btnAccountTypes.Name = "btnAccountTypes";
             this.btnAccountTypes.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnAccountTypes.Size = new System.Drawing.Size(192, 45);
@@ -910,10 +892,10 @@
             this.btnLoginRegisters.FocusedColor = System.Drawing.Color.Red;
             this.btnLoginRegisters.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnLoginRegisters.ForeColor = System.Drawing.Color.White;
-            this.btnLoginRegisters.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnLoginRegisters.Image = global::ZakaBank_24.Properties.Resources.LoginRegister_64;
             this.btnLoginRegisters.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLoginRegisters.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnLoginRegisters.Location = new System.Drawing.Point(27, 361);
+            this.btnLoginRegisters.Location = new System.Drawing.Point(24, 312);
             this.btnLoginRegisters.Name = "btnLoginRegisters";
             this.btnLoginRegisters.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnLoginRegisters.Size = new System.Drawing.Size(192, 45);
@@ -940,10 +922,10 @@
             this.btnTransfers.FocusedColor = System.Drawing.Color.Red;
             this.btnTransfers.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnTransfers.ForeColor = System.Drawing.Color.White;
-            this.btnTransfers.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnTransfers.Image = global::ZakaBank_24.Properties.Resources.Transfer_64;
             this.btnTransfers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTransfers.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnTransfers.Location = new System.Drawing.Point(27, 310);
+            this.btnTransfers.Location = new System.Drawing.Point(24, 261);
             this.btnTransfers.Name = "btnTransfers";
             this.btnTransfers.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnTransfers.Size = new System.Drawing.Size(192, 45);
@@ -970,10 +952,10 @@
             this.btnTransactions.FocusedColor = System.Drawing.Color.Red;
             this.btnTransactions.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnTransactions.ForeColor = System.Drawing.Color.White;
-            this.btnTransactions.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnTransactions.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
             this.btnTransactions.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTransactions.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnTransactions.Location = new System.Drawing.Point(27, 259);
+            this.btnTransactions.Location = new System.Drawing.Point(24, 210);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnTransactions.Size = new System.Drawing.Size(192, 45);
@@ -1000,10 +982,10 @@
             this.btnUsers.FocusedColor = System.Drawing.Color.Red;
             this.btnUsers.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ForeColor = System.Drawing.Color.White;
-            this.btnUsers.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnUsers.Image = global::ZakaBank_24.Properties.Resources.Users_64;
             this.btnUsers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsers.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnUsers.Location = new System.Drawing.Point(27, 208);
+            this.btnUsers.Location = new System.Drawing.Point(24, 159);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnUsers.Size = new System.Drawing.Size(192, 45);
@@ -1030,10 +1012,10 @@
             this.btnClients.FocusedColor = System.Drawing.Color.Red;
             this.btnClients.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnClients.ForeColor = System.Drawing.Color.White;
-            this.btnClients.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnClients.Image = global::ZakaBank_24.Properties.Resources.Person_32;
             this.btnClients.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClients.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnClients.Location = new System.Drawing.Point(27, 157);
+            this.btnClients.Location = new System.Drawing.Point(24, 108);
             this.btnClients.Name = "btnClients";
             this.btnClients.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnClients.Size = new System.Drawing.Size(192, 45);
@@ -1060,10 +1042,10 @@
             this.btnDashboard.FocusedColor = System.Drawing.Color.Red;
             this.btnDashboard.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
-            this.btnDashboard.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnDashboard.Image = global::ZakaBank_24.Properties.Resources.Home_64;
             this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnDashboard.Location = new System.Drawing.Point(27, 55);
+            this.btnDashboard.Location = new System.Drawing.Point(24, 6);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnDashboard.Size = new System.Drawing.Size(192, 45);
@@ -1090,10 +1072,10 @@
             this.btnPeople.FocusedColor = System.Drawing.Color.Red;
             this.btnPeople.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
             this.btnPeople.ForeColor = System.Drawing.Color.White;
-            this.btnPeople.Image = global::ZakaBank_24.Properties.Resources.People_64;
+            this.btnPeople.Image = global::ZakaBank_24.Properties.Resources.People_400;
             this.btnPeople.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPeople.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnPeople.Location = new System.Drawing.Point(27, 106);
+            this.btnPeople.Location = new System.Drawing.Point(24, 57);
             this.btnPeople.Name = "btnPeople";
             this.btnPeople.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnPeople.Size = new System.Drawing.Size(192, 45);
@@ -1147,7 +1129,8 @@
             this.userInfoToolStripMenuItem,
             this.changePasswordToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.signOutToolStripMenuItem});
+            this.signOutToolStripMenuItem,
+            this.FindUsertoolStripMenuItem2});
             this.accountSettingsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.user_config;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(157, 34);
@@ -1184,6 +1167,42 @@
             this.signOutToolStripMenuItem.Text = "Sign Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
+            // btnReports
+            // 
+            this.btnReports.Animated = true;
+            this.btnReports.AnimatedGIF = true;
+            this.btnReports.AutoRoundedCorners = true;
+            this.btnReports.BorderColor = System.Drawing.Color.White;
+            this.btnReports.BorderRadius = 21;
+            this.btnReports.BorderThickness = 1;
+            this.btnReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReports.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReports.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReports.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnReports.FillColor = System.Drawing.Color.Blue;
+            this.btnReports.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnReports.FocusedColor = System.Drawing.Color.Red;
+            this.btnReports.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReports.ForeColor = System.Drawing.Color.White;
+            this.btnReports.Image = global::ZakaBank_24.Properties.Resources.Reports_64;
+            this.btnReports.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnReports.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnReports.Location = new System.Drawing.Point(24, 414);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.PressedColor = System.Drawing.Color.GreenYellow;
+            this.btnReports.Size = new System.Drawing.Size(192, 45);
+            this.btnReports.TabIndex = 17;
+            this.btnReports.Text = "  Reports";
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
+            // FindUsertoolStripMenuItem2
+            // 
+            this.FindUsertoolStripMenuItem2.Name = "FindUsertoolStripMenuItem2";
+            this.FindUsertoolStripMenuItem2.Size = new System.Drawing.Size(233, 36);
+            this.FindUsertoolStripMenuItem2.Text = "Find User";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1214,38 +1233,31 @@
             this.guna2CustomGradientPanel11.ResumeLayout(false);
             this.guna2CustomGradientPanel11.PerformLayout();
             this.guna2CircleProgressBar7.ResumeLayout(false);
-            this.guna2CircleProgressBar7.PerformLayout();
             this.guna2CustomGradientPanel10.ResumeLayout(false);
             this.guna2CustomGradientPanel10.PerformLayout();
             this.guna2CircleProgressBar6.ResumeLayout(false);
-            this.guna2CircleProgressBar6.PerformLayout();
             this.guna2CustomGradientPanel9.ResumeLayout(false);
             this.guna2CustomGradientPanel9.PerformLayout();
             this.guna2CircleProgressBar5.ResumeLayout(false);
-            this.guna2CircleProgressBar5.PerformLayout();
             this.guna2CustomGradientPanel8.ResumeLayout(false);
             this.guna2CustomGradientPanel8.PerformLayout();
             this.guna2CircleProgressBar4.ResumeLayout(false);
-            this.guna2CircleProgressBar4.PerformLayout();
             this.guna2CustomGradientPanel7.ResumeLayout(false);
             this.guna2CustomGradientPanel7.PerformLayout();
             this.guna2CircleProgressBar3.ResumeLayout(false);
-            this.guna2CircleProgressBar3.PerformLayout();
             this.guna2CustomGradientPanel6.ResumeLayout(false);
             this.guna2CustomGradientPanel6.PerformLayout();
             this.guna2CircleProgressBar2.ResumeLayout(false);
-            this.guna2CircleProgressBar2.PerformLayout();
             this.pnPeopleCount.ResumeLayout(false);
             this.pnPeopleCount.PerformLayout();
             this.guna2CircleProgressBar1.ResumeLayout(false);
-            this.guna2CircleProgressBar1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1288,39 +1300,41 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar1;
         private System.Windows.Forms.Label lbPeople;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel9;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar5;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox5;
         private System.Windows.Forms.Label lbTransfers;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel8;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar4;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox4;
         private System.Windows.Forms.Label lbTransactions;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel7;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar3;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox3;
         private System.Windows.Forms.Label lbClients;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel6;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar2;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private System.Windows.Forms.Label lbUsers;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel11;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar7;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox7;
         private System.Windows.Forms.Label lbAccountType;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel10;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar6;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox6;
         private System.Windows.Forms.Label lbRegisters;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upcamingFuteresToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private Guna.UI2.WinForms.Guna2GradientButton btnReports;
+        private System.Windows.Forms.ToolStripMenuItem FindUsertoolStripMenuItem2;
     }
 }

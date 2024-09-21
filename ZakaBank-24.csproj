@@ -361,5 +361,26 @@
   <ItemGroup>
     <None Include="Resources\Types-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ATM-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Client-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ATM2-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Deposit-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TotalAmounts-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TransferMony-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\withdraw-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

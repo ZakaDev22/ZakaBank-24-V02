@@ -181,5 +181,10 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             _Logout();
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Future Will Be In The Project Soon :-)", "Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

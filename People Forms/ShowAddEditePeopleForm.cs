@@ -154,7 +154,7 @@ namespace ZakaBank_24.People_Forms
                 MessageBox.Show("Data Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Trigger the event to send data back to the caller form.
-                //DataBack?.Invoke(this, _Person.PersonID);
+                DataBack?.Invoke(this, _Person.PersonID);
             }
             else
             {
