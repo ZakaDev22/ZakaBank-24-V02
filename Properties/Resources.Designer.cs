@@ -233,6 +233,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap History_48 {
+            get {
+                object obj = ResourceManager.GetObject("History-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Home_64 {
             get {
                 object obj = ResourceManager.GetObject("Home-64", resourceCulture);
@@ -366,6 +376,16 @@ namespace ZakaBank_24.Properties {
         internal static System.Drawing.Bitmap Phone_128 {
             get {
                 object obj = ResourceManager.GetObject("Phone-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pictogrammers_Material_History_48 {
+            get {
+                object obj = ResourceManager.GetObject("Pictogrammers-Material-History.48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

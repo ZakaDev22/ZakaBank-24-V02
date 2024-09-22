@@ -8,7 +8,7 @@ namespace ZakaBankDataLayer
 {
     public class clsTransactionData
     {
-        public static async Task<int> AddNewTransactionAsync(int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
+        public static async Task<int> AddNewTransactionAsync(int clientID, decimal amount, int transactionTypeID, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -19,8 +19,7 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@Amount", amount);
                     cmd.Parameters.AddWithValue("@TransactionTypeID", transactionTypeID);
                     cmd.Parameters.AddWithValue("@Description", description);
-                    cmd.Parameters.AddWithValue("@TransactionDate", transactionDate);
-                    cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
+                    cmd.Parameters.AddWithValue("@AddedByUser", addedByUserID);
 
                     SqlParameter outParameter = new SqlParameter("@TransactionID", SqlDbType.Int)
                     {
@@ -43,7 +42,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static async Task<bool> UpdateTransactionAsync(int transactionID, int clientID, decimal amount, int transactionTypeID, string description, DateTime transactionDate, int addedByUserID)
+        public static async Task<bool> UpdateTransactionAsync(int transactionID, int clientID, decimal amount, int transactionTypeID, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -55,7 +54,6 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@Amount", amount);
                     cmd.Parameters.AddWithValue("@TransactionTypeID", transactionTypeID);
                     cmd.Parameters.AddWithValue("@Description", description);
-                    cmd.Parameters.AddWithValue("@TransactionDate", transactionDate);
                     cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
                     try
@@ -174,7 +172,7 @@ namespace ZakaBankDataLayer
                             dataTable.Load(reader); // Load the data into the table
                         }
 
-                        totalCount = (int)totalParam.Value;
+                        totalCount = totalParam.Value == DBNull.Value ? 0 : (int)totalParam.Value;
                     }
                 }
             }

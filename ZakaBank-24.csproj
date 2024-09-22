@@ -418,5 +418,11 @@
   <ItemGroup>
     <None Include="Resources\DVLD Logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pictogrammers-Material-History.48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\History-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

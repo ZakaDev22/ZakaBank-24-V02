@@ -106,7 +106,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             pnClickedButton.Top = btnTransactions.Top;
             ShowManagTransactionsForm frm = new ShowManagTransactionsForm();
-            frm.ShowDialog();
+            frm.Show();
             pnClickedButton.Top = btnDashboard.Top;
         }
 

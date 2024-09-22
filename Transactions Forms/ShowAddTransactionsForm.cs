@@ -43,6 +43,8 @@ namespace ZakaBank_24.Transactions_Forms
         private async void ShowAddTransactionsForm_Load(object sender, System.EventArgs e)
         {
             await _FillComboBoxWithTransactionTypes();
+            cbTransactionTypes.SelectedIndex = 0;
+            lbUserID.Text = clsGlobal._CurrentUser.ID.ToString();
 
             if (_Mode == enMode.AddNew)
             {
@@ -53,7 +55,7 @@ namespace ZakaBank_24.Transactions_Forms
 
 
             ctrlClientinfoCardWithFilter1.LoadClientInfoByID(_CLientID);
-            lbUserID.Text = clsGlobal._CurrentUser.ID.ToString();
+
         }
 
         private void ctrlClientinfoCardWithFilter1_OnClientSelected(int obj)
@@ -141,10 +143,17 @@ namespace ZakaBank_24.Transactions_Forms
                 btnSave.Enabled = false;
                 gbTransactionInfo.Enabled = false;
 
+                // set The Link Label History To true to call the history form of each client
+                linkClientHistory.Enabled = true;
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void linkClientHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("This Future Will Be In the Program Very Sone :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

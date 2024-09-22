@@ -11,7 +11,7 @@ namespace ZakaBank_24.Transactions_Forms
     {
         private DataTable dt;
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 10;
         private int totalRecords = 0;
 
         public ShowManagTransactionsForm()
@@ -72,10 +72,10 @@ namespace ZakaBank_24.Transactions_Forms
                 djvTransactions.Columns[2].Width = 110;
 
                 djvTransactions.Columns[3].HeaderText = "Transaction Type";
-                djvTransactions.Columns[3].Width = 100;
+                djvTransactions.Columns[3].Width = 110;
 
                 djvTransactions.Columns[4].HeaderText = "Description";
-                djvTransactions.Columns[4].Width = 100;
+                djvTransactions.Columns[4].Width = 120;
 
                 djvTransactions.Columns[5].HeaderText = "Transaction Date";
                 djvTransactions.Columns[5].Width = 120;
