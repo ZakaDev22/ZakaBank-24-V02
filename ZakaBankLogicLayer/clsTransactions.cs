@@ -91,6 +91,13 @@ namespace ZakaBankLogicLayer
                 return null;
         }
 
+        public static async Task<DataTable> FindByTransactionTypeByNameAsync(string transactionTypeName)
+        {
+            return await clsTransactionData.FindByTransactionTypeByNameAsync(transactionTypeName);
+
+        }
+
+
         public static async Task<bool> DeleteAsync(int transactionID)
         {
             return await clsTransactionData.DeleteTransactionAsync(transactionID);
@@ -104,6 +111,11 @@ namespace ZakaBankLogicLayer
         public static async Task<DataTable> GetAllTransactionsAsync()
         {
             return await clsTransactionData.GetAllTransactionsAsync();
+        }
+
+        public static async Task<DataTable> GetAllTransactionsTypesAsync()
+        {
+            return await clsTransactionData.GetAllTransactionsTypesAsync();
         }
 
         public static async Task<(DataTable dataTable, int totalCount)> GetPagedTransactionsAsync(int pageNumber, int pageSize)

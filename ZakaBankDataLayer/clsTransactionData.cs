@@ -212,5 +212,61 @@ namespace ZakaBankDataLayer
             }
             return dt;
         }
+
+        public static async Task<DataTable> GetAllTransactionsTypesAsync()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Transactions_GetAllTransactionsTypes", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dt.Load(da); // Load the data into the table
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
+        }
+
+        public static async Task<DataTable> FindByTransactionTypeByNameAsync(string transactionTypeName)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Transactions_FindTransactionTypeByName", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@transactionTypeName", transactionTypeName);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return dt;
+        }
+
     }
 }

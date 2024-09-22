@@ -148,10 +148,12 @@ namespace ZakaBank_24.Transactions_Forms
             if (txtFilterValue.Visible) txtFilterValue.Focus();
         }
 
-        private void btnAddNewTransaction_Click(object sender, EventArgs e)
+        private async void btnAddNewTransaction_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Future Is Not Implemented Yet.", "Inforamtion", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            ShowAddTransactionsForm frm = new ShowAddTransactionsForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
         }
 
         private async void btnRight_Click(object sender, EventArgs e)

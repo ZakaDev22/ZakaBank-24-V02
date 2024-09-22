@@ -12,6 +12,12 @@ namespace ZakaBank_24.Client_Forms
 
     public partial class ShowAddEditCLientsForm : Form
     {
+        // Declare a delegate
+        public delegate void DataBackEventHandler(object sender, int clientID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
+
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
         private int ClientID = -1;
@@ -166,6 +172,9 @@ namespace ZakaBank_24.Client_Forms
                 lbTitle.Text = $" Update User With ID {_Client.ClientID}";
 
                 _Mode = enMode.Update;
+
+                // rise the event
+                DataBack?.Invoke(this, _Client.ClientID);
             }
             else
             {

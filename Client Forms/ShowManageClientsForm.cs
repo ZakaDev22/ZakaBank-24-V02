@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBank_24.People_Forms;
+using ZakaBank_24.Transfer_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Client_Forms
@@ -291,6 +292,22 @@ namespace ZakaBank_24.Client_Forms
 
             ShowPersonDetailsForm frm = new ShowPersonDetailsForm(Client.PersonID);
             frm.ShowDialog();
+        }
+
+        private async void findClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm frm = new SHowFindClientsForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void makeTransactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddTransfersForm frm = new ShowAddTransfersForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
         }
     }
 }

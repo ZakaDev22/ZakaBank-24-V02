@@ -58,11 +58,23 @@
     <Compile Include="Account Types\SHowManageAccountTypesForm.Designer.cs">
       <DependentUpon>SHowManageAccountTypesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Client Forms\ctrlClientinfoCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Client Forms\ctrlClientinfoCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlClientinfoCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client Forms\ShowAddEditCLientsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Client Forms\ShowAddEditCLientsForm.Designer.cs">
       <DependentUpon>ShowAddEditCLientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client Forms\SHowFindClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client Forms\SHowFindClientsForm.Designer.cs">
+      <DependentUpon>SHowFindClientsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Client Forms\ShowManageClientsForm.cs">
       <SubType>Form</SubType>
@@ -130,11 +142,23 @@
     <Compile Include="People Forms\ShowManagePeopleForm.Designer.cs">
       <DependentUpon>ShowManagePeopleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transactions Forms\ShowAddTransactionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions Forms\ShowAddTransactionsForm.Designer.cs">
+      <DependentUpon>ShowAddTransactionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions Forms\ShowManagTransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Transactions Forms\ShowManagTransactionsForm.Designer.cs">
       <DependentUpon>ShowManagTransactionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer Forms\ShowAddTransfersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transfer Forms\ShowAddTransfersForm.Designer.cs">
+      <DependentUpon>ShowAddTransfersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Transfer Forms\ShowManageTransfersForm.cs">
       <SubType>Form</SubType>
@@ -157,8 +181,14 @@
     <EmbeddedResource Include="Account Types\SHowManageAccountTypesForm.resx">
       <DependentUpon>SHowManageAccountTypesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Client Forms\ctrlClientinfoCardWithFilter.resx">
+      <DependentUpon>ctrlClientinfoCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Client Forms\ShowAddEditCLientsForm.resx">
       <DependentUpon>ShowAddEditCLientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client Forms\SHowFindClientsForm.resx">
+      <DependentUpon>SHowFindClientsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Client Forms\ShowManageClientsForm.resx">
       <DependentUpon>ShowManageClientsForm.cs</DependentUpon>
@@ -199,6 +229,9 @@
     </Compile>
     <EmbeddedResource Include="People Forms\ShowManagePeopleForm.resx">
       <DependentUpon>ShowManagePeopleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions Forms\ShowAddTransactionsForm.resx">
+      <DependentUpon>ShowAddTransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions Forms\ShowManagTransactionsForm.resx">
       <DependentUpon>ShowManagTransactionsForm.cs</DependentUpon>
