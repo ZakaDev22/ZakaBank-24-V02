@@ -35,7 +35,7 @@ namespace ZakaBankDataLayer
 
                     // Optional string fields
                     AddNullableParameter(cmd, "@Address", address);
-                    AddNullableParameter(cmd, "@Phone", phone);
+                    AddNullableParameter(cmd, "@PhoneNumber", phone);
                     AddNullableParameter(cmd, "@Email", email);
                     AddNullableParameter(cmd, "@ImagePath", imagePath);
 
@@ -85,14 +85,14 @@ namespace ZakaBankDataLayer
 
                     // Optional string fields
                     AddNullableParameter(cmd, "@Address", address);
-                    AddNullableParameter(cmd, "@Phone", phone);
+                    AddNullableParameter(cmd, "@PhoneNumber", phone);
                     AddNullableParameter(cmd, "@Email", email);
                     AddNullableParameter(cmd, "@ImagePath", imagePath);
 
                     try
                     {
                         await conn.OpenAsync();
-                        return (await cmd.ExecuteNonQueryAsync() > 0);
+                        return await cmd.ExecuteNonQueryAsync() > 0;
                     }
                     catch (Exception ex)
                     {

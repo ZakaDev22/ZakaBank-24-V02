@@ -63,7 +63,22 @@ namespace ZakaBankLogicLayer
 
         public static async Task<clsAccountTypes> FindByAccountTypeIDAsync(int accountTypeID)
         {
-            var dt = await clsLoginRegistersData.FindByID(accountTypeID);
+            var dt = await clsAccountTypeData.FindAccountTypeByIDAsync(accountTypeID);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                return new clsAccountTypes(
+                                            Convert.ToInt32(row["AccountTypeID"]),
+                                            Convert.ToString(row["Name"]),
+                                            Convert.ToString(row["Description"])
+                                          );
+            }
+            return null;
+        }
+
+        public static async Task<clsAccountTypes> FindByAccountTypeByNameAsync(string Name)
+        {
+            var dt = await clsAccountTypeData.FindAccountTypeByNameAsync(Name);
             if (dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];

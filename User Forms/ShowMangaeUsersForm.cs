@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.People_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.User_Forms
@@ -36,7 +37,7 @@ namespace ZakaBank_24.User_Forms
                 }
                 else
                 {
-                    dt = await clsPeople.GetAllPeopleAsync();
+                    dt = await clsUsers.GetAllUsers();
                 }
 
                 djvUsers.DataSource = null; // Clear existing data
@@ -205,7 +206,8 @@ namespace ZakaBank_24.User_Forms
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            // show add edite user form
+            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm();
+            frm.ShowDialog();
         }
 
         private async void btnRight_Click(object sender, EventArgs e)
@@ -237,6 +239,61 @@ namespace ZakaBank_24.User_Forms
         {
             if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2 || cbFilterBy.SelectedIndex == 4 || cbFilterBy.SelectedIndex == 5)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void ShowMangaeUsersForm_Load(object sender, EventArgs e)
+        {
+            cbFilterBy.SelectedIndex = 0;
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm((int)djvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var User = await clsUsers.FindByUserIDAsync((int)djvUsers.CurrentRow.Cells[0].Value);
+
+            ShowPersonDetailsForm frm = new ShowPersonDetailsForm(User.PersonID);
+            frm.ShowDialog();
+        }
+
+        private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure You Want To Delete This User ?", "Confirm", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (await clsUsers.DeleteAsync((int)djvUsers.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Success, User Was Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshDataGridViewData();
+                }
+                else
+                {
+                    MessageBox.Show("Error, User Was Not Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void findUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

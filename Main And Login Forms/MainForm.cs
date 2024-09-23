@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBank_24.Account_Types;
 using ZakaBank_24.Client_Forms;
+using ZakaBank_24.Currencies_Forms;
 using ZakaBank_24.Global_Classes;
 using ZakaBank_24.Login_Register_Forms;
+using ZakaBank_24.People_Forms;
 using ZakaBank_24.Transactions_Forms;
 using ZakaBank_24.Transfer_Forms;
 using ZakaBank_24.User_Forms;
@@ -48,7 +51,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         }
 
 
-        private async void _RefreshDashboardInformation()
+        private async Task _RefreshDashboardInformation()
         {
             var peopleTask = await clsPeople.GetAllPeopleAsync();
             var usersTask = await clsUsers.GetAllUsers();
@@ -80,7 +83,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
             ShowManagePeopleForm frm = new ShowManagePeopleForm();
 
-            frm.ShowDialog();
+            frm.Show();
 
 
             pnClickedButton.Top = btnDashboard.Top;
@@ -120,25 +123,6 @@ namespace ZakaBank_24.Main_And_Login_Forms
             pnClickedButton.Top = btnDashboard.Top;
         }
 
-        //private async Task _ShowLoginRegisterFormAndWaitAsync()
-        //{
-        //    pnClickedButton.Top = btnLoginRegisters.Top;
-
-        //    var tcs = new TaskCompletionSource<bool>();
-        //    var frm = new ShowManageLoginRegisterForm();
-
-        //    // Handle form closed event
-        //    frm.FormClosed += (s, e) => tcs.SetResult(true);
-
-        //    // Show form modally
-        //    frm.ShowDialog();
-
-        //    // Await until the form is closed
-        //    await tcs.Task;
-
-        //    // After the form is closed, execute the remaining code
-        //    pnClickedButton.Top = btnDashboard.Top;
-        //}
 
         private void btnLoginRegisters_Click(object sender, System.EventArgs e)
         {
@@ -165,21 +149,60 @@ namespace ZakaBank_24.Main_And_Login_Forms
             pnClickedButton.Top = btnDashboard.Top;
         }
 
-        private void btnDashboard_Click(object sender, System.EventArgs e)
+        private async void btnDashboard_Click(object sender, System.EventArgs e)
         {
             pnClickedButton.Top = btnDashboard.Top;
-            _RefreshDashboardInformation();
+            await _RefreshDashboardInformation();
         }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
+        private async void MainForm_Load(object sender, System.EventArgs e)
         {
             lbUserName.Text = clsGlobal._CurrentUser.UserName;
-            _RefreshDashboardInformation();
+            await _RefreshDashboardInformation();
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _Logout();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Future Will Be In The Project Soon :-)", "Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void showPersonInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPersonDetailsForm frm = new ShowPersonDetailsForm(clsGlobal._CurrentUser.PersonID);
+            frm.ShowDialog();
+        }
+
+        private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm frm = new SHowFindClientsForm(clsGlobal._CurrentUser.ID);
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void FindUsertoolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm form = new SHowFindClientsForm();
+            form.ShowDialog();
+        }
+
+        private void ATMtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void upcamingFuteresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowManageCurrenciesForm frm = new ShowManageCurrenciesForm();
+            frm.Show();
         }
     }
 }

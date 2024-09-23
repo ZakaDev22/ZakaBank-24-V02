@@ -48,8 +48,7 @@ namespace ZakaBank_24
                 {
                     //store username and password
                     if (txtPassword.Text.Length != 64)
-                        //clsGlobal.RememberUsernameAndPasswordUsingRegistry(txtUserName.Text.Trim(), clsUtil.ComputeHash(txtPassword.Text.Trim()));
-                        clsGlobal.RememberUsernameAndPasswordUsingRegistry(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                        clsGlobal.RememberUsernameAndPasswordUsingRegistry(txtUserName.Text.Trim(), clsUtil.ComputeHash(txtPassword.Text.Trim()));
                     else
                         clsGlobal.RememberUsernameAndPasswordUsingRegistry(txtUserName.Text.Trim(), txtPassword.Text.Trim());
 
@@ -73,7 +72,7 @@ namespace ZakaBank_24
                     //      
                     MainForm frm = new MainForm(this, _loginRegister.ID);
                     this.Hide();
-                    frm.ShowDialog();
+                    frm.Show();
 
                 }
                 else

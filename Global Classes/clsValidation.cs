@@ -1,4 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ZakaBank_24.Global_Classes
 {
@@ -47,6 +51,48 @@ namespace ZakaBank_24.Global_Classes
         {
             return (ValidateInteger(Number) || ValidateFloat(Number));
         }
+
+        /// <summary>
+        /// Validates a TextBox with a custom validation function.
+        /// </summary>
+        public static void ValidateTextBox(Guna2TextBox textBox, Func<string, bool> validationFunc, string errorMessage, System.ComponentModel.CancelEventArgs e, ErrorProvider errorProvider)
+        {
+            if (!validationFunc(textBox.Text))
+            {
+                errorProvider.SetError(textBox, errorMessage);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(textBox, string.Empty);
+                e.Cancel = false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the provided email is valid.
+        /// </summary>
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the provided phone number is valid (numeric and length 10).
+        /// </summary>
+        public static bool IsValidPhoneNumber(string phoneNumber)
+        {
+            return phoneNumber.All(char.IsDigit) && phoneNumber.Length == 10;
+        }
+
 
     }
 }

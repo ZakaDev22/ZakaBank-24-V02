@@ -7,6 +7,19 @@ namespace ZakaBankLogicLayer
 {
     public class clsUsers
     {
+        [Flags]
+        public enum enPermissions
+        {
+            None = 0,
+            People = 1 << 0,       // 1
+            Users = 1 << 1,    // 2
+            Clients = 1 << 2, // 4
+            Transactions = 1 << 3, // 8
+            Transfers = 1 << 4, // 16
+            LoginRegisters = 1 << 5, // 32
+
+            All = People | Users | Clients | Transactions | Transfers | LoginRegisters
+        }
 
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
@@ -54,13 +67,13 @@ namespace ZakaBankLogicLayer
 
         private async Task<bool> _AddNewUser()
         {
-            this.ID = await clsUsersData.AddNewUser(PersonID, UserName, PassWordHash, CreatedDate, UpdatedDate, Permissions, AddedByUserID);
+            this.ID = await clsUsersData.AddNewUser(PersonID, UserName, PassWordHash, Permissions, AddedByUserID);
             return (this.ID != -1);
         }
 
         private async Task<bool> _UpdateUser()
         {
-            return await clsUsersData.UpdateUser(ID, PersonID, UserName, PassWordHash, CreatedDate, UpdatedDate, Permissions, AddedByUserID);
+            return await clsUsersData.UpdateUser(ID, UserName, PassWordHash, Permissions);
         }
 
         public async Task<bool> SaveAsync()
@@ -144,6 +157,11 @@ namespace ZakaBankLogicLayer
         public static async Task<bool> ExistsByIDAsync(int id)
         {
             return await clsUsersData.UserExists(id);
+        }
+
+        public static async Task<bool> ExistsByPersonIDAsync(int id)
+        {
+            return await clsUsersData.ExistsByPersonIDAsync(id);
         }
 
         public static async Task<DataTable> GetAllUsers()

@@ -193,10 +193,12 @@ namespace ZakaBank_24.Transfer_Forms
             if (txtFilterValue.Visible) txtFilterValue.Focus(); // Focus on the filter value when the filter is not "None"
         }
 
-        private void btnAddNewUser_Click(object sender, EventArgs e)
+        private async void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Future Is Not Implemented Yet.", "Inforamtion", MessageBoxButtons.OK,
-                                   MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            ShowAddTransfersForm frm = new ShowAddTransfersForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
         }
 
         private void btnCLose_Click(object sender, EventArgs e)

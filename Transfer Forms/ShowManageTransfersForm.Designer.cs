@@ -36,18 +36,15 @@
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.btnLeft = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
             this.lbRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.djvTransfers = new System.Windows.Forms.DataGridView();
-            this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.lbSize = new System.Windows.Forms.Label();
             this.cbPageSize = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbByPages = new System.Windows.Forms.RadioButton();
-            this.rbAllPeople = new System.Windows.Forms.RadioButton();
+            this.rbByAll = new System.Windows.Forms.RadioButton();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +52,9 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnAddNewTransfer = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvTransfers)).BeginInit();
@@ -158,38 +158,6 @@
             this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(821, 21);
             this.guna2CustomGradientPanel3.TabIndex = 10;
             // 
-            // btnLeft
-            // 
-            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
-            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnLeft.FlatAppearance.BorderSize = 0;
-            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLeft.Location = new System.Drawing.Point(338, 533);
-            this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(67, 44);
-            this.btnLeft.TabIndex = 138;
-            this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
-            // 
-            // btnRight
-            // 
-            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
-            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRight.FlatAppearance.BorderSize = 0;
-            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRight.Location = new System.Drawing.Point(484, 534);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(67, 44);
-            this.btnRight.TabIndex = 137;
-            this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
-            // 
             // lbRecords
             // 
             this.lbRecords.AutoSize = true;
@@ -234,6 +202,7 @@
             this.djvTransfers.AllowUserToDeleteRows = false;
             this.djvTransfers.AllowUserToOrderColumns = true;
             this.djvTransfers.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.djvTransfers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.djvTransfers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.djvTransfers.GridColor = System.Drawing.Color.White;
             this.djvTransfers.Location = new System.Drawing.Point(37, 240);
@@ -241,33 +210,6 @@
             this.djvTransfers.ReadOnly = true;
             this.djvTransfers.Size = new System.Drawing.Size(779, 275);
             this.djvTransfers.TabIndex = 133;
-            // 
-            // btnAddNewUser
-            // 
-            this.btnAddNewUser.Animated = true;
-            this.btnAddNewUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddNewUser.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnAddNewUser.BorderRadius = 25;
-            this.btnAddNewUser.BorderThickness = 2;
-            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewUser.FillColor = System.Drawing.Color.Blue;
-            this.btnAddNewUser.FillColor2 = System.Drawing.Color.Red;
-            this.btnAddNewUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUser.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.btnAddNewUser.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
-            this.btnAddNewUser.Location = new System.Drawing.Point(636, 172);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(180, 62);
-            this.btnAddNewUser.TabIndex = 132;
-            this.btnAddNewUser.Text = "Add New Transfer";
-            this.btnAddNewUser.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // lbSize
             // 
@@ -308,7 +250,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.rbByPages);
-            this.groupBox1.Controls.Add(this.rbAllPeople);
+            this.groupBox1.Controls.Add(this.rbByAll);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(48, 112);
             this.groupBox1.Name = "groupBox1";
@@ -331,18 +273,18 @@
             this.rbByPages.UseVisualStyleBackColor = true;
             this.rbByPages.CheckedChanged += new System.EventHandler(this.rbByPages_CheckedChanged);
             // 
-            // rbAllPeople
+            // rbByAll
             // 
-            this.rbAllPeople.AutoSize = true;
-            this.rbAllPeople.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbAllPeople.ForeColor = System.Drawing.Color.Teal;
-            this.rbAllPeople.Location = new System.Drawing.Point(17, 20);
-            this.rbAllPeople.Name = "rbAllPeople";
-            this.rbAllPeople.Size = new System.Drawing.Size(89, 22);
-            this.rbAllPeople.TabIndex = 0;
-            this.rbAllPeople.TabStop = true;
-            this.rbAllPeople.Text = "All People";
-            this.rbAllPeople.UseVisualStyleBackColor = true;
+            this.rbByAll.AutoSize = true;
+            this.rbByAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbByAll.ForeColor = System.Drawing.Color.Teal;
+            this.rbByAll.Location = new System.Drawing.Point(17, 20);
+            this.rbByAll.Name = "rbByAll";
+            this.rbByAll.Size = new System.Drawing.Size(63, 22);
+            this.rbByAll.TabIndex = 0;
+            this.rbByAll.TabStop = true;
+            this.rbByAll.Text = "By All";
+            this.rbByAll.UseVisualStyleBackColor = true;
             // 
             // cbFilterBy
             // 
@@ -408,6 +350,65 @@
             this.guna2AnimateWindow1.Interval = 250;
             this.guna2AnimateWindow1.TargetForm = this;
             // 
+            // btnLeft
+            // 
+            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLeft.FlatAppearance.BorderSize = 0;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLeft.Location = new System.Drawing.Point(338, 533);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(67, 44);
+            this.btnLeft.TabIndex = 138;
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnRight.FlatAppearance.BorderSize = 0;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRight.Location = new System.Drawing.Point(484, 534);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(67, 44);
+            this.btnRight.TabIndex = 137;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
+            // btnAddNewTransfer
+            // 
+            this.btnAddNewTransfer.Animated = true;
+            this.btnAddNewTransfer.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddNewTransfer.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnAddNewTransfer.BorderRadius = 25;
+            this.btnAddNewTransfer.BorderThickness = 2;
+            this.btnAddNewTransfer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNewTransfer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewTransfer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewTransfer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewTransfer.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewTransfer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNewTransfer.FillColor = System.Drawing.Color.Blue;
+            this.btnAddNewTransfer.FillColor2 = System.Drawing.Color.Red;
+            this.btnAddNewTransfer.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddNewTransfer.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewTransfer.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.btnAddNewTransfer.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
+            this.btnAddNewTransfer.Location = new System.Drawing.Point(636, 172);
+            this.btnAddNewTransfer.Name = "btnAddNewTransfer";
+            this.btnAddNewTransfer.Size = new System.Drawing.Size(180, 62);
+            this.btnAddNewTransfer.TabIndex = 132;
+            this.btnAddNewTransfer.Text = "Add New Transfer";
+            this.btnAddNewTransfer.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnAddNewTransfer.Click += new System.EventHandler(this.btnAddNewUser_Click);
+            // 
             // ShowManageTransfersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,7 +420,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.djvTransfers);
-            this.Controls.Add(this.btnAddNewUser);
+            this.Controls.Add(this.btnAddNewTransfer);
             this.Controls.Add(this.lbSize);
             this.Controls.Add(this.cbPageSize);
             this.Controls.Add(this.groupBox1);
@@ -460,12 +461,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.DataGridView djvTransfers;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewUser;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewTransfer;
         private System.Windows.Forms.Label lbSize;
         private System.Windows.Forms.ComboBox cbPageSize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbByPages;
-        private System.Windows.Forms.RadioButton rbAllPeople;
+        private System.Windows.Forms.RadioButton rbByAll;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;

@@ -14,7 +14,7 @@ namespace ZakaBankDataLayer
             cmd.Parameters.AddWithValue(paramName, value ?? DBNull.Value);
         }
 
-        public static async Task<int> AddNewUser(int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
+        public static async Task<int> AddNewUser(int personID, string userName, string passwordHash, int permissions, int? addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -25,11 +25,9 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@UserName", userName);
                     cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
 
                     // nullable parameters
-                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
                     AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
 
                     SqlParameter outParameter = new SqlParameter("@ID", SqlDbType.Int)
@@ -54,7 +52,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static async Task<bool> UpdateUser(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID)
+        public static async Task<bool> UpdateUser(int id, string userName, string passwordHash, int permissions)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -64,16 +62,11 @@ namespace ZakaBankDataLayer
 
                     cmd.Parameters.AddWithValue("@UserID", id);
 
-                    cmd.Parameters.AddWithValue("@PersonID", personID);
                     cmd.Parameters.AddWithValue("@UserName", userName);
                     cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                    cmd.Parameters.AddWithValue("@UpdatedDate", updatedDate);
                     cmd.Parameters.AddWithValue("@Permissions", permissions);
 
-                    // nullable parameters
-                    AddNullableParameter(cmd, "@UpdatedDate", updatedDate);
-                    AddNullableParameter(cmd, "@AddedByUserID", addedByUserID);
+
 
                     try
                     {
@@ -119,6 +112,31 @@ namespace ZakaBankDataLayer
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("sp_Users_ExistsByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", id);
+
+                        await conn.OpenAsync();
+                        object result = await cmd.ExecuteScalarAsync();
+
+                        return Convert.ToBoolean(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+        }
+
+        public static async Task<bool> ExistsByPersonIDAsync(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_ExistsByPersonID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", id);
@@ -214,7 +232,7 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Users_FindByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Parameters.AddWithValue("@UserID", id);
 
                         await conn.OpenAsync();
                         using (SqlDataReader da = await cmd.ExecuteReaderAsync())

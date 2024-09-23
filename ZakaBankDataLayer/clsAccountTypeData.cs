@@ -181,7 +181,7 @@ namespace ZakaBankDataLayer
             return (dataTable, totalCount);
         }
 
-        public static async Task<bool> FindAccountTypeByIDAsync(int accountTypeId)
+        public static async Task<DataTable> FindAccountTypeByIDAsync(int accountTypeId)
         {
             var dt = new DataTable();
             try
@@ -204,9 +204,35 @@ namespace ZakaBankDataLayer
             catch (Exception ex)
             {
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                return false;
             }
-            return false;
+            return dt;
+        }
+
+        public static async Task<DataTable> FindAccountTypeByNameAsync(string Name)
+        {
+            var dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_AccountTypes_FindByName", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Name", Name);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return dt;
         }
     }
 }

@@ -102,6 +102,11 @@ namespace ZakaBankLogicLayer
             return await clsClientsData.ClientExistsAsync(clientID);
         }
 
+        public static async Task<bool> ExistsByPersonIDAsync(int personID)
+        {
+            return await clsClientsData.ExistsByPersonIDAsync(personID);
+        }
+
         public static async Task<DataTable> GetAllClientsAsync()
         {
             return await clsClientsData.GetAllClientsAsync();

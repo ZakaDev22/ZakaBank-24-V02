@@ -38,11 +38,14 @@
             this.cbPageSize = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbByPages = new System.Windows.Forms.RadioButton();
-            this.rbAllPeople = new System.Windows.Forms.RadioButton();
+            this.rbByAll = new System.Windows.Forms.RadioButton();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.djvClients = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.lbRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
@@ -50,14 +53,22 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnAddNewClient = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvClients)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +170,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.rbByPages);
-            this.groupBox1.Controls.Add(this.rbAllPeople);
+            this.groupBox1.Controls.Add(this.rbByAll);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(38, 99);
             this.groupBox1.Name = "groupBox1";
@@ -182,18 +193,18 @@
             this.rbByPages.UseVisualStyleBackColor = true;
             this.rbByPages.CheckedChanged += new System.EventHandler(this.rbByPages_CheckedChanged);
             // 
-            // rbAllPeople
+            // rbByAll
             // 
-            this.rbAllPeople.AutoSize = true;
-            this.rbAllPeople.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbAllPeople.ForeColor = System.Drawing.Color.Teal;
-            this.rbAllPeople.Location = new System.Drawing.Point(17, 20);
-            this.rbAllPeople.Name = "rbAllPeople";
-            this.rbAllPeople.Size = new System.Drawing.Size(89, 22);
-            this.rbAllPeople.TabIndex = 0;
-            this.rbAllPeople.TabStop = true;
-            this.rbAllPeople.Text = "All People";
-            this.rbAllPeople.UseVisualStyleBackColor = true;
+            this.rbByAll.AutoSize = true;
+            this.rbByAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbByAll.ForeColor = System.Drawing.Color.Teal;
+            this.rbByAll.Location = new System.Drawing.Point(17, 20);
+            this.rbByAll.Name = "rbByAll";
+            this.rbByAll.Size = new System.Drawing.Size(63, 22);
+            this.rbByAll.TabIndex = 0;
+            this.rbByAll.TabStop = true;
+            this.rbByAll.Text = "By All";
+            this.rbByAll.UseVisualStyleBackColor = true;
             // 
             // cbFilterBy
             // 
@@ -242,13 +253,43 @@
             this.djvClients.AllowUserToDeleteRows = false;
             this.djvClients.AllowUserToOrderColumns = true;
             this.djvClients.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.djvClients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.djvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.djvClients.ContextMenuStrip = this.contextMenuStrip1;
             this.djvClients.GridColor = System.Drawing.Color.White;
             this.djvClients.Location = new System.Drawing.Point(24, 227);
             this.djvClients.Name = "djvClients";
             this.djvClients.ReadOnly = true;
             this.djvClients.Size = new System.Drawing.Size(888, 275);
             this.djvClients.TabIndex = 105;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.personDetailsToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.addNewToolStripMenuItem,
+            this.updateToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.findClientToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.makeTransactionToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 214);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(214, 6);
             // 
             // lbRecords
             // 
@@ -312,6 +353,11 @@
             this.guna2DragControl2.TargetControl = this;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 6);
+            // 
             // btnLeft
             // 
             this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
@@ -366,6 +412,57 @@
             this.btnAddNewClient.TabIndex = 112;
             this.btnAddNewClient.Text = "Add New Client";
             this.btnAddNewClient.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnAddNewClient.Click += new System.EventHandler(this.btnAddNewClient_Click);
+            // 
+            // personDetailsToolStripMenuItem
+            // 
+            this.personDetailsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
+            this.personDetailsToolStripMenuItem.Name = "personDetailsToolStripMenuItem";
+            this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.personDetailsToolStripMenuItem.Text = "Person Details";
+            this.personDetailsToolStripMenuItem.Click += new System.EventHandler(this.personDetailsToolStripMenuItem_Click);
+            // 
+            // addNewToolStripMenuItem
+            // 
+            this.addNewToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Add_128;
+            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.addNewToolStripMenuItem.Text = "Add New";
+            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Update_128;
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Delete_128;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // findClientToolStripMenuItem
+            // 
+            this.findClientToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Search_32;
+            this.findClientToolStripMenuItem.Name = "findClientToolStripMenuItem";
+            this.findClientToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.findClientToolStripMenuItem.Text = "Find Client";
+            this.findClientToolStripMenuItem.Click += new System.EventHandler(this.findClientToolStripMenuItem_Click);
+            // 
+            // makeTransactionToolStripMenuItem
+            // 
+            this.makeTransactionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.makeTransactionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.makeTransactionToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.TransferMony_128;
+            this.makeTransactionToolStripMenuItem.Name = "makeTransactionToolStripMenuItem";
+            this.makeTransactionToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.makeTransactionToolStripMenuItem.Text = "Transfer To";
+            this.makeTransactionToolStripMenuItem.Click += new System.EventHandler(this.makeTransactionToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -434,6 +531,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvClients)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -454,7 +552,7 @@
         private System.Windows.Forms.ComboBox cbPageSize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbByPages;
-        private System.Windows.Forms.RadioButton rbAllPeople;
+        private System.Windows.Forms.RadioButton rbByAll;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;
@@ -468,5 +566,15 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem personDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem findClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem makeTransactionToolStripMenuItem;
     }
 }

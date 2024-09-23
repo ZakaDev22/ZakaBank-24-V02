@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -44,7 +42,7 @@
             this.cbPageSize = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbByPages = new System.Windows.Forms.RadioButton();
-            this.rbAllPeople = new System.Windows.Forms.RadioButton();
+            this.rbByAll = new System.Windows.Forms.RadioButton();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,10 +52,12 @@
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvLoginRegisters)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -74,41 +74,6 @@
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(808, 71);
             this.guna2CustomGradientPanel4.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
-            this.pictureBox1.Location = new System.Drawing.Point(400, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(727, 5);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(73, 63);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -201,6 +166,7 @@
             this.djvLoginRegisters.AllowUserToDeleteRows = false;
             this.djvLoginRegisters.AllowUserToOrderColumns = true;
             this.djvLoginRegisters.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.djvLoginRegisters.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.djvLoginRegisters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.djvLoginRegisters.GridColor = System.Drawing.Color.White;
             this.djvLoginRegisters.Location = new System.Drawing.Point(39, 233);
@@ -248,7 +214,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.rbByPages);
-            this.groupBox1.Controls.Add(this.rbAllPeople);
+            this.groupBox1.Controls.Add(this.rbByAll);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(50, 105);
             this.groupBox1.Name = "groupBox1";
@@ -271,18 +237,18 @@
             this.rbByPages.UseVisualStyleBackColor = true;
             this.rbByPages.CheckedChanged += new System.EventHandler(this.rbByPages_CheckedChanged);
             // 
-            // rbAllPeople
+            // rbByAll
             // 
-            this.rbAllPeople.AutoSize = true;
-            this.rbAllPeople.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbAllPeople.ForeColor = System.Drawing.Color.Teal;
-            this.rbAllPeople.Location = new System.Drawing.Point(17, 20);
-            this.rbAllPeople.Name = "rbAllPeople";
-            this.rbAllPeople.Size = new System.Drawing.Size(89, 22);
-            this.rbAllPeople.TabIndex = 0;
-            this.rbAllPeople.TabStop = true;
-            this.rbAllPeople.Text = "All People";
-            this.rbAllPeople.UseVisualStyleBackColor = true;
+            this.rbByAll.AutoSize = true;
+            this.rbByAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbByAll.ForeColor = System.Drawing.Color.Teal;
+            this.rbByAll.Location = new System.Drawing.Point(17, 20);
+            this.rbByAll.Name = "rbByAll";
+            this.rbByAll.Size = new System.Drawing.Size(63, 22);
+            this.rbByAll.TabIndex = 0;
+            this.rbByAll.TabStop = true;
+            this.rbByAll.Text = "By All";
+            this.rbByAll.UseVisualStyleBackColor = true;
             // 
             // cbFilterBy
             // 
@@ -379,6 +345,41 @@
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
+            this.pictureBox1.Location = new System.Drawing.Point(400, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnCLose
+            // 
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(727, 5);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(73, 63);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
             // ShowManageLoginRegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,10 +407,10 @@
             this.Text = "ShowManageLoginRegisterForm";
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvLoginRegisters)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,7 +435,7 @@
         private System.Windows.Forms.ComboBox cbPageSize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbByPages;
-        private System.Windows.Forms.RadioButton rbAllPeople;
+        private System.Windows.Forms.RadioButton rbByAll;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;

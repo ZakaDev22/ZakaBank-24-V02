@@ -3,6 +3,8 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.People_Forms;
+using ZakaBank_24.Transfer_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Client_Forms
@@ -237,6 +239,75 @@ namespace ZakaBank_24.Client_Forms
         private void ShowManageClientsForm_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
+        }
+
+        private async void btnAddNewClient_Click(object sender, EventArgs e)
+        {
+            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure You Want To Delete This Client ?", "Confirm", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (await clsClients.DeleteAsync((int)djvClients.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Success, Client Was Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshDataGridViewData();
+                }
+                else
+                {
+                    MessageBox.Show("Error, Client Was Not Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private async void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Client = await clsClients.FindByClientIDAsync((int)djvClients.CurrentRow.Cells[0].Value);
+
+            ShowPersonDetailsForm frm = new ShowPersonDetailsForm(Client.PersonID);
+            frm.ShowDialog();
+        }
+
+        private async void findClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm frm = new SHowFindClientsForm();
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void makeTransactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddTransfersForm frm = new ShowAddTransfersForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
         }
     }
 }

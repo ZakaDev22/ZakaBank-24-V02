@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.People_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24
@@ -231,11 +232,12 @@ namespace ZakaBank_24
             cbFilterBy.SelectedIndex = 0;
         }
 
-        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        private async void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             // Show Add Edite Person Form
-            // AddEditePersonForm addEditePersonForm = new AddEditePersonForm();
-            // addEditePersonForm.ShowDialog();
+            ShowAddEditePeopleForm frm = new ShowAddEditePeopleForm();
+            frm.ShowDialog();
+            await _RefreshAllPeople();
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -243,6 +245,55 @@ namespace ZakaBank_24
             //this will allow only digits if person id is selected
             if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 5)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditePeopleForm frm = new ShowAddEditePeopleForm((int)djvPeople.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshAllPeople();
+        }
+
+        private void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPersonDetailsForm frm = new ShowPersonDetailsForm((int)djvPeople.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
+
+        private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAddEditePeopleForm frm = new ShowAddEditePeopleForm();
+            frm.ShowDialog();
+
+            await _RefreshAllPeople();
+        }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure You Want To Delete This Person ?", "Confirm", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (await clsPeople.DeletePersonAsync((int)djvPeople.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Success, Person Was Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshAllPeople();
+                }
+                else
+                {
+                    MessageBox.Show("Error, Person Was Not Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void findPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowFindPersonForm frm = new ShowFindPersonForm();
+            frm.ShowDialog();
         }
     }
 }

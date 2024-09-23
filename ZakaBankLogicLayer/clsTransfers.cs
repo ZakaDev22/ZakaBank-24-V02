@@ -38,13 +38,13 @@ namespace ZakaBankLogicLayer
 
         private async Task<bool> _AddNewTransferAsync()
         {
-            this.TransferID = await clsTransferData.AddNewTransferAsync(FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
+            this.TransferID = await clsTransferData.AddNewTransferAsync(FromAccountID, ToAccountID, Amount, Description, AddedByUserID);
             return (this.TransferID != -1);
         }
 
         private async Task<bool> _UpdateTransferAsync()
         {
-            return await clsTransferData.UpdateTransferAsync(TransferID, FromAccountID, ToAccountID, Amount, TransferDate, Description, AddedByUserID);
+            return await clsTransferData.UpdateTransferAsync(TransferID, FromAccountID, ToAccountID, Amount, Description, AddedByUserID);
         }
 
         public async Task<bool> SaveAsync()
