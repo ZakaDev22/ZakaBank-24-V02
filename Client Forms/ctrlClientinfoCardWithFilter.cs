@@ -65,6 +65,11 @@ namespace ZakaBank_24.Client_Forms
             txtFilterBy.Focus();
         }
 
+        public void PerformClick()
+        {
+            btnFind.PerformClick();
+        }
+
         /// <summary>
         /// Get The Client Object And Fill The Label Controls With The data Inside The Client obj
         /// </summary>

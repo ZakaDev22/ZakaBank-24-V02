@@ -163,6 +163,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Currencies_128 {
+            get {
+                object obj = ResourceManager.GetObject("Currencies-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DateOfBirth_128 {
             get {
                 object obj = ResourceManager.GetObject("DateOfBirth-128", resourceCulture);
@@ -333,6 +343,16 @@ namespace ZakaBank_24.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Next_256 {
+            get {
+                object obj = ResourceManager.GetObject("Next-256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Password_32 {
             get {
                 object obj = ResourceManager.GetObject("Password 32", resourceCulture);
@@ -386,6 +406,16 @@ namespace ZakaBank_24.Properties {
         internal static System.Drawing.Bitmap Pictogrammers_Material_History_48 {
             get {
                 object obj = ResourceManager.GetObject("Pictogrammers-Material-History.48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Previous_256 {
+            get {
+                object obj = ResourceManager.GetObject("Previous-256", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

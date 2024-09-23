@@ -72,7 +72,7 @@ namespace ZakaBank_24
                     //      
                     MainForm frm = new MainForm(this, _loginRegister.ID);
                     this.Hide();
-                    frm.ShowDialog();
+                    frm.Show();
 
                 }
                 else

@@ -227,6 +227,7 @@
             this.btnNext.Animated = true;
             this.btnNext.AutoRoundedCorners = true;
             this.btnNext.BorderRadius = 21;
+            this.btnNext.BorderThickness = 1;
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -473,6 +474,7 @@
             this.btnSave.Animated = true;
             this.btnSave.AutoRoundedCorners = true;
             this.btnSave.BorderRadius = 21;
+            this.btnSave.BorderThickness = 1;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

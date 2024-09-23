@@ -34,12 +34,16 @@
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.lbTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ctrlClientinfoCardWithFilter1 = new ZakaBank_24.Client_Forms.ctrlClientinfoCardWithFilter();
+            this.linkClientHistory = new System.Windows.Forms.LinkLabel();
+            this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.gbTransactionInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -51,10 +55,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbTransactionTypes = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ctrlClientinfoCardWithFilter1 = new ZakaBank_24.Client_Forms.ctrlClientinfoCardWithFilter();
-            this.linkClientHistory = new System.Windows.Forms.LinkLabel();
-            this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -125,6 +125,30 @@
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Add New Transaction";
             // 
+            // btnCLose
+            // 
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(1226, 7);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(75, 49);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
             // guna2AnimateWindow1
             // 
             this.guna2AnimateWindow1.Interval = 250;
@@ -174,6 +198,55 @@
             this.splitContainer1.SplitterDistance = 893;
             this.splitContainer1.TabIndex = 15;
             // 
+            // ctrlClientinfoCardWithFilter1
+            // 
+            this.ctrlClientinfoCardWithFilter1.FilterEnabled = true;
+            this.ctrlClientinfoCardWithFilter1.Location = new System.Drawing.Point(2, 0);
+            this.ctrlClientinfoCardWithFilter1.Name = "ctrlClientinfoCardWithFilter1";
+            this.ctrlClientinfoCardWithFilter1.Size = new System.Drawing.Size(864, 658);
+            this.ctrlClientinfoCardWithFilter1.TabIndex = 0;
+            this.ctrlClientinfoCardWithFilter1.OnClientSelected += new System.Action<int>(this.ctrlClientinfoCardWithFilter1_OnClientSelected);
+            this.ctrlClientinfoCardWithFilter1.OntxtFilterValueEmpty += new System.Action<bool>(this.ctrlClientinfoCardWithFilter1_OntxtFilterValueEmpty);
+            // 
+            // linkClientHistory
+            // 
+            this.linkClientHistory.AutoSize = true;
+            this.linkClientHistory.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkClientHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkClientHistory.Location = new System.Drawing.Point(100, 496);
+            this.linkClientHistory.Name = "linkClientHistory";
+            this.linkClientHistory.Size = new System.Drawing.Size(194, 31);
+            this.linkClientHistory.TabIndex = 28;
+            this.linkClientHistory.TabStop = true;
+            this.linkClientHistory.Text = " Client History.";
+            this.linkClientHistory.Visible = false;
+            this.linkClientHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClientHistory_LinkClicked);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Animated = true;
+            this.btnSave.AutoRoundedCorners = true;
+            this.btnSave.BorderRadius = 21;
+            this.btnSave.BorderThickness = 1;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Enabled = false;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::ZakaBank_24.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(114, 604);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(180, 45);
+            this.btnSave.TabIndex = 27;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // gbTransactionInfo
             // 
             this.gbTransactionInfo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -195,7 +268,7 @@
             this.gbTransactionInfo.ForeColor = System.Drawing.Color.Red;
             this.gbTransactionInfo.Location = new System.Drawing.Point(16, 18);
             this.gbTransactionInfo.Name = "gbTransactionInfo";
-            this.gbTransactionInfo.Size = new System.Drawing.Size(358, 447);
+            this.gbTransactionInfo.Size = new System.Drawing.Size(371, 447);
             this.gbTransactionInfo.TabIndex = 0;
             this.gbTransactionInfo.Text = "Transaction Information";
             // 
@@ -260,6 +333,7 @@
             this.txtAmount.SelectedText = "";
             this.txtAmount.Size = new System.Drawing.Size(195, 44);
             this.txtAmount.TabIndex = 32;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             this.txtAmount.Validating += new System.ComponentModel.CancelEventHandler(this.txtAmount_Validating);
             // 
             // lbUserID
@@ -351,79 +425,6 @@
             this.label8.Size = new System.Drawing.Size(120, 22);
             this.label8.TabIndex = 29;
             this.label8.Text = "TransactType :";
-            // 
-            // ctrlClientinfoCardWithFilter1
-            // 
-            this.ctrlClientinfoCardWithFilter1.FilterEnabled = true;
-            this.ctrlClientinfoCardWithFilter1.Location = new System.Drawing.Point(2, 0);
-            this.ctrlClientinfoCardWithFilter1.Name = "ctrlClientinfoCardWithFilter1";
-            this.ctrlClientinfoCardWithFilter1.Size = new System.Drawing.Size(864, 658);
-            this.ctrlClientinfoCardWithFilter1.TabIndex = 0;
-            this.ctrlClientinfoCardWithFilter1.OnClientSelected += new System.Action<int>(this.ctrlClientinfoCardWithFilter1_OnClientSelected);
-            this.ctrlClientinfoCardWithFilter1.OntxtFilterValueEmpty += new System.Action<bool>(this.ctrlClientinfoCardWithFilter1_OntxtFilterValueEmpty);
-            // 
-            // linkClientHistory
-            // 
-            this.linkClientHistory.AutoSize = true;
-            this.linkClientHistory.Enabled = false;
-            this.linkClientHistory.Font = new System.Drawing.Font("Sitka Text", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkClientHistory.Image = global::ZakaBank_24.Properties.Resources.History_48;
-            this.linkClientHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkClientHistory.Location = new System.Drawing.Point(20, 479);
-            this.linkClientHistory.Name = "linkClientHistory";
-            this.linkClientHistory.Size = new System.Drawing.Size(208, 30);
-            this.linkClientHistory.TabIndex = 28;
-            this.linkClientHistory.TabStop = true;
-            this.linkClientHistory.Text = "       Client History.";
-            this.linkClientHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClientHistory_LinkClicked);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Animated = true;
-            this.btnSave.AutoRoundedCorners = true;
-            this.btnSave.BorderRadius = 21;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Enabled = false;
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnSave.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::ZakaBank_24.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(114, 604);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(180, 45);
-            this.btnSave.TabIndex = 27;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(1226, 7);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(75, 49);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // ShowAddTransactionsForm
             // 

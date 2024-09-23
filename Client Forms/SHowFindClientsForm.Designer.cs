@@ -33,8 +33,8 @@
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.lbTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.lbTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ctrlClientinfoCardWithFilter1 = new ZakaBank_24.Client_Forms.ctrlClientinfoCardWithFilter();
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -97,17 +97,6 @@
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(924, 56);
             this.guna2CustomGradientPanel4.TabIndex = 15;
             // 
-            // lbTitle
-            // 
-            this.lbTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lbTitle.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.ForeColor = System.Drawing.Color.SeaShell;
-            this.lbTitle.Location = new System.Drawing.Point(226, 3);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(287, 37);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "Find Clients By ID";
-            // 
             // btnCLose
             // 
             this.btnCLose.Animated = true;
@@ -130,6 +119,18 @@
             this.btnCLose.Size = new System.Drawing.Size(60, 50);
             this.btnCLose.TabIndex = 1;
             this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lbTitle.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.ForeColor = System.Drawing.Color.SeaShell;
+            this.lbTitle.Location = new System.Drawing.Point(226, 3);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(287, 37);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "Find Clients By ID";
             // 
             // splitContainer1
             // 
@@ -178,7 +179,7 @@
             // 
             // guna2AnimateWindow1
             // 
-            this.guna2AnimateWindow1.Interval = 250;
+            this.guna2AnimateWindow1.Interval = 200;
             this.guna2AnimateWindow1.TargetForm = this;
             // 
             // SHowFindClientsForm
@@ -193,6 +194,7 @@
             this.Controls.Add(this.guna2CustomGradientPanel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SHowFindClientsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SHowFindClientsForm";
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();

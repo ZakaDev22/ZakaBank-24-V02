@@ -10,17 +10,16 @@ namespace ZakaBankDataLayer
     {
 
 
-        public static async Task<int> AddNewTransferAsync(int fromAccountID, int toAccountID, decimal amount, DateTime transferDate, string description, int addedByUserID)
+        public static async Task<int> AddNewTransferAsync(int fromAccountID, int toAccountID, decimal amount, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_Transfers_AddNewTransfer", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_Client_MakeTransfer", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@FromAccountID", fromAccountID);
-                    cmd.Parameters.AddWithValue("@ToAccountID", toAccountID);
+                    cmd.Parameters.AddWithValue("@SenderClientID", fromAccountID);
+                    cmd.Parameters.AddWithValue("@ReceiverClientID", toAccountID);
                     cmd.Parameters.AddWithValue("@Amount", amount);
-                    cmd.Parameters.AddWithValue("@TransferDate", transferDate);
                     cmd.Parameters.AddWithValue("@Description", description);
                     cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 
@@ -28,13 +27,14 @@ namespace ZakaBankDataLayer
                     {
                         Direction = ParameterDirection.Output
                     };
+
                     cmd.Parameters.Add(outParameter);
 
                     try
                     {
                         await conn.OpenAsync();
                         await cmd.ExecuteScalarAsync();
-                        return (int)outParameter.Value;
+                        return outParameter.Value == DBNull.Value ? -1 : (int)outParameter.Value;
                     }
                     catch (Exception ex)
                     {
@@ -45,7 +45,7 @@ namespace ZakaBankDataLayer
             }
         }
 
-        public static async Task<bool> UpdateTransferAsync(int transferID, int fromAccountID, int toAccountID, decimal amount, DateTime transferDate, string description, int addedByUserID)
+        public static async Task<bool> UpdateTransferAsync(int transferID, int fromAccountID, int toAccountID, decimal amount, string description, int addedByUserID)
         {
             using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
             {
@@ -56,7 +56,6 @@ namespace ZakaBankDataLayer
                     cmd.Parameters.AddWithValue("@FromAccountID", fromAccountID);
                     cmd.Parameters.AddWithValue("@ToAccountID", toAccountID);
                     cmd.Parameters.AddWithValue("@Amount", amount);
-                    cmd.Parameters.AddWithValue("@TransferDate", transferDate);
                     cmd.Parameters.AddWithValue("@Description", description);
                     cmd.Parameters.AddWithValue("@AddedByUserID", addedByUserID);
 

@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -52,13 +54,11 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
-            this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnAddNewTransfer = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvTransfers)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -75,6 +75,41 @@
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(857, 71);
             this.guna2CustomGradientPanel4.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
+            this.pictureBox1.Location = new System.Drawing.Point(309, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnCLose
+            // 
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(772, 5);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(73, 63);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -347,67 +382,32 @@
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
-            // btnAddNewUser
+            // btnAddNewTransfer
             // 
-            this.btnAddNewUser.Animated = true;
-            this.btnAddNewUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddNewUser.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnAddNewUser.BorderRadius = 25;
-            this.btnAddNewUser.BorderThickness = 2;
-            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewUser.FillColor = System.Drawing.Color.Blue;
-            this.btnAddNewUser.FillColor2 = System.Drawing.Color.Red;
-            this.btnAddNewUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUser.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.btnAddNewUser.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
-            this.btnAddNewUser.Location = new System.Drawing.Point(636, 172);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(180, 62);
-            this.btnAddNewUser.TabIndex = 132;
-            this.btnAddNewUser.Text = "Add New Transfer";
-            this.btnAddNewUser.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
-            this.pictureBox1.Location = new System.Drawing.Point(309, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(772, 5);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(73, 63);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            this.btnAddNewTransfer.Animated = true;
+            this.btnAddNewTransfer.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddNewTransfer.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnAddNewTransfer.BorderRadius = 25;
+            this.btnAddNewTransfer.BorderThickness = 2;
+            this.btnAddNewTransfer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNewTransfer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewTransfer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewTransfer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewTransfer.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewTransfer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNewTransfer.FillColor = System.Drawing.Color.Blue;
+            this.btnAddNewTransfer.FillColor2 = System.Drawing.Color.Red;
+            this.btnAddNewTransfer.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddNewTransfer.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewTransfer.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.btnAddNewTransfer.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
+            this.btnAddNewTransfer.Location = new System.Drawing.Point(636, 172);
+            this.btnAddNewTransfer.Name = "btnAddNewTransfer";
+            this.btnAddNewTransfer.Size = new System.Drawing.Size(180, 62);
+            this.btnAddNewTransfer.TabIndex = 132;
+            this.btnAddNewTransfer.Text = "Add New Transfer";
+            this.btnAddNewTransfer.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnAddNewTransfer.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // ShowManageTransfersForm
             // 
@@ -420,7 +420,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.djvTransfers);
-            this.Controls.Add(this.btnAddNewUser);
+            this.Controls.Add(this.btnAddNewTransfer);
             this.Controls.Add(this.lbSize);
             this.Controls.Add(this.cbPageSize);
             this.Controls.Add(this.groupBox1);
@@ -437,10 +437,10 @@
             this.Text = "ShowManageTransfersForm";
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.djvTransfers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,7 +461,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.DataGridView djvTransfers;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewUser;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnAddNewTransfer;
         private System.Windows.Forms.Label lbSize;
         private System.Windows.Forms.ComboBox cbPageSize;
         private System.Windows.Forms.GroupBox groupBox1;

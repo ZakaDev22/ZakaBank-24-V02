@@ -42,7 +42,6 @@
             this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.upcamingFuteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.guna2CustomGradientPanel11 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar7 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
@@ -100,6 +99,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindUsertoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.upcamingFuteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ATMtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.curToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.guna2CustomGradientPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -131,7 +133,7 @@
             // 
             // guna2AnimateWindow1
             // 
-            this.guna2AnimateWindow1.Interval = 250;
+            this.guna2AnimateWindow1.Interval = 200;
             this.guna2AnimateWindow1.TargetForm = this;
             // 
             // guna2BorderlessForm1
@@ -144,11 +146,13 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.splitContainer1.Panel2;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // guna2DragControl2
             // 
             this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this.guna2CustomGradientPanel4;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
             // guna2CustomGradientPanel4
@@ -275,12 +279,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1170, 38);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // upcamingFuteresToolStripMenuItem
-            // 
-            this.upcamingFuteresToolStripMenuItem.Name = "upcamingFuteresToolStripMenuItem";
-            this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(121, 34);
-            this.upcamingFuteresToolStripMenuItem.Text = "ATM Futures";
             // 
             // splitContainer1
             // 
@@ -1172,18 +1170,23 @@
             this.showPersonInfoToolStripMenuItem.Name = "showPersonInfoToolStripMenuItem";
             this.showPersonInfoToolStripMenuItem.Size = new System.Drawing.Size(233, 36);
             this.showPersonInfoToolStripMenuItem.Text = "Person Info";
+            this.showPersonInfoToolStripMenuItem.Click += new System.EventHandler(this.showPersonInfoToolStripMenuItem_Click);
             // 
             // userInfoToolStripMenuItem
             // 
+            this.userInfoToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
             this.userInfoToolStripMenuItem.Name = "userInfoToolStripMenuItem";
             this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(233, 36);
             this.userInfoToolStripMenuItem.Text = "User Info";
+            this.userInfoToolStripMenuItem.Click += new System.EventHandler(this.userInfoToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
+            this.changePasswordToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Password_32;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(233, 36);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1192,6 +1195,7 @@
             // 
             // signOutToolStripMenuItem
             // 
+            this.signOutToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.sign_out_32__2;
             this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
             this.signOutToolStripMenuItem.Size = new System.Drawing.Size(233, 36);
             this.signOutToolStripMenuItem.Text = "Sign Out";
@@ -1199,9 +1203,39 @@
             // 
             // FindUsertoolStripMenuItem2
             // 
+            this.FindUsertoolStripMenuItem2.Image = global::ZakaBank_24.Properties.Resources.Search_32;
             this.FindUsertoolStripMenuItem2.Name = "FindUsertoolStripMenuItem2";
             this.FindUsertoolStripMenuItem2.Size = new System.Drawing.Size(233, 36);
             this.FindUsertoolStripMenuItem2.Text = "Find User";
+            this.FindUsertoolStripMenuItem2.Click += new System.EventHandler(this.FindUsertoolStripMenuItem2_Click);
+            // 
+            // upcamingFuteresToolStripMenuItem
+            // 
+            this.upcamingFuteresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ATMtoolStripMenuItem,
+            this.curToolStripMenuItem});
+            this.upcamingFuteresToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.ATM2_64;
+            this.upcamingFuteresToolStripMenuItem.Name = "upcamingFuteresToolStripMenuItem";
+            this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(151, 34);
+            this.upcamingFuteresToolStripMenuItem.Text = "ATM Futures";
+            this.upcamingFuteresToolStripMenuItem.Click += new System.EventHandler(this.upcamingFuteresToolStripMenuItem_Click);
+            // 
+            // ATMtoolStripMenuItem
+            // 
+            this.ATMtoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ATMtoolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ATMtoolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
+            this.ATMtoolStripMenuItem.Name = "ATMtoolStripMenuItem";
+            this.ATMtoolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.ATMtoolStripMenuItem.Text = "ATM";
+            this.ATMtoolStripMenuItem.Click += new System.EventHandler(this.ATMtoolStripMenuItem_Click);
+            // 
+            // curToolStripMenuItem
+            // 
+            this.curToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Currencies_128;
+            this.curToolStripMenuItem.Name = "curToolStripMenuItem";
+            this.curToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.curToolStripMenuItem.Text = "Currencies";
             // 
             // MainForm
             // 
@@ -1336,5 +1370,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private Guna.UI2.WinForms.Guna2GradientButton btnReports;
         private System.Windows.Forms.ToolStripMenuItem FindUsertoolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem ATMtoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem curToolStripMenuItem;
     }
 }

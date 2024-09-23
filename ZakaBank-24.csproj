@@ -82,6 +82,12 @@
     <Compile Include="Client Forms\ShowManageClientsForm.Designer.cs">
       <DependentUpon>ShowManageClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Currencies Forms\ShowManageCurrenciesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Currencies Forms\ShowManageCurrenciesForm.Designer.cs">
+      <DependentUpon>ShowManageCurrenciesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsLogExceptionsClass.cs" />
     <Compile Include="Login Register Forms\ShowManageLoginRegisterForm.cs">
       <SubType>Form</SubType>
@@ -193,6 +199,9 @@
     <EmbeddedResource Include="Client Forms\ShowManageClientsForm.resx">
       <DependentUpon>ShowManageClientsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Currencies Forms\ShowManageCurrenciesForm.resx">
+      <DependentUpon>ShowManageCurrenciesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login Register Forms\ShowManageLoginRegisterForm.resx">
       <DependentUpon>ShowManageLoginRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions Forms\ShowManagTransactionsForm.resx">
       <DependentUpon>ShowManagTransactionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transfer Forms\ShowAddTransfersForm.resx">
+      <DependentUpon>ShowAddTransfersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transfer Forms\ShowManageTransfersForm.resx">
       <DependentUpon>ShowManageTransfersForm.cs</DependentUpon>
@@ -423,6 +435,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\History-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Currencies-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Previous-256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -55,6 +55,7 @@ namespace ZakaBank_24.Transactions_Forms
 
 
             ctrlClientinfoCardWithFilter1.LoadClientInfoByID(_CLientID);
+            linkClientHistory.Visible = true;
 
         }
 
@@ -90,7 +91,7 @@ namespace ZakaBank_24.Transactions_Forms
                     break;
 
                 case "txtAmount":
-                    clsValidation.ValidateTextBox(textBox, text => clsValidation.IsNumber(text), "Invalid phone number", e, errorProvider1);
+                    clsValidation.ValidateTextBox(textBox, text => !string.IsNullOrEmpty(text), $"{textBox.Name.Replace("txt", "")} cannot be empty", e, errorProvider1);
                     break;
             }
         }
@@ -141,10 +142,12 @@ namespace ZakaBank_24.Transactions_Forms
                 lbTitle.Text = "Update Transaction";
 
                 btnSave.Enabled = false;
-                gbTransactionInfo.Enabled = false;
-
+                txtAmount.Enabled = false;
+                txtDescription.Enabled = false;
+                cbTransactionTypes.Enabled = false;
                 // set The Link Label History To true to call the history form of each client
-                linkClientHistory.Enabled = true;
+                linkClientHistory.Visible = true;
+                ctrlClientinfoCardWithFilter1.FilterEnabled = false;
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -154,6 +157,11 @@ namespace ZakaBank_24.Transactions_Forms
         private void linkClientHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("This Future Will Be In the Program Very Sone :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
