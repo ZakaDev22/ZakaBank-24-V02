@@ -194,15 +194,15 @@ namespace ZakaBank_24.Main_And_Login_Forms
             form.ShowDialog();
         }
 
-        private void ATMtoolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void upcamingFuteresToolStripMenuItem_Click(object sender, EventArgs e)
+        private void curToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowManageCurrenciesForm frm = new ShowManageCurrenciesForm();
             frm.Show();
+        }
+
+        private void ATMtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Future Will Come very Soon :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

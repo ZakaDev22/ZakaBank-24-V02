@@ -32,54 +32,54 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.lbUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.guna2CustomGradientPanel11 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar7 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lbAccountType = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel10 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar6 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lbRegisters = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel9 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar5 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lbTransfers = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel8 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar4 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lbTransactions = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel7 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar3 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbClients = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel6 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar2 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbUsers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnPeopleCount = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbPeople = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.lbUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.btnReports = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnAccountTypes = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLoginRegisters = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -89,7 +89,7 @@
             this.btnClients = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnPeople = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upcamingFuturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,33 +102,33 @@
             this.upcamingFuteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ATMtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.curToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2CustomGradientPanel4.SuspendLayout();
-            this.guna2CustomGradientPanel5.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.guna2CustomGradientPanel11.SuspendLayout();
             this.guna2CircleProgressBar7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.guna2CustomGradientPanel10.SuspendLayout();
             this.guna2CircleProgressBar6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.guna2CustomGradientPanel9.SuspendLayout();
             this.guna2CircleProgressBar5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.guna2CustomGradientPanel8.SuspendLayout();
             this.guna2CircleProgressBar4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.guna2CustomGradientPanel7.SuspendLayout();
             this.guna2CircleProgressBar3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.guna2CustomGradientPanel6.SuspendLayout();
             this.guna2CircleProgressBar2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnPeopleCount.SuspendLayout();
             this.guna2CircleProgressBar1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2CustomGradientPanel4.SuspendLayout();
+            this.guna2CustomGradientPanel5.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2AnimateWindow1
@@ -149,139 +149,9 @@
             this.guna2DragControl1.TargetControl = this.splitContainer1.Panel2;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2DragControl2
-            // 
-            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl2.TargetControl = this.guna2CustomGradientPanel4;
-            this.guna2DragControl2.UseTransparentDrag = true;
-            // 
-            // guna2CustomGradientPanel4
-            // 
-            this.guna2CustomGradientPanel4.Controls.Add(this.lbUserName);
-            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
-            this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
-            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Black;
-            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Silver;
-            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(0, 38);
-            this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
-            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(1170, 73);
-            this.guna2CustomGradientPanel4.TabIndex = 8;
-            // 
-            // lbUserName
-            // 
-            this.lbUserName.BackColor = System.Drawing.Color.Transparent;
-            this.lbUserName.Font = new System.Drawing.Font("Segoe UI Historic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.ForeColor = System.Drawing.Color.White;
-            this.lbUserName.Location = new System.Drawing.Point(258, 12);
-            this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(45, 42);
-            this.lbUserName.TabIndex = 2;
-            this.lbUserName.Text = "???";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(18, 12);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(225, 50);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Welcome Back";
-            // 
-            // guna2CustomGradientPanel1
-            // 
-            this.guna2CustomGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 111);
-            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 589);
-            this.guna2CustomGradientPanel1.TabIndex = 10;
-            // 
-            // guna2CustomGradientPanel3
-            // 
-            this.guna2CustomGradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2CustomGradientPanel3.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 679);
-            this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
-            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(1152, 21);
-            this.guna2CustomGradientPanel3.TabIndex = 12;
-            // 
-            // guna2CustomGradientPanel2
-            // 
-            this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(1152, 111);
-            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 568);
-            this.guna2CustomGradientPanel2.TabIndex = 13;
-            // 
-            // guna2CustomGradientPanel5
-            // 
-            this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
-            this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnAccountTypes);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnLoginRegisters);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransfers);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransactions);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnUsers);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnClients);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnDashboard);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnPeople);
-            this.guna2CustomGradientPanel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2CustomGradientPanel5.FillColor = System.Drawing.SystemColors.WindowText;
-            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.Yellow;
-            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.YellowGreen;
-            this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.Crimson;
-            this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(18, 111);
-            this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
-            this.guna2CustomGradientPanel5.Size = new System.Drawing.Size(222, 568);
-            this.guna2CustomGradientPanel5.TabIndex = 14;
-            // 
-            // pnClickedButton
-            // 
-            this.pnClickedButton.BorderRadius = 10;
-            this.pnClickedButton.FillColor = System.Drawing.Color.Red;
-            this.pnClickedButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pnClickedButton.FillColor3 = System.Drawing.Color.Crimson;
-            this.pnClickedButton.FillColor4 = System.Drawing.Color.Crimson;
-            this.pnClickedButton.Location = new System.Drawing.Point(0, 6);
-            this.pnClickedButton.Name = "pnClickedButton";
-            this.pnClickedButton.Size = new System.Drawing.Size(18, 45);
-            this.pnClickedButton.TabIndex = 16;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.AllowDrop = true;
-            this.menuStrip1.BackColor = System.Drawing.Color.BlueViolet;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
-            this.accountSettingsToolStripMenuItem,
-            this.upcamingFuteresToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1170, 38);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -299,6 +169,10 @@
             this.splitContainer1.Panel1.Controls.Add(this.guna2CustomGradientPanel7);
             this.splitContainer1.Panel1.Controls.Add(this.guna2CustomGradientPanel6);
             this.splitContainer1.Panel1.Controls.Add(this.pnPeopleCount);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Size = new System.Drawing.Size(912, 568);
             this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 16;
@@ -339,6 +213,16 @@
             this.guna2CircleProgressBar7.TabIndex = 2;
             this.guna2CircleProgressBar7.UseTransparentBackground = true;
             this.guna2CircleProgressBar7.Value = 10;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::ZakaBank_24.Properties.Resources.Types_64;
+            this.pictureBox6.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
             // 
             // lbAccountType
             // 
@@ -400,6 +284,16 @@
             this.guna2CircleProgressBar6.TabIndex = 2;
             this.guna2CircleProgressBar6.UseTransparentBackground = true;
             this.guna2CircleProgressBar6.Value = 10;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::ZakaBank_24.Properties.Resources.LoginRegister_64;
+            this.pictureBox7.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 1;
+            this.pictureBox7.TabStop = false;
             // 
             // lbRegisters
             // 
@@ -473,6 +367,16 @@
             this.guna2CircleProgressBar5.UseTransparentBackground = true;
             this.guna2CircleProgressBar5.Value = 10;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::ZakaBank_24.Properties.Resources.Transfer_64;
+            this.pictureBox5.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 2;
+            this.pictureBox5.TabStop = false;
+            // 
             // lbTransfers
             // 
             this.lbTransfers.AutoSize = true;
@@ -533,6 +437,16 @@
             this.guna2CircleProgressBar4.TabIndex = 2;
             this.guna2CircleProgressBar4.UseTransparentBackground = true;
             this.guna2CircleProgressBar4.Value = 10;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
+            this.pictureBox4.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
             // 
             // lbTransactions
             // 
@@ -595,6 +509,16 @@
             this.guna2CircleProgressBar3.UseTransparentBackground = true;
             this.guna2CircleProgressBar3.Value = 10;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::ZakaBank_24.Properties.Resources.Client_48;
+            this.pictureBox3.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
             // lbClients
             // 
             this.lbClients.AutoSize = true;
@@ -655,6 +579,16 @@
             this.guna2CircleProgressBar2.TabIndex = 2;
             this.guna2CircleProgressBar2.UseTransparentBackground = true;
             this.guna2CircleProgressBar2.Value = 10;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ZakaBank_24.Properties.Resources.Users_64;
+            this.pictureBox2.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // lbUsers
             // 
@@ -717,6 +651,16 @@
             this.guna2CircleProgressBar1.UseTransparentBackground = true;
             this.guna2CircleProgressBar1.Value = 10;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Person_32;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // lbPeople
             // 
             this.lbPeople.AutoSize = true;
@@ -741,75 +685,132 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "People";
             // 
-            // pictureBox6
+            // guna2DragControl2
             // 
-            this.pictureBox6.Image = global::ZakaBank_24.Properties.Resources.Types_64;
-            this.pictureBox6.Location = new System.Drawing.Point(21, 27);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this.guna2CustomGradientPanel4;
+            this.guna2DragControl2.UseTransparentDrag = true;
             // 
-            // pictureBox7
+            // guna2CustomGradientPanel4
             // 
-            this.pictureBox7.Image = global::ZakaBank_24.Properties.Resources.LoginRegister_64;
-            this.pictureBox7.Location = new System.Drawing.Point(21, 27);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 1;
-            this.pictureBox7.TabStop = false;
+            this.guna2CustomGradientPanel4.Controls.Add(this.lbUserName);
+            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
+            this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
+            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Black;
+            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Silver;
+            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(0, 38);
+            this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
+            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(1170, 73);
+            this.guna2CustomGradientPanel4.TabIndex = 8;
             // 
-            // pictureBox5
+            // lbUserName
             // 
-            this.pictureBox5.Image = global::ZakaBank_24.Properties.Resources.Transfer_64;
-            this.pictureBox5.Location = new System.Drawing.Point(21, 27);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 2;
-            this.pictureBox5.TabStop = false;
+            this.lbUserName.BackColor = System.Drawing.Color.Transparent;
+            this.lbUserName.Font = new System.Drawing.Font("Segoe UI Historic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.White;
+            this.lbUserName.Location = new System.Drawing.Point(258, 12);
+            this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Size = new System.Drawing.Size(45, 42);
+            this.lbUserName.TabIndex = 2;
+            this.lbUserName.Text = "???";
             // 
-            // pictureBox4
+            // btnCLose
             // 
-            this.pictureBox4.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
-            this.pictureBox4.Location = new System.Drawing.Point(20, 27);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(1104, 3);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(67, 59);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
-            // pictureBox3
+            // guna2HtmlLabel1
             // 
-            this.pictureBox3.Image = global::ZakaBank_24.Properties.Resources.Client_48;
-            this.pictureBox3.Location = new System.Drawing.Point(20, 27);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(18, 12);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(225, 50);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "Welcome Back";
             // 
-            // pictureBox2
+            // guna2CustomGradientPanel1
             // 
-            this.pictureBox2.Image = global::ZakaBank_24.Properties.Resources.Users_64;
-            this.pictureBox2.Location = new System.Drawing.Point(20, 27);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.guna2CustomGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 111);
+            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 589);
+            this.guna2CustomGradientPanel1.TabIndex = 10;
             // 
-            // pictureBox1
+            // guna2CustomGradientPanel3
             // 
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Person_32;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.guna2CustomGradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.guna2CustomGradientPanel3.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 679);
+            this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
+            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(1152, 21);
+            this.guna2CustomGradientPanel3.TabIndex = 12;
+            // 
+            // guna2CustomGradientPanel2
+            // 
+            this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(1152, 111);
+            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 568);
+            this.guna2CustomGradientPanel2.TabIndex = 13;
+            // 
+            // guna2CustomGradientPanel5
+            // 
+            this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
+            this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnAccountTypes);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnLoginRegisters);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransfers);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransactions);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnUsers);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnClients);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnDashboard);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnPeople);
+            this.guna2CustomGradientPanel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2CustomGradientPanel5.FillColor = System.Drawing.SystemColors.WindowText;
+            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.Yellow;
+            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.YellowGreen;
+            this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.Crimson;
+            this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(18, 111);
+            this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
+            this.guna2CustomGradientPanel5.Size = new System.Drawing.Size(222, 568);
+            this.guna2CustomGradientPanel5.TabIndex = 14;
             // 
             // btnReports
             // 
@@ -840,6 +841,18 @@
             this.btnReports.TabIndex = 17;
             this.btnReports.Text = "  Reports";
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
+            // pnClickedButton
+            // 
+            this.pnClickedButton.BorderRadius = 10;
+            this.pnClickedButton.FillColor = System.Drawing.Color.Red;
+            this.pnClickedButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnClickedButton.FillColor3 = System.Drawing.Color.Crimson;
+            this.pnClickedButton.FillColor4 = System.Drawing.Color.Crimson;
+            this.pnClickedButton.Location = new System.Drawing.Point(0, 6);
+            this.pnClickedButton.Name = "pnClickedButton";
+            this.pnClickedButton.Size = new System.Drawing.Size(18, 45);
+            this.pnClickedButton.TabIndex = 16;
             // 
             // btnLogout
             // 
@@ -1111,29 +1124,21 @@
             this.btnPeople.Text = "People";
             this.btnPeople.Click += new System.EventHandler(this.btnPeople_Click);
             // 
-            // btnCLose
+            // menuStrip1
             // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(1104, 3);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(67, 59);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            this.menuStrip1.AllowDrop = true;
+            this.menuStrip1.BackColor = System.Drawing.Color.BlueViolet;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.accountSettingsToolStripMenuItem,
+            this.upcamingFuteresToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1170, 38);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // settingsToolStripMenuItem
             // 
@@ -1218,7 +1223,6 @@
             this.upcamingFuteresToolStripMenuItem.Name = "upcamingFuteresToolStripMenuItem";
             this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(151, 34);
             this.upcamingFuteresToolStripMenuItem.Text = "ATM Futures";
-            this.upcamingFuteresToolStripMenuItem.Click += new System.EventHandler(this.upcamingFuteresToolStripMenuItem_Click);
             // 
             // ATMtoolStripMenuItem
             // 
@@ -1236,6 +1240,7 @@
             this.curToolStripMenuItem.Name = "curToolStripMenuItem";
             this.curToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.curToolStripMenuItem.Text = "Currencies";
+            this.curToolStripMenuItem.Click += new System.EventHandler(this.curToolStripMenuItem_Click_1);
             // 
             // MainForm
             // 
@@ -1255,11 +1260,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.guna2CustomGradientPanel4.ResumeLayout(false);
-            this.guna2CustomGradientPanel4.PerformLayout();
-            this.guna2CustomGradientPanel5.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1267,31 +1267,36 @@
             this.guna2CustomGradientPanel11.ResumeLayout(false);
             this.guna2CustomGradientPanel11.PerformLayout();
             this.guna2CircleProgressBar7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.guna2CustomGradientPanel10.ResumeLayout(false);
             this.guna2CustomGradientPanel10.PerformLayout();
             this.guna2CircleProgressBar6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.guna2CustomGradientPanel9.ResumeLayout(false);
             this.guna2CustomGradientPanel9.PerformLayout();
             this.guna2CircleProgressBar5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.guna2CustomGradientPanel8.ResumeLayout(false);
             this.guna2CustomGradientPanel8.PerformLayout();
             this.guna2CircleProgressBar4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.guna2CustomGradientPanel7.ResumeLayout(false);
             this.guna2CustomGradientPanel7.PerformLayout();
             this.guna2CircleProgressBar3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.guna2CustomGradientPanel6.ResumeLayout(false);
             this.guna2CustomGradientPanel6.PerformLayout();
             this.guna2CircleProgressBar2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnPeopleCount.ResumeLayout(false);
             this.pnPeopleCount.PerformLayout();
             this.guna2CircleProgressBar1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2CustomGradientPanel4.ResumeLayout(false);
+            this.guna2CustomGradientPanel4.PerformLayout();
+            this.guna2CustomGradientPanel5.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

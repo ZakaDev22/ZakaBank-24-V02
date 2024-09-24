@@ -445,5 +445,8 @@
   <ItemGroup>
     <None Include="Resources\Previous-256.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exchange-256.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -242,6 +242,7 @@
             // rbByPages
             // 
             this.rbByPages.AutoSize = true;
+            this.rbByPages.Checked = true;
             this.rbByPages.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbByPages.ForeColor = System.Drawing.Color.Teal;
             this.rbByPages.Location = new System.Drawing.Point(17, 42);
@@ -262,7 +263,6 @@
             this.rbByAll.Name = "rbByAll";
             this.rbByAll.Size = new System.Drawing.Size(63, 22);
             this.rbByAll.TabIndex = 0;
-            this.rbByAll.TabStop = true;
             this.rbByAll.Text = "By All";
             this.rbByAll.UseVisualStyleBackColor = true;
             // 
@@ -348,7 +348,7 @@
             // 
             // btnLeft
             // 
-            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
+            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Previous_256;
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -363,7 +363,7 @@
             // 
             // btnRight
             // 
-            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
+            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Next_256;
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;

@@ -10,7 +10,7 @@ namespace ZakaBank_24.Login_Register_Forms
     public partial class ShowManageLoginRegisterForm : Form
     {
         private int currentPage = 1;
-        private int pageSize = 11;
+        private int pageSize = 10;
         private int totalRecords = 0;
         private DataTable dt;
 
@@ -19,7 +19,7 @@ namespace ZakaBank_24.Login_Register_Forms
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 1;
             cbFilterBy.SelectedIndex = 0;
         }
 
@@ -140,6 +140,7 @@ namespace ZakaBank_24.Login_Register_Forms
         {
             pageSize = int.Parse(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)

@@ -18,7 +18,8 @@ namespace ZakaBank_24.Transactions_Forms
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 0;
         }
 
         private async Task _RefreshDataGridViewData()
@@ -139,6 +140,7 @@ namespace ZakaBank_24.Transactions_Forms
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)

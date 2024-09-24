@@ -30,13 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.lbSize = new System.Windows.Forms.Label();
             this.cbPageSize = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -45,29 +42,32 @@
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLeft = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
             this.lbRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.djvUsers = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.findUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvUsers)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -84,41 +84,6 @@
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(857, 71);
             this.guna2CustomGradientPanel4.TabIndex = 5;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
-            this.pictureBox1.Location = new System.Drawing.Point(265, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(772, 5);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(73, 63);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -166,30 +131,6 @@
             this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
             this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 522);
             this.guna2CustomGradientPanel2.TabIndex = 8;
-            // 
-            // btnAddNewUser
-            // 
-            this.btnAddNewUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddNewUser.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnAddNewUser.BorderRadius = 25;
-            this.btnAddNewUser.BorderThickness = 2;
-            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUser.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.btnAddNewUser.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
-            this.btnAddNewUser.Location = new System.Drawing.Point(623, 179);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(180, 62);
-            this.btnAddNewUser.TabIndex = 119;
-            this.btnAddNewUser.Text = "Add New User";
-            this.btnAddNewUser.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // lbSize
             // 
@@ -242,6 +183,7 @@
             // rbByPages
             // 
             this.rbByPages.AutoSize = true;
+            this.rbByPages.Checked = true;
             this.rbByPages.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbByPages.ForeColor = System.Drawing.Color.Teal;
             this.rbByPages.Location = new System.Drawing.Point(17, 42);
@@ -262,7 +204,6 @@
             this.rbByAll.Name = "rbByAll";
             this.rbByAll.Size = new System.Drawing.Size(63, 22);
             this.rbByAll.TabIndex = 0;
-            this.rbByAll.TabStop = true;
             this.rbByAll.Text = "By All";
             this.rbByAll.UseVisualStyleBackColor = true;
             // 
@@ -306,38 +247,6 @@
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 113;
             this.label1.Text = "Filter By:";
-            // 
-            // btnLeft
-            // 
-            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
-            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnLeft.FlatAppearance.BorderSize = 0;
-            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLeft.Location = new System.Drawing.Point(325, 540);
-            this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(67, 44);
-            this.btnLeft.TabIndex = 125;
-            this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
-            // 
-            // btnRight
-            // 
-            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
-            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRight.FlatAppearance.BorderSize = 0;
-            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRight.Location = new System.Drawing.Point(471, 541);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(67, 44);
-            this.btnRight.TabIndex = 124;
-            this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // lbRecords
             // 
@@ -407,6 +316,72 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(218, 176);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(214, 6);
+            // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this;
+            this.guna2DragControl2.UseTransparentDrag = true;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel4;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 25;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // guna2AnimateWindow1
+            // 
+            this.guna2AnimateWindow1.Interval = 250;
+            this.guna2AnimateWindow1.TargetForm = this;
+            // 
+            // btnLeft
+            // 
+            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Previous_256;
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLeft.FlatAppearance.BorderSize = 0;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLeft.Location = new System.Drawing.Point(325, 540);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(67, 44);
+            this.btnLeft.TabIndex = 125;
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Next_256;
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnRight.FlatAppearance.BorderSize = 0;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRight.Location = new System.Drawing.Point(471, 541);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(67, 44);
+            this.btnRight.TabIndex = 124;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
             // personDetailsToolStripMenuItem
             // 
             this.personDetailsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
@@ -414,11 +389,6 @@
             this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
             this.personDetailsToolStripMenuItem.Text = "Person Details";
             this.personDetailsToolStripMenuItem.Click += new System.EventHandler(this.personDetailsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 6);
             // 
             // addNewToolStripMenuItem
             // 
@@ -444,11 +414,6 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(214, 6);
-            // 
             // findUserToolStripMenuItem
             // 
             this.findUserToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Search_32;
@@ -457,29 +422,64 @@
             this.findUserToolStripMenuItem.Text = "Find User";
             this.findUserToolStripMenuItem.Click += new System.EventHandler(this.findUserToolStripMenuItem_Click);
             // 
-            // guna2DragControl2
+            // btnAddNewUser
             // 
-            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl2.TargetControl = this;
-            this.guna2DragControl2.UseTransparentDrag = true;
+            this.btnAddNewUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddNewUser.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnAddNewUser.BorderRadius = 25;
+            this.btnAddNewUser.BorderThickness = 2;
+            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNewUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewUser.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.btnAddNewUser.Image = global::ZakaBank_24.Properties.Resources.teacher__2_;
+            this.btnAddNewUser.Location = new System.Drawing.Point(623, 179);
+            this.btnAddNewUser.Name = "btnAddNewUser";
+            this.btnAddNewUser.Size = new System.Drawing.Size(180, 62);
+            this.btnAddNewUser.TabIndex = 119;
+            this.btnAddNewUser.Text = "Add New User";
+            this.btnAddNewUser.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
-            // guna2DragControl1
+            // pictureBox1
             // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel4;
-            this.guna2DragControl1.UseTransparentDrag = true;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
+            this.pictureBox1.Location = new System.Drawing.Point(265, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
-            // guna2BorderlessForm1
+            // btnCLose
             // 
-            this.guna2BorderlessForm1.BorderRadius = 25;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // guna2AnimateWindow1
-            // 
-            this.guna2AnimateWindow1.Interval = 250;
-            this.guna2AnimateWindow1.TargetForm = this;
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(772, 5);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(73, 63);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // ShowMangaeUsersForm
             // 
@@ -510,11 +510,11 @@
             this.Load += new System.EventHandler(this.ShowMangaeUsersForm_Load);
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvUsers)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

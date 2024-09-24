@@ -10,7 +10,7 @@ namespace ZakaBank_24.Transfer_Forms
     public partial class ShowManageTransfersForm : Form
     {
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 10;
         private int totalRecords = 0;
         private DataTable dt;
 
@@ -18,7 +18,7 @@ namespace ZakaBank_24.Transfer_Forms
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 0;
             cbFilterBy.SelectedIndex = 0;
         }
 
@@ -139,6 +139,7 @@ namespace ZakaBank_24.Transfer_Forms
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
