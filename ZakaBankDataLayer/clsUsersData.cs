@@ -249,6 +249,33 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
+        public static async Task<DataTable> FindUserByPersonIDAsync(int id)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_FindByUserByPersonIDAsync", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PersonID", id);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dataTable.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return dataTable;
+        }
+
 
         public static async Task<DataTable> FindByUserNameAndPassword(string UserName, string Password)
         {

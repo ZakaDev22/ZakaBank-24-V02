@@ -164,11 +164,6 @@ namespace ZakaBank_24.Transfer_Forms
                     FilterColumn = "ReceiverClientID";
                     break;
 
-
-                case "Added By User ID":
-                    FilterColumn = "AddedByUser";
-                    break;
-
                 default:
                     FilterColumn = "None";
                     break;

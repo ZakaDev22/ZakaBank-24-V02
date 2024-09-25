@@ -261,7 +261,7 @@
             "None",
             "Transaction ID",
             "Client ID",
-            "Transaction Type ID",
+            "Transaction Type",
             "Added By User"});
             this.cbFilterBy.Location = new System.Drawing.Point(142, 205);
             this.cbFilterBy.Name = "cbFilterBy";

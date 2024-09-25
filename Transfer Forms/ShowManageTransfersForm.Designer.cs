@@ -96,7 +96,7 @@
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.Yellow;
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 71);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 543);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(12, 543);
             this.guna2CustomGradientPanel1.TabIndex = 8;
             // 
             // guna2CustomGradientPanel2
@@ -118,9 +118,9 @@
             this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkSeaGreen;
             this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.Color.Yellow;
-            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 593);
+            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(12, 601);
             this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
-            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(821, 21);
+            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(827, 13);
             this.guna2CustomGradientPanel3.TabIndex = 10;
             // 
             // lbRecords
@@ -261,8 +261,7 @@
             "None",
             "Transfer ID",
             "Sender Client ID",
-            "Receiver Client ID",
-            "Added By User ID"});
+            "Receiver Client ID"});
             this.cbFilterBy.Location = new System.Drawing.Point(140, 199);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(174, 28);

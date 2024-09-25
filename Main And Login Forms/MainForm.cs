@@ -179,7 +179,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SHowFindClientsForm frm = new SHowFindClientsForm(clsGlobal._CurrentUser.ID);
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm(clsGlobal._CurrentUser.ID);
             frm.ShowDialog();
         }
 
@@ -190,8 +190,9 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void FindUsertoolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            SHowFindClientsForm form = new SHowFindClientsForm();
-            form.ShowDialog();
+            // Add A constructor in find user to take the current user id and load it her
+            ShowFindUserForm frm = new ShowFindUserForm();
+            frm.ShowDialog();
         }
 
         private void curToolStripMenuItem_Click_1(object sender, EventArgs e)

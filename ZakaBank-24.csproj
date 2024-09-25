@@ -172,17 +172,41 @@
     <Compile Include="Transfer Forms\ShowManageTransfersForm.Designer.cs">
       <DependentUpon>ShowManageTransfersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Forms\ctrlUserInfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Forms\ctrlUserInfoCard.Designer.cs">
+      <DependentUpon>ctrlUserInfoCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Forms\ctrlUserInfoCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Forms\ctrlUserInfoCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlUserInfoCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Forms\ShowAddEditeUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User Forms\ShowAddEditeUsersForm.Designer.cs">
       <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Forms\ShowFindUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Forms\ShowFindUserForm.Designer.cs">
+      <DependentUpon>ShowFindUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Forms\ShowMangaeUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User Forms\ShowMangaeUsersForm.Designer.cs">
       <DependentUpon>ShowMangaeUsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Forms\ShowUserInfoCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Forms\ShowUserInfoCardForm.Designer.cs">
+      <DependentUpon>ShowUserInfoCardForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Account Types\SHowManageAccountTypesForm.resx">
       <DependentUpon>SHowManageAccountTypesForm.cs</DependentUpon>
@@ -251,11 +275,23 @@
     <EmbeddedResource Include="Transfer Forms\ShowManageTransfersForm.resx">
       <DependentUpon>ShowManageTransfersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ctrlUserInfoCard.resx">
+      <DependentUpon>ctrlUserInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ctrlUserInfoCardWithFilter.resx">
+      <DependentUpon>ctrlUserInfoCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Forms\ShowAddEditeUsersForm.resx">
       <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ShowFindUserForm.resx">
+      <DependentUpon>ShowFindUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Forms\ShowMangaeUsersForm.resx">
       <DependentUpon>ShowMangaeUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ShowUserInfoCardForm.resx">
+      <DependentUpon>ShowUserInfoCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -59,9 +59,5 @@ namespace ZakaBank_24.Account_Types
             await _RefreshDataGridViewData();
         }
 
-        private void guna2CustomGradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

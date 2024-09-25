@@ -32,8 +32,8 @@ namespace ZakaBankLogicLayer
         public DateTime? UpdatedDate { get; set; }
         public int Permissions { get; set; }
         public int? AddedByUserID { get; set; }
-
         public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
 
         /// <summary>
         /// If You Want to Use This Future Then Call The LoadPersonInfo Method First After You Create an Object Of Users Class.
@@ -45,7 +45,7 @@ namespace ZakaBankLogicLayer
             Mode = enMode.AddNew;
         }
 
-        public clsUsers(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID, bool isActive)
+        public clsUsers(int id, int personID, string userName, string passwordHash, DateTime createdDate, DateTime? updatedDate, int permissions, int? addedByUserID, bool isActive, bool isDeleted)
         {
             ID = id;
             PersonID = personID;
@@ -57,7 +57,7 @@ namespace ZakaBankLogicLayer
             AddedByUserID = addedByUserID;
             Mode = enMode.Update;
             IsActive = isActive;
-
+            IsDeleted = isDeleted;
         }
 
         public async Task LoadPersonInfo()
@@ -114,7 +114,34 @@ namespace ZakaBankLogicLayer
                                      row["UpdatedDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["UpdatedDate"]),
                                      Convert.ToInt32(row["Permissions"]),
                                      row["AddedByUserID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["AddedByUserID"]),
-                                     Convert.ToBoolean(row["IsActive"])
+                                     Convert.ToBoolean(row["IsActive"]),
+                                     Convert.ToBoolean(row["IsDeleted"])
+
+
+
+                );
+            }
+            return null;
+        }
+
+        public static async Task<clsUsers> FindUserByPersonIDAsync(int id)
+        {
+            DataTable dt = await clsUsersData.FindUserByPersonIDAsync(id);
+
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                return new clsUsers(
+                                     Convert.ToInt32(row["UserID"]),
+                                     Convert.ToInt32(row["PersonID"]),
+                                     Convert.ToString(row["UserName"]),
+                                     Convert.ToString(row["PasswordHash"]),
+                                     Convert.ToDateTime(row["CreatedDate"]),
+                                     row["UpdatedDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["UpdatedDate"]),
+                                     Convert.ToInt32(row["Permissions"]),
+                                     row["AddedByUserID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["AddedByUserID"]),
+                                     Convert.ToBoolean(row["IsActive"]),
+                                     Convert.ToBoolean(row["IsDeleted"])
 
 
 
@@ -139,7 +166,8 @@ namespace ZakaBankLogicLayer
                                      row["UpdatedDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["UpdatedDate"]),
                                      Convert.ToInt32(row["Permissions"]),
                                      row["AddedByUserID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["AddedByUserID"]),
-                                     Convert.ToBoolean(row["IsActive"])
+                                     Convert.ToBoolean(row["IsActive"]),
+                                      Convert.ToBoolean(row["IsDeleted"])
 
 
 

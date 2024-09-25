@@ -219,7 +219,7 @@ namespace ZakaBank_24
             }
 
 
-            if (FilterColumn == "PersonID" || FilterColumn == "PhoneNumber")
+            if (FilterColumn == "PersonID")
                 //in this case we deal with integer not string.
 
                 dt.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());

@@ -295,7 +295,14 @@ namespace ZakaBank_24.User_Forms
 
         private void findUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ShowFindUserForm frm = new ShowFindUserForm();
+            frm.ShowDialog();
+        }
 
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
         }
     }
 }

@@ -63,6 +63,7 @@
             this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvUsers)).BeginInit();
@@ -307,6 +308,7 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personDetailsToolStripMenuItem,
+            this.toolStripMenuItem3,
             this.toolStripMenuItem1,
             this.addNewToolStripMenuItem,
             this.updateToolStripMenuItem,
@@ -314,7 +316,7 @@
             this.toolStripMenuItem2,
             this.findUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 176);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 230);
             // 
             // toolStripMenuItem1
             // 
@@ -481,6 +483,14 @@
             this.btnCLose.UseTransparentBackground = true;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Image = global::ZakaBank_24.Properties.Resources.Info_128;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(217, 32);
+            this.toolStripMenuItem3.Text = "User Details";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
             // ShowMangaeUsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,5 +566,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem findUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }

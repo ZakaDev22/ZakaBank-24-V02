@@ -253,6 +253,7 @@ namespace ZakaBank_24.User_Forms
             _User.UserName = txtUserName.Text.Trim();
             _User.IsActive = tgsIsActive.Checked;
             _User.Permissions = _Permissions;
+            _User.AddedByUserID = clsGlobal._CurrentUser.ID;
 
             // check if The Current User Is CHanging His Password So That We DOnt Have To Encrypt it Only Once 
             if (_User.PassWordHash != txtPassword.Text.Trim())
@@ -325,8 +326,6 @@ namespace ZakaBank_24.User_Forms
 
         private async void tabUserControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-
-
             if (_allowTabSwitch) return; // If the switch is allowed, skip the validation
 
             if (!_OnPersonSelected)
@@ -355,8 +354,6 @@ namespace ZakaBank_24.User_Forms
                 e.Cancel = true;  // Prevent tab switch
                 return;
             }
-
-
         }
     }
 }
