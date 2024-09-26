@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.Global_Classes;
 using ZakaBank_24.People_Forms;
 using ZakaBankLogicLayer;
 
@@ -303,6 +304,82 @@ namespace ZakaBank_24.User_Forms
         {
             ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+        }
+
+        private async void cmsSetUserToActive_Click(object sender, EventArgs e)
+        {
+            int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show("Are you sure you want to Set this User to Active Again?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                // if we send true then  the function will set ther user to active and if we send false it will be active
+                if (await clsUsers.SetUserAsActiveOrInactive(UserID, true))
+                {
+                    MessageBox.Show("User was  Set To Active  successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshDataGridViewData();
+                }
+                else
+                    MessageBox.Show("Error, User was not Set To Active", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(" set User to Active was Canceled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private async void cmsSetUserToInActive_Click(object sender, EventArgs e)
+        {
+
+            int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
+
+            if ((UserID == 1) && clsGlobal._CurrentUser.ID != 1)
+            {
+                MessageBox.Show($"Error,You Can't Set The Admin As InActive 😎💪🙄", "Are You Serious", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("Are you sure you want to Set this User to InActive Again?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                // if we send true then  the function will set there user to active and if we send false it will be active
+                if (await clsUsers.SetUserAsActiveOrInactive(UserID, false))
+                {
+                    MessageBox.Show("User was  Set To InActive successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshDataGridViewData();
+                }
+                else
+                    MessageBox.Show("Error, User was not Set To InActive", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(" set User to InActive was Canceled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cmsChangePassword_Click(object sender, EventArgs e)
+        {
+            ShowChangePasswordForm frm = new ShowChangePasswordForm((int)djvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
+
+        private async void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // check if The DataGrid View has Any Row, if not Then This Code Will Not Implemented
+            if (djvUsers.Rows.Count > 0)
+            {
+                // Set The Enabled Property Of The Context Menu Strip To True
+                contextMenuStrip1.Enabled = true;
+
+                int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
+
+                bool UserActive = await clsUsers.IsUserActive(UserID);
+
+                cmsSetUserToInActive.Enabled = UserActive;
+
+                cmsSetUserToActive.Enabled = UserActive == false;
+            }
+            else
+                contextMenuStrip1.Enabled = false;
         }
     }
 }

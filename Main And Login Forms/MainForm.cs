@@ -50,6 +50,17 @@ namespace ZakaBank_24.Main_And_Login_Forms
             this.Close();
         }
 
+        private async void _ExitTheApplication()
+        {
+            _loginRegister.LogOutDateTime = DateTime.Now;
+
+            if (!await _loginRegister.Save())
+                MessageBox.Show("error, something went wrong with login Register Record Update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // exit The Application Without the need of the login screen again
+            Application.Exit();
+        }
+
 
         private async Task _RefreshDashboardInformation()
         {
@@ -74,7 +85,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnCLose_Click(object sender, System.EventArgs e)
         {
-            _Logout();
+            _ExitTheApplication();
         }
 
         private void btnPeople_Click(object sender, System.EventArgs e)
@@ -185,7 +196,8 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowChangePasswordForm frm = new ShowChangePasswordForm(clsGlobal._CurrentUser.ID);
+            frm.ShowDialog();
         }
 
         private void FindUsertoolStripMenuItem2_Click(object sender, EventArgs e)

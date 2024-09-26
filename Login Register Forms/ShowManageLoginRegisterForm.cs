@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.User_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Login_Register_Forms
@@ -229,6 +230,12 @@ namespace ZakaBank_24.Login_Register_Forms
         private void btnCLose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void userInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvLoginRegisters.CurrentRow.Cells[1].Value);
+            frm.ShowDialog();
         }
     }
 }

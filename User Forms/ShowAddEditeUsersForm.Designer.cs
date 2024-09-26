@@ -347,6 +347,7 @@
             this.txtConfrimPass.IconLeft = global::ZakaBank_24.Properties.Resources.Password_32;
             this.txtConfrimPass.IconLeftSize = new System.Drawing.Size(35, 35);
             this.txtConfrimPass.Location = new System.Drawing.Point(173, 265);
+            this.txtConfrimPass.MaxLength = 64;
             this.txtConfrimPass.Name = "txtConfrimPass";
             this.txtConfrimPass.PasswordChar = '*';
             this.txtConfrimPass.PlaceholderText = "Confirm Pass";
@@ -394,6 +395,7 @@
             this.txtPassword.IconLeft = global::ZakaBank_24.Properties.Resources.Password_32;
             this.txtPassword.IconLeftSize = new System.Drawing.Size(35, 35);
             this.txtPassword.Location = new System.Drawing.Point(173, 194);
+            this.txtPassword.MaxLength = 64;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "Password";

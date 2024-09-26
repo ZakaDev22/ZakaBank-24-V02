@@ -190,6 +190,12 @@
     <Compile Include="User Forms\ShowAddEditeUsersForm.Designer.cs">
       <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Forms\ShowChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Forms\ShowChangePasswordForm.Designer.cs">
+      <DependentUpon>ShowChangePasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Forms\ShowFindUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Forms\ShowAddEditeUsersForm.resx">
       <DependentUpon>ShowAddEditeUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Forms\ShowChangePasswordForm.resx">
+      <DependentUpon>ShowChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Forms\ShowFindUserForm.resx">
       <DependentUpon>ShowFindUserForm.cs</DependentUpon>
@@ -483,6 +492,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exchange-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InActive.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

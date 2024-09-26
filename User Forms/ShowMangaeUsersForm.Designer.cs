@@ -53,17 +53,22 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsSetUserToInActive = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSetUserToActive = new System.Windows.Forms.ToolStripMenuItem();
             this.findUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNewUser = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvUsers)).BeginInit();
@@ -304,7 +309,7 @@
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personDetailsToolStripMenuItem,
@@ -313,20 +318,26 @@
             this.addNewToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.cmsSetUserToActive,
+            this.cmsSetUserToInActive,
             this.toolStripMenuItem2,
+            this.cmsChangePassword,
+            this.toolStripMenuItem7,
             this.findUserToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 230);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 338);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(214, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(254, 6);
             // 
             // guna2DragControl2
             // 
@@ -351,6 +362,32 @@
             // 
             this.guna2AnimateWindow1.Interval = 250;
             this.guna2AnimateWindow1.TargetForm = this;
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(254, 6);
+            // 
+            // cmsSetUserToInActive
+            // 
+            this.cmsSetUserToInActive.Image = global::ZakaBank_24.Properties.Resources.Active;
+            this.cmsSetUserToInActive.Name = "cmsSetUserToInActive";
+            this.cmsSetUserToInActive.Size = new System.Drawing.Size(257, 32);
+            this.cmsSetUserToInActive.Text = "Set User To InActive";
+            this.cmsSetUserToInActive.Click += new System.EventHandler(this.cmsSetUserToInActive_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(254, 6);
+            // 
+            // cmsChangePassword
+            // 
+            this.cmsChangePassword.Image = global::ZakaBank_24.Properties.Resources.Password_32;
+            this.cmsChangePassword.Name = "cmsChangePassword";
+            this.cmsChangePassword.Size = new System.Drawing.Size(257, 32);
+            this.cmsChangePassword.Text = "Change Password";
+            this.cmsChangePassword.Click += new System.EventHandler(this.cmsChangePassword_Click);
             // 
             // btnLeft
             // 
@@ -388,15 +425,23 @@
             // 
             this.personDetailsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
             this.personDetailsToolStripMenuItem.Name = "personDetailsToolStripMenuItem";
-            this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(257, 32);
             this.personDetailsToolStripMenuItem.Text = "Person Details";
             this.personDetailsToolStripMenuItem.Click += new System.EventHandler(this.personDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Image = global::ZakaBank_24.Properties.Resources.Info_128;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(257, 32);
+            this.toolStripMenuItem3.Text = "User Details";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // addNewToolStripMenuItem
             // 
             this.addNewToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Add_128;
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(257, 32);
             this.addNewToolStripMenuItem.Text = "Add New";
             this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
             // 
@@ -404,7 +449,7 @@
             // 
             this.updateToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Update_128;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(257, 32);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -412,15 +457,23 @@
             // 
             this.deleteToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Delete_128;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(257, 32);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // cmsSetUserToActive
+            // 
+            this.cmsSetUserToActive.Image = global::ZakaBank_24.Properties.Resources.InActive;
+            this.cmsSetUserToActive.Name = "cmsSetUserToActive";
+            this.cmsSetUserToActive.Size = new System.Drawing.Size(257, 32);
+            this.cmsSetUserToActive.Text = "Set User To Active";
+            this.cmsSetUserToActive.Click += new System.EventHandler(this.cmsSetUserToActive_Click);
             // 
             // findUserToolStripMenuItem
             // 
             this.findUserToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Search_32;
             this.findUserToolStripMenuItem.Name = "findUserToolStripMenuItem";
-            this.findUserToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.findUserToolStripMenuItem.Size = new System.Drawing.Size(257, 32);
             this.findUserToolStripMenuItem.Text = "Find User";
             this.findUserToolStripMenuItem.Click += new System.EventHandler(this.findUserToolStripMenuItem_Click);
             // 
@@ -482,14 +535,6 @@
             this.btnCLose.TabIndex = 1;
             this.btnCLose.UseTransparentBackground = true;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Image = global::ZakaBank_24.Properties.Resources.Info_128;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(217, 32);
-            this.toolStripMenuItem3.Text = "User Details";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // ShowMangaeUsersForm
             // 
@@ -567,5 +612,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem findUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem cmsSetUserToActive;
+        private System.Windows.Forms.ToolStripMenuItem cmsSetUserToInActive;
+        private System.Windows.Forms.ToolStripMenuItem cmsChangePassword;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
     }
 }

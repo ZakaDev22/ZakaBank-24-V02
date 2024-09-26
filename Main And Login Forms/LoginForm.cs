@@ -8,6 +8,7 @@ namespace ZakaBank_24
 {
     public partial class LoginForm : Form
     {
+        clsUsers user;
         private clsLoginRegisters _loginRegister;
 
         public LoginForm()
@@ -30,7 +31,15 @@ namespace ZakaBank_24
                 return;
             }
 
-            clsUsers user = await clsUsers.FindByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+
+            if (txtPassword.Text.Length == 64)
+            {
+                user = await clsUsers.FindByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            }
+            else
+            {
+                user = await clsUsers.FindByUserNameAndPassword(txtUserName.Text.Trim(), clsUtil.ComputeHash(txtPassword.Text.Trim()));
+            }
 
             if (user is null)
             {

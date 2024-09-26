@@ -201,5 +201,17 @@ namespace ZakaBankLogicLayer
         {
             return await clsUsersData.GetPagedUsers(pageNumber, pageSize);
         }
+
+
+        public static async Task<bool> SetUserAsActiveOrInactive(int UserID, bool ActiveOrNot)
+        {
+            return await clsUsersData.SetUserAsActiveOrInactive(UserID, ActiveOrNot);
+        }
+
+        // New method to check if member is active
+        public static async Task<bool> IsUserActive(int UserID)
+        {
+            return await clsUsersData.IsUserActive(UserID);
+        }
     }
 }
