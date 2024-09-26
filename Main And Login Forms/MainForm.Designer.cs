@@ -32,16 +32,6 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.lbUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.guna2CustomGradientPanel11 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar7 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
@@ -72,6 +62,16 @@
             this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.lbPeople = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.lbUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -102,9 +102,6 @@
             this.upcamingFuteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ATMtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.curToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2CustomGradientPanel4.SuspendLayout();
-            this.guna2CustomGradientPanel5.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -122,6 +119,9 @@
             this.guna2CircleProgressBar2.SuspendLayout();
             this.pnPeopleCount.SuspendLayout();
             this.guna2CircleProgressBar1.SuspendLayout();
+            this.guna2CustomGradientPanel4.SuspendLayout();
+            this.guna2CustomGradientPanel5.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -149,139 +149,9 @@
             this.guna2DragControl1.TargetControl = this.splitContainer1.Panel2;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2DragControl2
-            // 
-            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl2.TargetControl = this.guna2CustomGradientPanel4;
-            this.guna2DragControl2.UseTransparentDrag = true;
-            // 
-            // guna2CustomGradientPanel4
-            // 
-            this.guna2CustomGradientPanel4.Controls.Add(this.lbUserName);
-            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
-            this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
-            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Black;
-            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Silver;
-            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(0, 38);
-            this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
-            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(1170, 73);
-            this.guna2CustomGradientPanel4.TabIndex = 8;
-            // 
-            // lbUserName
-            // 
-            this.lbUserName.BackColor = System.Drawing.Color.Transparent;
-            this.lbUserName.Font = new System.Drawing.Font("Segoe UI Historic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.ForeColor = System.Drawing.Color.White;
-            this.lbUserName.Location = new System.Drawing.Point(258, 12);
-            this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(45, 42);
-            this.lbUserName.TabIndex = 2;
-            this.lbUserName.Text = "???";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(18, 12);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(225, 50);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Welcome Back";
-            // 
-            // guna2CustomGradientPanel1
-            // 
-            this.guna2CustomGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 111);
-            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 589);
-            this.guna2CustomGradientPanel1.TabIndex = 10;
-            // 
-            // guna2CustomGradientPanel3
-            // 
-            this.guna2CustomGradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2CustomGradientPanel3.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 679);
-            this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
-            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(1152, 21);
-            this.guna2CustomGradientPanel3.TabIndex = 12;
-            // 
-            // guna2CustomGradientPanel2
-            // 
-            this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.DarkViolet;
-            this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(1152, 111);
-            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 568);
-            this.guna2CustomGradientPanel2.TabIndex = 13;
-            // 
-            // guna2CustomGradientPanel5
-            // 
-            this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
-            this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnAccountTypes);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnLoginRegisters);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransfers);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransactions);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnUsers);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnClients);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnDashboard);
-            this.guna2CustomGradientPanel5.Controls.Add(this.btnPeople);
-            this.guna2CustomGradientPanel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2CustomGradientPanel5.FillColor = System.Drawing.SystemColors.WindowText;
-            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.Yellow;
-            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.YellowGreen;
-            this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.Crimson;
-            this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(18, 111);
-            this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
-            this.guna2CustomGradientPanel5.Size = new System.Drawing.Size(222, 568);
-            this.guna2CustomGradientPanel5.TabIndex = 14;
-            // 
-            // pnClickedButton
-            // 
-            this.pnClickedButton.BorderRadius = 10;
-            this.pnClickedButton.FillColor = System.Drawing.Color.Red;
-            this.pnClickedButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pnClickedButton.FillColor3 = System.Drawing.Color.Crimson;
-            this.pnClickedButton.FillColor4 = System.Drawing.Color.Crimson;
-            this.pnClickedButton.Location = new System.Drawing.Point(0, 6);
-            this.pnClickedButton.Name = "pnClickedButton";
-            this.pnClickedButton.Size = new System.Drawing.Size(18, 45);
-            this.pnClickedButton.TabIndex = 16;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.AllowDrop = true;
-            this.menuStrip1.BackColor = System.Drawing.Color.BlueViolet;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
-            this.accountSettingsToolStripMenuItem,
-            this.upcamingFuteresToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1170, 38);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -299,6 +169,10 @@
             this.splitContainer1.Panel1.Controls.Add(this.guna2CustomGradientPanel7);
             this.splitContainer1.Panel1.Controls.Add(this.guna2CustomGradientPanel6);
             this.splitContainer1.Panel1.Controls.Add(this.pnPeopleCount);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Size = new System.Drawing.Size(912, 568);
             this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 16;
@@ -741,6 +615,137 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "People";
             // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this.guna2CustomGradientPanel4;
+            this.guna2DragControl2.UseTransparentDrag = true;
+            // 
+            // guna2CustomGradientPanel4
+            // 
+            this.guna2CustomGradientPanel4.Controls.Add(this.lbUserName);
+            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
+            this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
+            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Black;
+            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.Silver;
+            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(0, 38);
+            this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
+            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(1170, 73);
+            this.guna2CustomGradientPanel4.TabIndex = 8;
+            // 
+            // lbUserName
+            // 
+            this.lbUserName.BackColor = System.Drawing.Color.Transparent;
+            this.lbUserName.Font = new System.Drawing.Font("Segoe UI Historic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.White;
+            this.lbUserName.Location = new System.Drawing.Point(258, 12);
+            this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Size = new System.Drawing.Size(45, 42);
+            this.lbUserName.TabIndex = 2;
+            this.lbUserName.Text = "???";
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe Script", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(18, 12);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(225, 50);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "Welcome Back";
+            // 
+            // guna2CustomGradientPanel1
+            // 
+            this.guna2CustomGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 111);
+            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 589);
+            this.guna2CustomGradientPanel1.TabIndex = 10;
+            // 
+            // guna2CustomGradientPanel3
+            // 
+            this.guna2CustomGradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.guna2CustomGradientPanel3.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 679);
+            this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
+            this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(1152, 21);
+            this.guna2CustomGradientPanel3.TabIndex = 12;
+            // 
+            // guna2CustomGradientPanel2
+            // 
+            this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2CustomGradientPanel2.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.DarkViolet;
+            this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(1152, 111);
+            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 568);
+            this.guna2CustomGradientPanel2.TabIndex = 13;
+            // 
+            // guna2CustomGradientPanel5
+            // 
+            this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
+            this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnAccountTypes);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnLoginRegisters);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransfers);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnTransactions);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnUsers);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnClients);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnDashboard);
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnPeople);
+            this.guna2CustomGradientPanel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2CustomGradientPanel5.FillColor = System.Drawing.SystemColors.WindowText;
+            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.Yellow;
+            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.YellowGreen;
+            this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.Crimson;
+            this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(18, 111);
+            this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
+            this.guna2CustomGradientPanel5.Size = new System.Drawing.Size(222, 568);
+            this.guna2CustomGradientPanel5.TabIndex = 14;
+            // 
+            // pnClickedButton
+            // 
+            this.pnClickedButton.BorderRadius = 10;
+            this.pnClickedButton.FillColor = System.Drawing.Color.Red;
+            this.pnClickedButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnClickedButton.FillColor3 = System.Drawing.Color.Crimson;
+            this.pnClickedButton.FillColor4 = System.Drawing.Color.Crimson;
+            this.pnClickedButton.Location = new System.Drawing.Point(0, 6);
+            this.pnClickedButton.Name = "pnClickedButton";
+            this.pnClickedButton.Size = new System.Drawing.Size(18, 45);
+            this.pnClickedButton.TabIndex = 16;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.AllowDrop = true;
+            this.menuStrip1.BackColor = System.Drawing.Color.Indigo;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.accountSettingsToolStripMenuItem,
+            this.upcamingFuteresToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1170, 38);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::ZakaBank_24.Properties.Resources.Types_64;
@@ -1139,6 +1144,7 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.upcamingFuturesToolStripMenuItem});
+            this.settingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.settingsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.account_settings_64;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(93, 34);
@@ -1159,6 +1165,7 @@
             this.toolStripMenuItem1,
             this.signOutToolStripMenuItem,
             this.FindUsertoolStripMenuItem2});
+            this.accountSettingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.accountSettingsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.user_config;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(157, 34);
@@ -1214,11 +1221,11 @@
             this.upcamingFuteresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ATMtoolStripMenuItem,
             this.curToolStripMenuItem});
+            this.upcamingFuteresToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.upcamingFuteresToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.ATM2_64;
             this.upcamingFuteresToolStripMenuItem.Name = "upcamingFuteresToolStripMenuItem";
             this.upcamingFuteresToolStripMenuItem.Size = new System.Drawing.Size(151, 34);
             this.upcamingFuteresToolStripMenuItem.Text = "ATM Futures";
-            this.upcamingFuteresToolStripMenuItem.Click += new System.EventHandler(this.upcamingFuteresToolStripMenuItem_Click);
             // 
             // ATMtoolStripMenuItem
             // 
@@ -1226,7 +1233,7 @@
             this.ATMtoolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ATMtoolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.ATM_64;
             this.ATMtoolStripMenuItem.Name = "ATMtoolStripMenuItem";
-            this.ATMtoolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.ATMtoolStripMenuItem.Size = new System.Drawing.Size(178, 36);
             this.ATMtoolStripMenuItem.Text = "ATM";
             this.ATMtoolStripMenuItem.Click += new System.EventHandler(this.ATMtoolStripMenuItem_Click);
             // 
@@ -1234,8 +1241,9 @@
             // 
             this.curToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Currencies_128;
             this.curToolStripMenuItem.Name = "curToolStripMenuItem";
-            this.curToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.curToolStripMenuItem.Size = new System.Drawing.Size(178, 36);
             this.curToolStripMenuItem.Text = "Currencies";
+            this.curToolStripMenuItem.Click += new System.EventHandler(this.curToolStripMenuItem_Click_1);
             // 
             // MainForm
             // 
@@ -1255,11 +1263,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.guna2CustomGradientPanel4.ResumeLayout(false);
-            this.guna2CustomGradientPanel4.PerformLayout();
-            this.guna2CustomGradientPanel5.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1285,6 +1288,11 @@
             this.pnPeopleCount.ResumeLayout(false);
             this.pnPeopleCount.PerformLayout();
             this.guna2CircleProgressBar1.ResumeLayout(false);
+            this.guna2CustomGradientPanel4.ResumeLayout(false);
+            this.guna2CustomGradientPanel4.PerformLayout();
+            this.guna2CustomGradientPanel5.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

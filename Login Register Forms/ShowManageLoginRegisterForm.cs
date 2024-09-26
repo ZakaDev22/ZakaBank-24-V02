@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.User_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Login_Register_Forms
@@ -10,7 +11,7 @@ namespace ZakaBank_24.Login_Register_Forms
     public partial class ShowManageLoginRegisterForm : Form
     {
         private int currentPage = 1;
-        private int pageSize = 11;
+        private int pageSize = 10;
         private int totalRecords = 0;
         private DataTable dt;
 
@@ -19,7 +20,7 @@ namespace ZakaBank_24.Login_Register_Forms
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 1;
             cbFilterBy.SelectedIndex = 0;
         }
 
@@ -140,6 +141,7 @@ namespace ZakaBank_24.Login_Register_Forms
         {
             pageSize = int.Parse(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
@@ -228,6 +230,12 @@ namespace ZakaBank_24.Login_Register_Forms
         private void btnCLose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void userInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvLoginRegisters.CurrentRow.Cells[1].Value);
+            frm.ShowDialog();
         }
     }
 }

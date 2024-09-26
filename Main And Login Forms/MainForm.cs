@@ -50,6 +50,17 @@ namespace ZakaBank_24.Main_And_Login_Forms
             this.Close();
         }
 
+        private async void _ExitTheApplication()
+        {
+            _loginRegister.LogOutDateTime = DateTime.Now;
+
+            if (!await _loginRegister.Save())
+                MessageBox.Show("error, something went wrong with login Register Record Update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // exit The Application Without the need of the login screen again
+            Application.Exit();
+        }
+
 
         private async Task _RefreshDashboardInformation()
         {
@@ -74,7 +85,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnCLose_Click(object sender, System.EventArgs e)
         {
-            _Logout();
+            _ExitTheApplication();
         }
 
         private void btnPeople_Click(object sender, System.EventArgs e)
@@ -179,30 +190,32 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SHowFindClientsForm frm = new SHowFindClientsForm(clsGlobal._CurrentUser.ID);
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm(clsGlobal._CurrentUser.ID);
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowChangePasswordForm frm = new ShowChangePasswordForm(clsGlobal._CurrentUser.ID);
+            frm.ShowDialog();
         }
 
         private void FindUsertoolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            SHowFindClientsForm form = new SHowFindClientsForm();
-            form.ShowDialog();
+            // Add A constructor in find user to take the current user id and load it her
+            ShowFindUserForm frm = new ShowFindUserForm();
+            frm.ShowDialog();
+        }
+
+        private void curToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowManageCurrenciesForm frm = new ShowManageCurrenciesForm();
+            frm.Show();
         }
 
         private void ATMtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("coming soon", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void upcamingFuteresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowManageCurrenciesForm frm = new ShowManageCurrenciesForm();
-            frm.Show();
+            MessageBox.Show("This Future Will Come very Soon :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

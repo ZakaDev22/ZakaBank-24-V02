@@ -18,7 +18,8 @@ namespace ZakaBank_24.Transactions_Forms
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 0;
         }
 
         private async Task _RefreshDataGridViewData()
@@ -139,6 +140,7 @@ namespace ZakaBank_24.Transactions_Forms
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,8 +195,8 @@ namespace ZakaBank_24.Transactions_Forms
                     break;
 
 
-                case "Transaction Type ID":
-                    FilterColumn = "TransactionTypeID";
+                case "Transaction Type":
+                    FilterColumn = "TransactionTypeName";
                     break;
 
 
@@ -214,7 +216,13 @@ namespace ZakaBank_24.Transactions_Forms
                 return;
             }
 
-            dt.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text);
+
+            if (FilterColumn == "TransactionID" || FilterColumn == "ClientID" || FilterColumn == "AddedByUser")
+                //in this case we deal with integer not string.
+
+                dt.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
+            else
+                dt.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim());
 
             lbRecords.Text = djvTransactions.RowCount.ToString();
 
@@ -222,7 +230,8 @@ namespace ZakaBank_24.Transactions_Forms
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            if (cbFilterBy.SelectedIndex != 3) // Transaction Type
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void btnCLose_Click(object sender, EventArgs e)

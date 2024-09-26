@@ -46,6 +46,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.lbRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnAddNewClient = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -182,6 +182,7 @@
             // rbByPages
             // 
             this.rbByPages.AutoSize = true;
+            this.rbByPages.Checked = true;
             this.rbByPages.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbByPages.ForeColor = System.Drawing.Color.Teal;
             this.rbByPages.Location = new System.Drawing.Point(17, 42);
@@ -202,7 +203,6 @@
             this.rbByAll.Name = "rbByAll";
             this.rbByAll.Size = new System.Drawing.Size(63, 22);
             this.rbByAll.TabIndex = 0;
-            this.rbByAll.TabStop = true;
             this.rbByAll.Text = "By All";
             this.rbByAll.UseVisualStyleBackColor = true;
             // 
@@ -291,6 +291,11 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(214, 6);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 6);
+            // 
             // lbRecords
             // 
             this.lbRecords.AutoSize = true;
@@ -353,14 +358,9 @@
             this.guna2DragControl2.TargetControl = this;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 6);
-            // 
             // btnLeft
             // 
-            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
+            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Previous_256;
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -376,7 +376,7 @@
             // 
             // btnRight
             // 
-            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
+            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Next_256;
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;

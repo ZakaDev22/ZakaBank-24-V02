@@ -249,6 +249,33 @@ namespace ZakaBankDataLayer
             return dataTable;
         }
 
+        public static async Task<DataTable> FindUserByPersonIDAsync(int id)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_FindByUserByPersonIDAsync", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PersonID", id);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dataTable.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+            return dataTable;
+        }
+
 
         public static async Task<DataTable> FindByUserNameAndPassword(string UserName, string Password)
         {
@@ -276,6 +303,70 @@ namespace ZakaBankDataLayer
                 ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             return dataTable;
+        }
+
+        public static async Task<bool> IsUserActive(int UserID)
+        {
+
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_Users_IsUserActive", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserID", UserID);
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            return reader.HasRows;
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+
+
+        }
+
+
+        public static async Task<bool> SetUserAsActiveOrInactive(int UserID, bool isActiveOrNot)
+        {
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    SqlCommand command = new SqlCommand("sp_Users_SetUserAsActiveOrInactive", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@UserID", UserID);
+
+                    command.Parameters.AddWithValue("@Result", isActiveOrNot);
+
+                    await connection.OpenAsync();
+                    return await command.ExecuteNonQueryAsync() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+
+
         }
     }
 }

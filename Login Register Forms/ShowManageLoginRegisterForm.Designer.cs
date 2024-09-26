@@ -54,10 +54,13 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.userInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvLoginRegisters)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -95,7 +98,7 @@
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.Yellow;
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 71);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 543);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(18, 630);
             this.guna2CustomGradientPanel1.TabIndex = 9;
             // 
             // guna2CustomGradientPanel2
@@ -107,7 +110,7 @@
             this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.Yellow;
             this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(790, 71);
             this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 543);
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(18, 630);
             this.guna2CustomGradientPanel2.TabIndex = 10;
             // 
             // guna2CustomGradientPanel3
@@ -117,7 +120,7 @@
             this.guna2CustomGradientPanel3.FillColor2 = System.Drawing.Color.DarkSeaGreen;
             this.guna2CustomGradientPanel3.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2CustomGradientPanel3.FillColor4 = System.Drawing.Color.Yellow;
-            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 593);
+            this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(18, 680);
             this.guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             this.guna2CustomGradientPanel3.Size = new System.Drawing.Size(772, 21);
             this.guna2CustomGradientPanel3.TabIndex = 11;
@@ -127,7 +130,7 @@
             this.lbRecords.AutoSize = true;
             this.lbRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRecords.ForeColor = System.Drawing.Color.Red;
-            this.lbRecords.Location = new System.Drawing.Point(132, 555);
+            this.lbRecords.Location = new System.Drawing.Point(146, 626);
             this.lbRecords.Name = "lbRecords";
             this.lbRecords.Size = new System.Drawing.Size(19, 20);
             this.lbRecords.TabIndex = 149;
@@ -137,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 555);
+            this.label2.Location = new System.Drawing.Point(46, 626);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 148;
@@ -153,7 +156,7 @@
             this.btnPageNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPageNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPageNumber.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPageNumber.Location = new System.Drawing.Point(368, 543);
+            this.btnPageNumber.Location = new System.Drawing.Point(379, 626);
             this.btnPageNumber.Name = "btnPageNumber";
             this.btnPageNumber.Size = new System.Drawing.Size(67, 44);
             this.btnPageNumber.TabIndex = 147;
@@ -168,11 +171,12 @@
             this.djvLoginRegisters.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.djvLoginRegisters.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.djvLoginRegisters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.djvLoginRegisters.ContextMenuStrip = this.guna2ContextMenuStrip1;
             this.djvLoginRegisters.GridColor = System.Drawing.Color.White;
-            this.djvLoginRegisters.Location = new System.Drawing.Point(39, 233);
+            this.djvLoginRegisters.Location = new System.Drawing.Point(50, 243);
             this.djvLoginRegisters.Name = "djvLoginRegisters";
             this.djvLoginRegisters.ReadOnly = true;
-            this.djvLoginRegisters.Size = new System.Drawing.Size(712, 302);
+            this.djvLoginRegisters.Size = new System.Drawing.Size(712, 377);
             this.djvLoginRegisters.TabIndex = 146;
             // 
             // lbSize
@@ -196,6 +200,7 @@
             this.cbPageSize.FormattingEnabled = true;
             this.cbPageSize.Items.AddRange(new object[] {
             "10",
+            "15",
             "20",
             "30",
             "40",
@@ -226,6 +231,7 @@
             // rbByPages
             // 
             this.rbByPages.AutoSize = true;
+            this.rbByPages.Checked = true;
             this.rbByPages.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbByPages.ForeColor = System.Drawing.Color.Teal;
             this.rbByPages.Location = new System.Drawing.Point(17, 42);
@@ -246,7 +252,6 @@
             this.rbByAll.Name = "rbByAll";
             this.rbByAll.Size = new System.Drawing.Size(63, 22);
             this.rbByAll.TabIndex = 0;
-            this.rbByAll.TabStop = true;
             this.rbByAll.Text = "By All";
             this.rbByAll.UseVisualStyleBackColor = true;
             // 
@@ -315,14 +320,14 @@
             // 
             // btnLeft
             // 
-            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Previous_72;
+            this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Previous_256;
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeft.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLeft.FlatAppearance.BorderSize = 0;
             this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLeft.Location = new System.Drawing.Point(295, 543);
+            this.btnLeft.Location = new System.Drawing.Point(306, 626);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(67, 44);
             this.btnLeft.TabIndex = 151;
@@ -331,14 +336,14 @@
             // 
             // btnRight
             // 
-            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Hopstarter_Button_Button_Next_72;
+            this.btnRight.BackgroundImage = global::ZakaBank_24.Properties.Resources.Next_256;
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRight.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnRight.FlatAppearance.BorderSize = 0;
             this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRight.Location = new System.Drawing.Point(441, 544);
+            this.btnRight.Location = new System.Drawing.Point(452, 627);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(67, 44);
             this.btnRight.TabIndex = 150;
@@ -348,7 +353,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.Hopstarter_Sleek_Xp_Basic_User_Group_256;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.History_48;
             this.pictureBox1.Location = new System.Drawing.Point(400, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 56);
@@ -380,11 +385,37 @@
             this.btnCLose.UseTransparentBackground = true;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userInformationToolStripMenuItem});
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(232, 58);
+            // 
+            // userInformationToolStripMenuItem
+            // 
+            this.userInformationToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
+            this.userInformationToolStripMenuItem.Name = "userInformationToolStripMenuItem";
+            this.userInformationToolStripMenuItem.Size = new System.Drawing.Size(231, 32);
+            this.userInformationToolStripMenuItem.Text = "   User Information";
+            this.userInformationToolStripMenuItem.Click += new System.EventHandler(this.userInformationToolStripMenuItem_Click);
+            // 
             // ShowManageLoginRegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 614);
+            this.ClientSize = new System.Drawing.Size(808, 701);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.lbRecords);
@@ -411,6 +442,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,5 +475,7 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem userInformationToolStripMenuItem;
     }
 }

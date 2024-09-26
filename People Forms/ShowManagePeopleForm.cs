@@ -12,14 +12,16 @@ namespace ZakaBank_24
     {
         private DataTable dt;
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 10;
         private int totalRecords = 0;
 
         public ShowManagePeopleForm()
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            UpdatePaginationControls();
+            cbPageSize.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 0;
         }
 
         private async Task _RefreshAllPeople()
@@ -159,6 +161,7 @@ namespace ZakaBank_24
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshAllPeople();
+            UpdatePaginationControls();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,7 +219,7 @@ namespace ZakaBank_24
             }
 
 
-            if (FilterColumn == "PersonID" || FilterColumn == "PhoneNumber")
+            if (FilterColumn == "PersonID")
                 //in this case we deal with integer not string.
 
                 dt.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());

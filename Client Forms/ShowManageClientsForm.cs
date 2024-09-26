@@ -13,14 +13,15 @@ namespace ZakaBank_24.Client_Forms
     {
         private DataTable dt;
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 10;
         private int totalRecords = 0;
 
         public ShowManageClientsForm()
         {
             InitializeComponent();
 
-            rbByPages.Checked = true;
+            cbPageSize.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 0;
         }
 
         private async Task _RefreshDataGridViewData()
@@ -136,6 +137,7 @@ namespace ZakaBank_24.Client_Forms
         {
             pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
