@@ -167,8 +167,8 @@ namespace ZakaBank_24.Transfer_Forms
 
 
             ctrlClientinfoCardWithFilter1.LoadClientInfoByID(_SenderCLientID);
+            ctrlClientinfoCardWithFilter1.FilterEnabled = false;
             linkClientHistory.Visible = true;
-            linkRecieverInfo.Visible = true;
         }
 
         private void linkRecieverInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -185,6 +185,11 @@ namespace ZakaBank_24.Transfer_Forms
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void linkClientHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

@@ -97,6 +97,11 @@ namespace ZakaBankLogicLayer
             return await clsClientsData.DeleteClientAsync(clientID);
         }
 
+        public static async Task<bool> InDeleteAsync(int clientID)
+        {
+            return await clsClientsData.InDeleteClientAsync(clientID);
+        }
+
         public static async Task<bool> ExistsByIDAsync(int clientID)
         {
             return await clsClientsData.ClientExistsAsync(clientID);
@@ -116,6 +121,16 @@ namespace ZakaBankLogicLayer
         {
             var result = await clsClientsData.GetPagedClientsAsync(pageNumber, pageSize);
             return (result.Item1, result.Item2);
+        }
+
+        public static async Task<DataTable> GetAllDeletedClientsAsync()
+        {
+            return await clsClientsData.GetAllDeletedClientsAsync();
+        }
+
+        public static async Task<(DataTable dataTable, int totalCount)> GetPagedDeletedClientsAsync(int pageNumber, int pageSize)
+        {
+            return await clsClientsData.GetPagedDeletedClientsAsync(pageNumber, pageSize);
         }
     }
 }

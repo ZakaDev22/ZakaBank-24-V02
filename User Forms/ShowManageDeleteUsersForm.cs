@@ -3,26 +3,25 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZakaBank_24.Global_Classes;
 using ZakaBank_24.People_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.User_Forms
 {
-    public partial class ShowMangaeUsersForm : Form
+    public partial class ShowManageDeleteUsersForm : Form
     {
         private DataTable dt;
         private int currentPage = 1;
         private int pageSize = 10;
         private int totalRecords = 0;
 
-        public ShowMangaeUsersForm()
+        public ShowManageDeleteUsersForm()
         {
             InitializeComponent();
-
             cbPageSize.SelectedIndex = 0;
             cbFilterBy.SelectedIndex = 0;
         }
+
 
         private async Task _RefreshDataGridViewData()
         {
@@ -32,14 +31,14 @@ namespace ZakaBank_24.User_Forms
                 if (rbByPages.Checked)
                 {
                     // Load the paged data
-                    var tuple = await clsUsers.GetPagedUsers(currentPage, pageSize);
+                    var tuple = await clsUsers.GetPagedDeletedUsers(currentPage, pageSize);
                     totalRecords = tuple.TotalCount;
                     dt = tuple.dataTable;
 
                 }
                 else
                 {
-                    dt = await clsUsers.GetAllUsers();
+                    dt = await clsUsers.GetAllDeletedUsers();
                 }
 
                 djvUsers.DataSource = null; // Clear existing data
@@ -130,16 +129,8 @@ namespace ZakaBank_24.User_Forms
             }
         }
 
-
         private async void rbByPages_CheckedChanged(object sender, EventArgs e)
         {
-            await _RefreshDataGridViewData();
-            UpdatePaginationControls();
-        }
-
-        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pageSize = Convert.ToInt32(cbPageSize.Text);
             await _RefreshDataGridViewData();
             UpdatePaginationControls();
         }
@@ -153,7 +144,6 @@ namespace ZakaBank_24.User_Forms
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            // ClientID, PersonID, AccountNumber, PinCode, AccountTypeID
 
             string FilterColumn = "";
             //Map Selected Filter to real Column name 
@@ -206,54 +196,18 @@ namespace ZakaBank_24.User_Forms
             lbRecords.Text = djvUsers.Rows.Count.ToString();
         }
 
-        private void btnAddNewUser_Click(object sender, EventArgs e)
+        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm();
-            frm.ShowDialog();
-        }
 
-        private async void btnRight_Click(object sender, EventArgs e)
-        {
-            if (currentPage * pageSize < totalRecords)
-            {
-                currentPage++;
-                await _RefreshDataGridViewData();
-                UpdatePaginationControls();
-            }
-        }
-
-        private async void btnLeft_Click(object sender, EventArgs e)
-        {
-            if (currentPage > 1)
-            {
-                currentPage--;
-                await _RefreshDataGridViewData();
-                UpdatePaginationControls();
-            }
-        }
-
-        private void btnCLose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            pageSize = Convert.ToInt32(cbPageSize.Text);
+            await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2 || cbFilterBy.SelectedIndex == 4 || cbFilterBy.SelectedIndex == 5)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void ShowMangaeUsersForm_Load(object sender, EventArgs e)
-        {
-            cbFilterBy.SelectedIndex = 0;
-        }
-
-        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm((int)djvUsers.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-
-            await _RefreshDataGridViewData();
         }
 
         private async void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,27 +218,25 @@ namespace ZakaBank_24.User_Forms
             frm.ShowDialog();
         }
 
-        private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm();
+            ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-
-            await _RefreshDataGridViewData();
         }
 
-        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void cmsInDeleteUser_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure You Want To Delete This User ?", "Confirm", MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Are You Sure You Want To InDelete This User ?", "Confirm", MessageBoxButtons.YesNo,
+              MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                if (await clsUsers.DeleteAsync((int)djvUsers.CurrentRow.Cells[0].Value))
+                if (await clsUsers.InDeleteAsync((int)djvUsers.CurrentRow.Cells[0].Value))
                 {
-                    MessageBox.Show("Success, User Was Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Success, User Was InDeleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _RefreshDataGridViewData();
                 }
                 else
                 {
-                    MessageBox.Show("Error, User Was Not Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error,The User is Not InDeleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -299,92 +251,19 @@ namespace ZakaBank_24.User_Forms
             frm.ShowDialog();
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ShowUserInfoCardForm frm = new ShowUserInfoCardForm((int)djvUsers.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-        }
-
-        private async void cmsSetUserToActive_Click(object sender, EventArgs e)
-        {
-            int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
-
-            if (MessageBox.Show("Are you sure you want to Set this User to Active Again?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (djvUsers.Rows.Count == 0)
             {
-                // if we send true then  the function will set ther user to active and if we send false it will be active
-                if (await clsUsers.SetUserAsActiveOrInactive(UserID, true))
-                {
-                    MessageBox.Show("User was  Set To Active  successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    await _RefreshDataGridViewData();
-                }
-                else
-                    MessageBox.Show("Error, User was not Set To Active", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show(" set User to Active was Canceled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-
-        private async void cmsSetUserToInActive_Click(object sender, EventArgs e)
-        {
-
-            int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
-
-            if ((UserID == 1) && clsGlobal._CurrentUser.ID != 1)
-            {
-                MessageBox.Show($"Error,You Can't Set The Admin As InActive 😎💪🙄", "Are You Serious", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (MessageBox.Show("Are you sure you want to Set this User to InActive Again?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                // if we send true then  the function will set there user to active and if we send false it will be active
-                if (await clsUsers.SetUserAsActiveOrInactive(UserID, false))
-                {
-                    MessageBox.Show("User was  Set To InActive successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    await _RefreshDataGridViewData();
-                }
-                else
-                    MessageBox.Show("Error, User was not Set To InActive", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show(" set User to InActive was Canceled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void cmsChangePassword_Click(object sender, EventArgs e)
-        {
-            ShowChangePasswordForm frm = new ShowChangePasswordForm((int)djvUsers.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-        }
-
-        private async void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // check if The DataGrid View has Any Row, if not Then This Code Will Not Implemented
-            if (djvUsers.Rows.Count > 0)
-            {
-                // Set The Enabled Property Of The Context Menu Strip To True
-                contextMenuStrip1.Enabled = true;
-
-                int UserID = (int)djvUsers.CurrentRow.Cells[0].Value;
-
-                bool UserActive = await clsUsers.IsUserActive(UserID);
-
-                cmsSetUserToInActive.Enabled = UserActive;
-
-                cmsSetUserToActive.Enabled = UserActive == false;
-            }
-            else
                 contextMenuStrip1.Enabled = false;
+            }
+            else
+                contextMenuStrip1.Enabled = true;
         }
 
-        private void btnDeletedClients_Click(object sender, EventArgs e)
+        private void btnCLose_Click(object sender, EventArgs e)
         {
-            ShowManageDeleteUsersForm frm = new ShowManageDeleteUsersForm();
-            frm.Show();
+            this.Close();
         }
     }
 }

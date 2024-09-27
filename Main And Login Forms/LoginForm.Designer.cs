@@ -201,10 +201,11 @@
             // 
             // guna2HtmlLabel3
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(56, 165);
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.RosyBrown;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(109, 156);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(73, 15);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(136, 27);
             this.guna2HtmlLabel3.TabIndex = 3;
             this.guna2HtmlLabel3.Text = "Remeber Me ?";
             // 
@@ -214,17 +215,21 @@
             this.tgsRemeberMe.AutoRoundedCorners = true;
             this.tgsRemeberMe.BackColor = System.Drawing.Color.Transparent;
             this.tgsRemeberMe.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tgsRemeberMe.CheckedState.BorderRadius = 12;
             this.tgsRemeberMe.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tgsRemeberMe.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tgsRemeberMe.CheckedState.InnerBorderRadius = 8;
             this.tgsRemeberMe.CheckedState.InnerColor = System.Drawing.Color.White;
             this.tgsRemeberMe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tgsRemeberMe.Location = new System.Drawing.Point(186, 168);
+            this.tgsRemeberMe.Location = new System.Drawing.Point(45, 156);
             this.tgsRemeberMe.Name = "tgsRemeberMe";
-            this.tgsRemeberMe.Size = new System.Drawing.Size(38, 20);
+            this.tgsRemeberMe.Size = new System.Drawing.Size(49, 27);
             this.tgsRemeberMe.TabIndex = 2;
             this.tgsRemeberMe.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tgsRemeberMe.UncheckedState.BorderRadius = 12;
             this.tgsRemeberMe.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.tgsRemeberMe.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tgsRemeberMe.UncheckedState.InnerBorderRadius = 8;
             this.tgsRemeberMe.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
             // txtPassword

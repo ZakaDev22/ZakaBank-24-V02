@@ -4,20 +4,18 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZakaBank_24.People_Forms;
-using ZakaBank_24.Transactions_Forms;
-using ZakaBank_24.Transfer_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Client_Forms
 {
-    public partial class ShowManageClientsForm : Form
+    public partial class SHowManageDeleteClientsForm : Form
     {
         private DataTable dt;
         private int currentPage = 1;
         private int pageSize = 10;
         private int totalRecords = 0;
 
-        public ShowManageClientsForm()
+        public SHowManageDeleteClientsForm()
         {
             InitializeComponent();
 
@@ -33,14 +31,14 @@ namespace ZakaBank_24.Client_Forms
                 if (rbByPages.Checked)
                 {
                     // Load the paged data
-                    var tuple = await clsClients.GetPagedClientsAsync(currentPage, pageSize);
+                    var tuple = await clsClients.GetPagedDeletedClientsAsync(currentPage, pageSize);
                     totalRecords = tuple.totalCount;
                     dt = tuple.dataTable;
 
                 }
                 else
                 {
-                    dt = await clsClients.GetAllClientsAsync();
+                    dt = await clsClients.GetAllDeletedClientsAsync();
                 }
 
                 djvClients.DataSource = null; // Clear existing data
@@ -134,13 +132,6 @@ namespace ZakaBank_24.Client_Forms
             UpdatePaginationControls();
         }
 
-        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pageSize = Convert.ToInt32(cbPageSize.Text);
-            await _RefreshDataGridViewData();
-            UpdatePaginationControls();
-        }
-
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtFilterValue.Visible = cbFilterBy.SelectedIndex != 0; // Hide the filter value when the filter is "None"
@@ -150,8 +141,6 @@ namespace ZakaBank_24.Client_Forms
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            // ClientID, PersonID, AccountNumber, PinCode, AccountTypeID
-
             string FilterColumn = "";
             //Map Selected Filter to real Column name 
             switch (cbFilterBy.Text)
@@ -207,11 +196,11 @@ namespace ZakaBank_24.Client_Forms
             lbRecords.Text = djvClients.Rows.Count.ToString();
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private async void cbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //this will allow only digits if person id is selected
-            if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2 || cbFilterBy.SelectedIndex == 4)
-                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            pageSize = Convert.ToInt32(cbPageSize.Text);
+            await _RefreshDataGridViewData();
+            UpdatePaginationControls();
         }
 
         private async void btnRight_Click(object sender, EventArgs e)
@@ -239,54 +228,9 @@ namespace ZakaBank_24.Client_Forms
             this.Close();
         }
 
-        private void ShowManageClientsForm_Load(object sender, EventArgs e)
+        private void SHowManageDeleteClientsForm_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
-        }
-
-        private async void btnAddNewClient_Click(object sender, EventArgs e)
-        {
-            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm();
-            frm.ShowDialog();
-
-            await _RefreshDataGridViewData();
-        }
-
-        private async void addNewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm();
-            frm.ShowDialog();
-
-            await _RefreshDataGridViewData();
-        }
-
-        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowAddEditCLientsForm frm = new ShowAddEditCLientsForm((int)djvClients.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-
-            await _RefreshDataGridViewData();
-        }
-
-        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are You Sure You Want To Delete This Client ?", "Confirm", MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                if (await clsClients.DeleteAsync((int)djvClients.CurrentRow.Cells[0].Value))
-                {
-                    MessageBox.Show("Success, Client Was Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    await _RefreshDataGridViewData();
-                }
-                else
-                {
-                    MessageBox.Show("Error, Client Was Not Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
         }
 
         private async void personDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -297,6 +241,35 @@ namespace ZakaBank_24.Client_Forms
             frm.ShowDialog();
         }
 
+        private async void ClientInfotoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm frm = new SHowFindClientsForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
+        }
+
+        private async void InDeleteClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure You Want To InDelete This Client ?", "Confirm", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if (await clsClients.InDeleteAsync((int)djvClients.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Success, Client Was InDeleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _RefreshDataGridViewData();
+                }
+                else
+                {
+                    MessageBox.Show("Error, Client Is Still Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This Operation Was Canceled", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
         private async void findClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SHowFindClientsForm frm = new SHowFindClientsForm();
@@ -305,24 +278,21 @@ namespace ZakaBank_24.Client_Forms
             await _RefreshDataGridViewData();
         }
 
-
-
-        private void btnDeletedClients_Click(object sender, EventArgs e)
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SHowManageDeleteClientsForm frm = new SHowManageDeleteClientsForm();
-            frm.Show();
+            if (djvClients.Rows.Count == 0)
+            {
+                contextMenuStrip1.Enabled = false;
+            }
+            else
+                contextMenuStrip1.Enabled = true;
         }
 
-        private void cmsMakeTransaction_Click(object sender, EventArgs e)
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ShowAddTransactionsForm frm = new ShowAddTransactionsForm((int)djvClients.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-        }
-
-        private void cmsMakeTransfer_Click(object sender, EventArgs e)
-        {
-            ShowAddTransfersForm frm = new ShowAddTransfersForm((int)djvClients.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
+            //this will allow only digits if person id is selected
+            if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2 || cbFilterBy.SelectedIndex == 4)
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
