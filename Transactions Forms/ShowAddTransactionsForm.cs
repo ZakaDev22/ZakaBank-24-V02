@@ -55,6 +55,7 @@ namespace ZakaBank_24.Transactions_Forms
 
 
             ctrlClientinfoCardWithFilter1.LoadClientInfoByID(_CLientID);
+            ctrlClientinfoCardWithFilter1.FilterEnabled = false;
             linkClientHistory.Visible = true;
 
         }

@@ -21,6 +21,7 @@ namespace ZakaBankLogicLayer
             All = People | Users | Clients | Transactions | Transfers | LoginRegisters
         }
 
+
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
@@ -117,8 +118,6 @@ namespace ZakaBankLogicLayer
                                      Convert.ToBoolean(row["IsActive"]),
                                      Convert.ToBoolean(row["IsDeleted"])
 
-
-
                 );
             }
             return null;
@@ -142,8 +141,6 @@ namespace ZakaBankLogicLayer
                                      row["AddedByUserID"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["AddedByUserID"]),
                                      Convert.ToBoolean(row["IsActive"]),
                                      Convert.ToBoolean(row["IsDeleted"])
-
-
 
                 );
             }
@@ -169,8 +166,6 @@ namespace ZakaBankLogicLayer
                                      Convert.ToBoolean(row["IsActive"]),
                                       Convert.ToBoolean(row["IsDeleted"])
 
-
-
                 );
             }
             return null;
@@ -181,6 +176,12 @@ namespace ZakaBankLogicLayer
         {
             return await clsUsersData.DeleteUser(id);
         }
+
+        public static async Task<bool> InDeleteAsync(int id)
+        {
+            return await clsUsersData.InDeleteUser(id);
+        }
+
 
         public static async Task<bool> ExistsByIDAsync(int id)
         {
@@ -197,9 +198,19 @@ namespace ZakaBankLogicLayer
             return await clsUsersData.GetAllUsers();
         }
 
+        public static async Task<DataTable> GetAllDeletedUsers()
+        {
+            return await clsUsersData.GetAllDeletedUsers();
+        }
+
         public static async Task<(DataTable dataTable, int TotalCount)> GetPagedUsers(int pageNumber, int pageSize)
         {
             return await clsUsersData.GetPagedUsers(pageNumber, pageSize);
+        }
+
+        public static async Task<(DataTable dataTable, int TotalCount)> GetPagedDeletedUsers(int pageNumber, int pageSize)
+        {
+            return await clsUsersData.GetPagedDeletedUsers(pageNumber, pageSize);
         }
 
 

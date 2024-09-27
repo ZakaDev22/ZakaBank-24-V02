@@ -96,6 +96,29 @@ namespace ZakaBankDataLayer
             }
         }
 
+        public static async Task<bool> InDeleteClientAsync(int clientID)
+        {
+            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Client_InDeleteClient", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ClientID", clientID);
+
+                    try
+                    {
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return false;
+                    }
+                }
+            }
+        }
+
         public static async Task<bool> ClientExistsAsync(int clientID)
         {
             try
@@ -200,6 +223,35 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
+        public static async Task<DataTable> GetAllDeletedClientsAsync()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetAllDeletedClients", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            if (da.HasRows)
+                                dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
+        }
+
         public static async Task<(DataTable Data, int TotalCount)> GetPagedClientsAsync(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
@@ -210,6 +262,46 @@ namespace ZakaBankDataLayer
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("sp_Client_GetAllClientsByPages", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
+                        cmd.Parameters.AddWithValue("@PageSize", pageSize);
+
+                        SqlParameter totalParam = new SqlParameter("@TotalCount", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(totalParam);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (reader.HasRows)
+                                dataTable.Load(reader);
+                        }
+
+                        totalCount = (int)totalParam.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return (dataTable, totalCount);
+        }
+
+        public static async Task<(DataTable Data, int TotalCount)> GetPagedDeletedClientsAsync(int pageNumber, int pageSize)
+        {
+            DataTable dataTable = new DataTable();
+            int totalCount = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetAllDeletedClientsByPages", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PageNumber", pageNumber);

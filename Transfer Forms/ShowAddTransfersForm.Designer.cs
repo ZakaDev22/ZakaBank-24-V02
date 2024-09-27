@@ -235,6 +235,7 @@
             this.linkClientHistory.TabStop = true;
             this.linkClientHistory.Text = "Client History.";
             this.linkClientHistory.Visible = false;
+            this.linkClientHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClientHistory_LinkClicked);
             // 
             // btnSave
             // 

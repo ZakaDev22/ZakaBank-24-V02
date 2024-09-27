@@ -179,7 +179,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Future Will Be In The Project Soon :-)", "Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            toglrQueckSearch.Checked = false;
         }
 
         private void showPersonInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -216,6 +216,46 @@ namespace ZakaBank_24.Main_And_Login_Forms
         private void ATMtoolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This Future Will Come very Soon :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void toglrQueckSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (toglrQueckSearch.Checked)
+            {
+                splitContainer1.SplitterDistance = 580; // this if the user Want to see The Charts Data If He click Reports Button
+            }
+            else
+                splitContainer1.SplitterDistance = 15; // this If He Click In Quick Search And Want To Find The Short Cuts
+        }
+
+        private void btnDeletedUsers_Click(object sender, EventArgs e)
+        {
+            ShowManageDeleteUsersForm frm = new ShowManageDeleteUsersForm();
+            frm.Show();
+        }
+
+        private void btnDeletedClients_Click(object sender, EventArgs e)
+        {
+            SHowManageDeleteClientsForm frm = new SHowManageDeleteClientsForm();
+            frm.Show();
+        }
+
+        private void btnFindPerson_Click(object sender, EventArgs e)
+        {
+            ShowFindPersonForm frm = new ShowFindPersonForm();
+            frm.ShowDialog();
+        }
+
+        private void btnFindClient_Click(object sender, EventArgs e)
+        {
+            SHowFindClientsForm frm = new SHowFindClientsForm();
+            frm.ShowDialog();
+        }
+
+        private void btnFindUser_Click(object sender, EventArgs e)
+        {
+            ShowFindUserForm frm = new ShowFindUserForm();
+            frm.ShowDialog();
         }
     }
 }

@@ -89,7 +89,30 @@ namespace ZakaBankDataLayer
                 using (SqlCommand cmd = new SqlCommand("sp_Users_DeleteUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@UserID", id);
+
+                    try
+                    {
+                        await conn.OpenAsync();
+                        return await cmd.ExecuteNonQueryAsync() > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public static async Task<bool> InDeleteUser(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Users_InDeleteUser", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", id);
 
                     try
                     {
@@ -114,7 +137,7 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Users_ExistsByID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Parameters.AddWithValue("@UserID", id);
 
                         await conn.OpenAsync();
                         object result = await cmd.ExecuteScalarAsync();
@@ -139,7 +162,7 @@ namespace ZakaBankDataLayer
                     using (SqlCommand cmd = new SqlCommand("sp_Users_ExistsByPersonID", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Parameters.AddWithValue("@PersonID", id);
 
                         await conn.OpenAsync();
                         object result = await cmd.ExecuteScalarAsync();
@@ -183,6 +206,34 @@ namespace ZakaBankDataLayer
             return dt;
         }
 
+        public static async Task<DataTable> GetAllDeletedUsers()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_GetAllDeletedUsers", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
+        }
+
         public static async Task<(DataTable, int)> GetPagedUsers(int pageNumber, int pageSize)
         {
             DataTable dataTable = new DataTable();
@@ -193,6 +244,45 @@ namespace ZakaBankDataLayer
                 using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("sp_Users_GetAllUsersByPages", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
+                        cmd.Parameters.AddWithValue("@PageSize", pageSize);
+
+                        SqlParameter totalParam = new SqlParameter("@TotalCount", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(totalParam);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            dataTable.Load(reader);
+                        }
+
+                        totalCount = (int)totalParam.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return (dataTable, totalCount);
+        }
+
+        public static async Task<(DataTable, int)> GetPagedDeletedUsers(int pageNumber, int pageSize)
+        {
+            DataTable dataTable = new DataTable();
+            int totalCount = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Users_GetAllDeletedUsersByPages", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
