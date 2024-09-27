@@ -158,9 +158,9 @@ namespace ZakaBank_24.Transfer_Forms
         {
             lbUserID.Text = clsGlobal._CurrentUser.ID.ToString();
 
+            _Transfer = new clsTransfers();
             if (_Mode == enMode.AddNew)
             {
-                _Transfer = new clsTransfers();
                 ctrlClientinfoCardWithFilter1.FilterFocus();
                 return;
             }

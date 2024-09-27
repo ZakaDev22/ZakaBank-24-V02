@@ -46,9 +46,9 @@ namespace ZakaBank_24.Transactions_Forms
             cbTransactionTypes.SelectedIndex = 0;
             lbUserID.Text = clsGlobal._CurrentUser.ID.ToString();
 
+            _Transaction = new clsTransactions();
             if (_Mode == enMode.AddNew)
             {
-                _Transaction = new clsTransactions();
                 ctrlClientinfoCardWithFilter1.FilterFocus();
                 return;
             }

@@ -324,5 +324,17 @@ namespace ZakaBank_24.Client_Forms
             ShowAddTransfersForm frm = new ShowAddTransfersForm((int)djvClients.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
         }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            ShowManagTransactionsForm frm = new ShowManagTransactionsForm();
+            frm.Show();
+        }
+
+        private void btnTransfers_Click(object sender, EventArgs e)
+        {
+            ShowManageTransfersForm frm = new ShowManageTransfersForm();
+            frm.Show();
+        }
     }
 }

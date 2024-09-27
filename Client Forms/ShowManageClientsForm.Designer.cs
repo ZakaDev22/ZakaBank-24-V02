@@ -67,6 +67,8 @@
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnAddNewClient = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnTransactions = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnTransfers = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -174,7 +176,7 @@
             this.lbSize.BackColor = System.Drawing.Color.Gold;
             this.lbSize.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSize.ForeColor = System.Drawing.Color.Brown;
-            this.lbSize.Location = new System.Drawing.Point(207, 119);
+            this.lbSize.Location = new System.Drawing.Point(155, 145);
             this.lbSize.Name = "lbSize";
             this.lbSize.Size = new System.Drawing.Size(97, 22);
             this.lbSize.TabIndex = 111;
@@ -197,7 +199,7 @@
             "500",
             "1000",
             "1500"});
-            this.cbPageSize.Location = new System.Drawing.Point(310, 117);
+            this.cbPageSize.Location = new System.Drawing.Point(258, 143);
             this.cbPageSize.Name = "cbPageSize";
             this.cbPageSize.Size = new System.Drawing.Size(89, 28);
             this.cbPageSize.TabIndex = 110;
@@ -470,7 +472,7 @@
             this.btnDeletedClients.FillColor2 = System.Drawing.Color.OrangeRed;
             this.btnDeletedClients.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnDeletedClients.ForeColor = System.Drawing.Color.White;
-            this.btnDeletedClients.Location = new System.Drawing.Point(732, 108);
+            this.btnDeletedClients.Location = new System.Drawing.Point(360, 87);
             this.btnDeletedClients.Name = "btnDeletedClients";
             this.btnDeletedClients.Size = new System.Drawing.Size(180, 45);
             this.btnDeletedClients.TabIndex = 118;
@@ -533,11 +535,57 @@
             this.btnAddNewClient.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.btnAddNewClient.Click += new System.EventHandler(this.btnAddNewClient_Click);
             // 
+            // btnTransactions
+            // 
+            this.btnTransactions.Animated = true;
+            this.btnTransactions.BorderRadius = 10;
+            this.btnTransactions.BorderThickness = 2;
+            this.btnTransactions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransactions.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransactions.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransactions.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransactions.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransactions.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTransactions.FillColor = System.Drawing.Color.Lime;
+            this.btnTransactions.FillColor2 = System.Drawing.Color.OrangeRed;
+            this.btnTransactions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTransactions.ForeColor = System.Drawing.Color.White;
+            this.btnTransactions.Location = new System.Drawing.Point(546, 87);
+            this.btnTransactions.Name = "btnTransactions";
+            this.btnTransactions.Size = new System.Drawing.Size(180, 45);
+            this.btnTransactions.TabIndex = 118;
+            this.btnTransactions.Text = "Transactions";
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
+            // 
+            // btnTransfers
+            // 
+            this.btnTransfers.Animated = true;
+            this.btnTransfers.BorderRadius = 10;
+            this.btnTransfers.BorderThickness = 2;
+            this.btnTransfers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransfers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransfers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransfers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransfers.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransfers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTransfers.FillColor = System.Drawing.Color.Lime;
+            this.btnTransfers.FillColor2 = System.Drawing.Color.OrangeRed;
+            this.btnTransfers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTransfers.ForeColor = System.Drawing.Color.White;
+            this.btnTransfers.Location = new System.Drawing.Point(732, 87);
+            this.btnTransfers.Name = "btnTransfers";
+            this.btnTransfers.Size = new System.Drawing.Size(180, 45);
+            this.btnTransfers.TabIndex = 118;
+            this.btnTransfers.Text = "Transfers";
+            this.btnTransfers.Click += new System.EventHandler(this.btnTransfers_Click);
+            // 
             // ShowManageClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 601);
+            this.Controls.Add(this.btnTransfers);
+            this.Controls.Add(this.btnTransactions);
             this.Controls.Add(this.btnDeletedClients);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
@@ -613,5 +661,7 @@
         private System.Windows.Forms.ToolStripMenuItem cmsMakeTransfer;
         private Guna.UI2.WinForms.Guna2GradientButton btnDeletedClients;
         private System.Windows.Forms.ToolStripMenuItem cmsMakeTransaction;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTransfers;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTransactions;
     }
 }
