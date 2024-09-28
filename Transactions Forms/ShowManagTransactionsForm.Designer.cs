@@ -55,10 +55,13 @@
             this.btnAddNewTransaction = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsClientHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvTransactions)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel4
@@ -169,6 +172,7 @@
             this.djvTransactions.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.djvTransactions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.djvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.djvTransactions.ContextMenuStrip = this.contextMenuStrip1;
             this.djvTransactions.GridColor = System.Drawing.Color.White;
             this.djvTransactions.Location = new System.Drawing.Point(39, 246);
             this.djvTransactions.Name = "djvTransactions";
@@ -406,6 +410,23 @@
             this.btnCLose.UseTransparentBackground = true;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsClientHistory});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 52);
+            // 
+            // cmsClientHistory
+            // 
+            this.cmsClientHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsClientHistory.Image = global::ZakaBank_24.Properties.Resources.History_48;
+            this.cmsClientHistory.Name = "cmsClientHistory";
+            this.cmsClientHistory.Size = new System.Drawing.Size(186, 26);
+            this.cmsClientHistory.Text = "Client History";
+            this.cmsClientHistory.Click += new System.EventHandler(this.cmsClientHistory_Click);
+            // 
             // ShowManagTransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,6 +460,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,5 +494,7 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cmsClientHistory;
     }
 }

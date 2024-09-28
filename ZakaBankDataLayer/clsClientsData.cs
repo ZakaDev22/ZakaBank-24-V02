@@ -331,5 +331,67 @@ namespace ZakaBankDataLayer
 
             return (dataTable, totalCount);
         }
+
+        public static async Task<DataTable> GetClientTransactionsHistoryByIDAsync(int clientID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetClientTransactionsHistoryByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@ClientID", clientID);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            if (da.HasRows)
+                                dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
+        }
+
+        public static async Task<DataTable> GetClientTransfersHistoryByIDAsync(int clientID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLayerSettings.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Client_GetClientTransfersHistoryByID", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@ClientID", clientID);
+
+                        await conn.OpenAsync();
+                        using (SqlDataReader da = await cmd.ExecuteReaderAsync())
+                        {
+                            if (da.HasRows)
+                                dt.Load(da);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExLogClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return dt;
+        }
     }
 }
