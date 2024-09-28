@@ -33,8 +33,6 @@
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbSize = new System.Windows.Forms.Label();
             this.cbPageSize = new System.Windows.Forms.ComboBox();
@@ -46,16 +44,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.djvClients = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.findClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsMakeTransaction = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsMakeTransfer = new System.Windows.Forms.ToolStripMenuItem();
             this.lbRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPageNumber = new System.Windows.Forms.Button();
@@ -64,16 +55,26 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.btnDeletedClients = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnTransactions = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnTransfers = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnAddNewClient = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.btnTransactions = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnTransfers = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.personDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMakeTransaction = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMakeTransfer = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCLose = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.cmsClientHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvClients)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel1
@@ -123,41 +124,6 @@
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(900, 71);
             this.guna2CustomGradientPanel4.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.People_400;
-            this.pictureBox1.Location = new System.Drawing.Point(283, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Animated = true;
-            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
-            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
-            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCLose.ForeColor = System.Drawing.Color.White;
-            this.btnCLose.IndicateFocus = true;
-            this.btnCLose.Location = new System.Drawing.Point(821, 5);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnCLose.Size = new System.Drawing.Size(73, 63);
-            this.btnCLose.TabIndex = 1;
-            this.btnCLose.UseTransparentBackground = true;
-            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -306,7 +272,7 @@
             // 
             this.contextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personDetailsToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -317,83 +283,25 @@
             this.findClientToolStripMenuItem,
             this.toolStripMenuItem3,
             this.cmsMakeTransaction,
-            this.cmsMakeTransfer});
+            this.cmsMakeTransfer,
+            this.cmsClientHistory});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(250, 246);
-            // 
-            // personDetailsToolStripMenuItem
-            // 
-            this.personDetailsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
-            this.personDetailsToolStripMenuItem.Name = "personDetailsToolStripMenuItem";
-            this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
-            this.personDetailsToolStripMenuItem.Text = "Person Details";
-            this.personDetailsToolStripMenuItem.Click += new System.EventHandler(this.personDetailsToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(245, 246);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(246, 6);
             // 
-            // addNewToolStripMenuItem
-            // 
-            this.addNewToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Add_128;
-            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
-            this.addNewToolStripMenuItem.Text = "Add New";
-            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Update_128;
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
-            this.updateToolStripMenuItem.Text = "Update";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Delete_128;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(246, 6);
             // 
-            // findClientToolStripMenuItem
-            // 
-            this.findClientToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Search_32;
-            this.findClientToolStripMenuItem.Name = "findClientToolStripMenuItem";
-            this.findClientToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
-            this.findClientToolStripMenuItem.Text = "Find Client";
-            this.findClientToolStripMenuItem.Click += new System.EventHandler(this.findClientToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(246, 6);
-            // 
-            // cmsMakeTransaction
-            // 
-            this.cmsMakeTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.cmsMakeTransaction.Image = global::ZakaBank_24.Properties.Resources.TotalAmounts_128;
-            this.cmsMakeTransaction.Name = "cmsMakeTransaction";
-            this.cmsMakeTransaction.Size = new System.Drawing.Size(249, 32);
-            this.cmsMakeTransaction.Text = "Make Transaction";
-            this.cmsMakeTransaction.Click += new System.EventHandler(this.cmsMakeTransaction_Click);
-            // 
-            // cmsMakeTransfer
-            // 
-            this.cmsMakeTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cmsMakeTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.cmsMakeTransfer.Image = global::ZakaBank_24.Properties.Resources.TransferMony_128;
-            this.cmsMakeTransfer.Name = "cmsMakeTransfer";
-            this.cmsMakeTransfer.Size = new System.Drawing.Size(249, 32);
-            this.cmsMakeTransfer.Text = "Transfer To";
-            this.cmsMakeTransfer.Click += new System.EventHandler(this.cmsMakeTransfer_Click);
             // 
             // lbRecords
             // 
@@ -479,6 +387,50 @@
             this.btnDeletedClients.Text = "Deleted Clients";
             this.btnDeletedClients.Click += new System.EventHandler(this.btnDeletedClients_Click);
             // 
+            // btnTransactions
+            // 
+            this.btnTransactions.Animated = true;
+            this.btnTransactions.BorderRadius = 10;
+            this.btnTransactions.BorderThickness = 2;
+            this.btnTransactions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransactions.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransactions.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransactions.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransactions.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransactions.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTransactions.FillColor = System.Drawing.Color.Lime;
+            this.btnTransactions.FillColor2 = System.Drawing.Color.OrangeRed;
+            this.btnTransactions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTransactions.ForeColor = System.Drawing.Color.White;
+            this.btnTransactions.Location = new System.Drawing.Point(546, 87);
+            this.btnTransactions.Name = "btnTransactions";
+            this.btnTransactions.Size = new System.Drawing.Size(180, 45);
+            this.btnTransactions.TabIndex = 118;
+            this.btnTransactions.Text = "Transactions";
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
+            // 
+            // btnTransfers
+            // 
+            this.btnTransfers.Animated = true;
+            this.btnTransfers.BorderRadius = 10;
+            this.btnTransfers.BorderThickness = 2;
+            this.btnTransfers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransfers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransfers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransfers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransfers.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransfers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTransfers.FillColor = System.Drawing.Color.Lime;
+            this.btnTransfers.FillColor2 = System.Drawing.Color.OrangeRed;
+            this.btnTransfers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTransfers.ForeColor = System.Drawing.Color.White;
+            this.btnTransfers.Location = new System.Drawing.Point(732, 87);
+            this.btnTransfers.Name = "btnTransfers";
+            this.btnTransfers.Size = new System.Drawing.Size(180, 45);
+            this.btnTransfers.TabIndex = 118;
+            this.btnTransfers.Text = "Transfers";
+            this.btnTransfers.Click += new System.EventHandler(this.btnTransfers_Click);
+            // 
             // btnLeft
             // 
             this.btnLeft.BackgroundImage = global::ZakaBank_24.Properties.Resources.Previous_256;
@@ -535,49 +487,108 @@
             this.btnAddNewClient.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.btnAddNewClient.Click += new System.EventHandler(this.btnAddNewClient_Click);
             // 
-            // btnTransactions
+            // personDetailsToolStripMenuItem
             // 
-            this.btnTransactions.Animated = true;
-            this.btnTransactions.BorderRadius = 10;
-            this.btnTransactions.BorderThickness = 2;
-            this.btnTransactions.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTransactions.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTransactions.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTransactions.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTransactions.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTransactions.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTransactions.FillColor = System.Drawing.Color.Lime;
-            this.btnTransactions.FillColor2 = System.Drawing.Color.OrangeRed;
-            this.btnTransactions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnTransactions.ForeColor = System.Drawing.Color.White;
-            this.btnTransactions.Location = new System.Drawing.Point(546, 87);
-            this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(180, 45);
-            this.btnTransactions.TabIndex = 118;
-            this.btnTransactions.Text = "Transactions";
-            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
+            this.personDetailsToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Info_128;
+            this.personDetailsToolStripMenuItem.Name = "personDetailsToolStripMenuItem";
+            this.personDetailsToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
+            this.personDetailsToolStripMenuItem.Text = "Person Details";
+            this.personDetailsToolStripMenuItem.Click += new System.EventHandler(this.personDetailsToolStripMenuItem_Click);
             // 
-            // btnTransfers
+            // addNewToolStripMenuItem
             // 
-            this.btnTransfers.Animated = true;
-            this.btnTransfers.BorderRadius = 10;
-            this.btnTransfers.BorderThickness = 2;
-            this.btnTransfers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTransfers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTransfers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTransfers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTransfers.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTransfers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTransfers.FillColor = System.Drawing.Color.Lime;
-            this.btnTransfers.FillColor2 = System.Drawing.Color.OrangeRed;
-            this.btnTransfers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnTransfers.ForeColor = System.Drawing.Color.White;
-            this.btnTransfers.Location = new System.Drawing.Point(732, 87);
-            this.btnTransfers.Name = "btnTransfers";
-            this.btnTransfers.Size = new System.Drawing.Size(180, 45);
-            this.btnTransfers.TabIndex = 118;
-            this.btnTransfers.Text = "Transfers";
-            this.btnTransfers.Click += new System.EventHandler(this.btnTransfers_Click);
+            this.addNewToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Add_128;
+            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
+            this.addNewToolStripMenuItem.Text = "Add New";
+            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Update_128;
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Delete_128;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // findClientToolStripMenuItem
+            // 
+            this.findClientToolStripMenuItem.Image = global::ZakaBank_24.Properties.Resources.Search_32;
+            this.findClientToolStripMenuItem.Name = "findClientToolStripMenuItem";
+            this.findClientToolStripMenuItem.Size = new System.Drawing.Size(249, 32);
+            this.findClientToolStripMenuItem.Text = "Find Client";
+            this.findClientToolStripMenuItem.Click += new System.EventHandler(this.findClientToolStripMenuItem_Click);
+            // 
+            // cmsMakeTransaction
+            // 
+            this.cmsMakeTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.cmsMakeTransaction.Image = global::ZakaBank_24.Properties.Resources.TotalAmounts_128;
+            this.cmsMakeTransaction.Name = "cmsMakeTransaction";
+            this.cmsMakeTransaction.Size = new System.Drawing.Size(249, 32);
+            this.cmsMakeTransaction.Text = "Make Transaction";
+            this.cmsMakeTransaction.Click += new System.EventHandler(this.cmsMakeTransaction_Click);
+            // 
+            // cmsMakeTransfer
+            // 
+            this.cmsMakeTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cmsMakeTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.cmsMakeTransfer.Image = global::ZakaBank_24.Properties.Resources.TransferMony_128;
+            this.cmsMakeTransfer.Name = "cmsMakeTransfer";
+            this.cmsMakeTransfer.Size = new System.Drawing.Size(249, 32);
+            this.cmsMakeTransfer.Text = "Transfer To";
+            this.cmsMakeTransfer.Click += new System.EventHandler(this.cmsMakeTransfer_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ZakaBank_24.Properties.Resources.People_400;
+            this.pictureBox1.Location = new System.Drawing.Point(283, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnCLose
+            // 
+            this.btnCLose.Animated = true;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCLose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCLose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCLose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCLose.FillColor = System.Drawing.Color.Transparent;
+            this.btnCLose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCLose.ForeColor = System.Drawing.Color.White;
+            this.btnCLose.IndicateFocus = true;
+            this.btnCLose.Location = new System.Drawing.Point(821, 5);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCLose.Size = new System.Drawing.Size(73, 63);
+            this.btnCLose.TabIndex = 1;
+            this.btnCLose.UseTransparentBackground = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
+            // cmsClientHistory
+            // 
+            this.cmsClientHistory.BackColor = System.Drawing.Color.White;
+            this.cmsClientHistory.Image = global::ZakaBank_24.Properties.Resources.History_48;
+            this.cmsClientHistory.Name = "cmsClientHistory";
+            this.cmsClientHistory.Size = new System.Drawing.Size(244, 28);
+            this.cmsClientHistory.Text = "Client History";
+            this.cmsClientHistory.Click += new System.EventHandler(this.cmsClientHistory_Click);
             // 
             // ShowManageClientsForm
             // 
@@ -611,11 +622,11 @@
             this.Load += new System.EventHandler(this.ShowManageClientsForm_Load);
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvClients)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -663,5 +674,6 @@
         private System.Windows.Forms.ToolStripMenuItem cmsMakeTransaction;
         private Guna.UI2.WinForms.Guna2GradientButton btnTransfers;
         private Guna.UI2.WinForms.Guna2GradientButton btnTransactions;
+        private System.Windows.Forms.ToolStripMenuItem cmsClientHistory;
     }
 }

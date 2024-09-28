@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.Client_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Transactions_Forms
@@ -242,6 +243,12 @@ namespace ZakaBank_24.Transactions_Forms
         private void ShowManagTransactionsForm_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
+        }
+
+        private void cmsClientHistory_Click(object sender, EventArgs e)
+        {
+            ShowClientHistoryForm frm = new ShowClientHistoryForm((int)djvTransactions.CurrentRow.Cells[1].Value);
+            frm.ShowDialog();
         }
     }
 }

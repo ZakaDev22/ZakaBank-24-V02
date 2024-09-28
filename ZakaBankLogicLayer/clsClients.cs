@@ -132,6 +132,16 @@ namespace ZakaBankLogicLayer
         {
             return await clsClientsData.GetPagedDeletedClientsAsync(pageNumber, pageSize);
         }
+
+        public static async Task<DataTable> GetClientTransactionsHistoryByIDAsync(int clientID)
+        {
+            return await clsClientsData.GetClientTransactionsHistoryByIDAsync(clientID);
+        }
+
+        public static async Task<DataTable> GetClientTransfersHistoryByIDAsync(int clientID)
+        {
+            return await clsClientsData.GetClientTransfersHistoryByIDAsync(clientID);
+        }
     }
 }
 

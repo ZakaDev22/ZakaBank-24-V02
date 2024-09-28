@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.Client_Forms;
 using ZakaBankLogicLayer;
 
 namespace ZakaBank_24.Transfer_Forms
@@ -227,6 +228,12 @@ namespace ZakaBank_24.Transfer_Forms
 
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
+        }
+
+        private void cmsClientHistory_Click(object sender, EventArgs e)
+        {
+            ShowClientHistoryForm frm = new ShowClientHistoryForm((int)djvTransfers.CurrentRow.Cells[1].Value);
+            frm.ShowDialog();
         }
     }
 }

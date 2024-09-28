@@ -336,5 +336,11 @@ namespace ZakaBank_24.Client_Forms
             ShowManageTransfersForm frm = new ShowManageTransfersForm();
             frm.Show();
         }
+
+        private void cmsClientHistory_Click(object sender, EventArgs e)
+        {
+            ShowClientHistoryForm frm = new ShowClientHistoryForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }

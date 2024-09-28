@@ -61,6 +61,7 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.cmsClientHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.djvClients)).BeginInit();
@@ -366,9 +367,10 @@
             this.InDeleteClientToolStripMenuItem,
             this.toolStripMenuItem2,
             this.findClientToolStripMenuItem,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.cmsClientHistory});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 150);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 204);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // personDetailsToolStripMenuItem
@@ -443,6 +445,15 @@
             this.guna2DragControl2.TargetControl = this;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
+            // cmsClientHistory
+            // 
+            this.cmsClientHistory.BackColor = System.Drawing.Color.White;
+            this.cmsClientHistory.Image = global::ZakaBank_24.Properties.Resources.History_48;
+            this.cmsClientHistory.Name = "cmsClientHistory";
+            this.cmsClientHistory.Size = new System.Drawing.Size(222, 32);
+            this.cmsClientHistory.Text = "Client History";
+            this.cmsClientHistory.Click += new System.EventHandler(this.cmsClientHistory_Click);
+            // 
             // SHowManageDeleteClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,5 +525,6 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
+        private System.Windows.Forms.ToolStripMenuItem cmsClientHistory;
     }
 }

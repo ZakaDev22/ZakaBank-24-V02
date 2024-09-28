@@ -294,5 +294,11 @@ namespace ZakaBank_24.Client_Forms
             if (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2 || cbFilterBy.SelectedIndex == 4)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void cmsClientHistory_Click(object sender, EventArgs e)
+        {
+            ShowClientHistoryForm frm = new ShowClientHistoryForm((int)djvClients.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }
