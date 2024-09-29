@@ -201,11 +201,12 @@
             // 
             // guna2HtmlLabel3
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.RosyBrown;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.DarkRed;
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(109, 156);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(136, 27);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(148, 26);
             this.guna2HtmlLabel3.TabIndex = 3;
             this.guna2HtmlLabel3.Text = "Remeber Me ?";
             // 

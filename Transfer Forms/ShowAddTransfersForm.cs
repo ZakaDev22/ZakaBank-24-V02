@@ -47,6 +47,14 @@ namespace ZakaBank_24.Transfer_Forms
                             txtRecieverClient.Focus();
                         }
 
+                        if (int.Parse(txtRecieverClient.Text) == _SenderCLientID)
+                        {
+                            MessageBox.Show($"error, The Sender Client Cant Be The Receiver As Well \n Enter Another Client ID", "Error"
+                                                , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            e.Cancel = true;
+                            txtRecieverClient.Focus();
+                        }
+
                     }
                     else
                     {

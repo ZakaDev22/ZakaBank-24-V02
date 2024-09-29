@@ -96,6 +96,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnPeople_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.People))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnPeople.Top;
 
             ShowManagePeopleForm frm = new ShowManagePeopleForm();
@@ -108,6 +114,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnClients_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.Clients))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnClients.Top;
             ShowManageClientsForm frm = new ShowManageClientsForm();
             frm.Show();
@@ -116,6 +128,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnUsers_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.Users))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnUsers.Top;
             ShowMangaeUsersForm frm = new ShowMangaeUsersForm();
             frm.Show();
@@ -124,6 +142,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnTransactions_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.Transactions))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnTransactions.Top;
             ShowManagTransactionsForm frm = new ShowManagTransactionsForm();
             frm.Show();
@@ -132,6 +156,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnTransfers_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.Transfers))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnTransfers.Top;
             ShowManageTransfersForm frm = new ShowManageTransfersForm();
 
@@ -143,6 +173,12 @@ namespace ZakaBank_24.Main_And_Login_Forms
 
         private void btnLoginRegisters_Click(object sender, System.EventArgs e)
         {
+            if (!clsValidation.IsUserHaveThisPermission(clsGlobal._CurrentUser.Permissions, (int)clsUsers.enPermissions.LoginRegisters))
+            {
+                MessageBox.Show("Access Denied, Please Connect Your Admin", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             pnClickedButton.Top = btnLoginRegisters.Top;
 
             var frm = new ShowManageLoginRegisterForm();

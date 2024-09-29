@@ -206,10 +206,12 @@ namespace ZakaBank_24.User_Forms
             lbRecords.Text = djvUsers.Rows.Count.ToString();
         }
 
-        private void btnAddNewUser_Click(object sender, EventArgs e)
+        private async void btnAddNewUser_Click(object sender, EventArgs e)
         {
             ShowAddEditeUsersForm frm = new ShowAddEditeUsersForm();
             frm.ShowDialog();
+
+            await _RefreshDataGridViewData();
         }
 
         private async void btnRight_Click(object sender, EventArgs e)
