@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZakaBank_24.Client_Forms;
 using ZakaBank_24.Global_Classes;
 using ZakaBankLogicLayer;
 
@@ -157,7 +158,8 @@ namespace ZakaBank_24.Transactions_Forms
 
         private void linkClientHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("This Future Will Be In the Program Very Sone :-)", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowClientHistoryForm frm = new ShowClientHistoryForm(_Transaction.ClientID);
+            frm.ShowDialog();
         }
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)

@@ -29,22 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbShortCuts = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btnFindPerson = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnFindClient = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnFindUser = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnDeletedUsers = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDeletedClients = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnFindUser = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnFindClient = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnFindPerson = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2CustomGradientPanel11 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CircleProgressBar7 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.lbAccountType = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel10 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2CircleProgressBar6 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.lbRegisters = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -81,13 +93,21 @@
             this.pnClickedButton = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.guna2AnimateWindow2 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.chartTransactionTypesDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartClientBalanceOverview = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartTotalTransfers = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lbTotalTransactionsForEachDay = new System.Windows.Forms.Label();
+            this.lbBalancesRanges = new System.Windows.Forms.Label();
+            this.lbTotalTransfersByEachDay = new System.Windows.Forms.Label();
+            this.lbTotalTransactionTypes = new System.Windows.Forms.Label();
+            this.chartTotalTransactionsOverTime = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnRefreshReports = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnReports = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnAccountTypes = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -111,15 +131,15 @@
             this.upcamingFuteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ATMtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.curToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gbShortCuts = new Guna.UI2.WinForms.Guna2GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbShortCuts.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2CustomGradientPanel11.SuspendLayout();
             this.guna2CircleProgressBar7.SuspendLayout();
             this.guna2CustomGradientPanel10.SuspendLayout();
-            this.guna2CircleProgressBar6.SuspendLayout();
             this.guna2CustomGradientPanel9.SuspendLayout();
             this.guna2CircleProgressBar5.SuspendLayout();
             this.guna2CustomGradientPanel8.SuspendLayout();
@@ -133,14 +153,16 @@
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.guna2CustomGradientPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTransactionTypesDistribution)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartClientBalanceOverview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalTransfers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalTransactionsOverTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.gbShortCuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2AnimateWindow1
@@ -188,9 +210,95 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel2.Controls.Add(this.chartTotalTransactionsOverTime);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTotalTransactionTypes);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTotalTransfersByEachDay);
+            this.splitContainer1.Panel2.Controls.Add(this.lbBalancesRanges);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTotalTransactionsForEachDay);
+            this.splitContainer1.Panel2.Controls.Add(this.chartTotalTransfers);
+            this.splitContainer1.Panel2.Controls.Add(this.chartClientBalanceOverview);
+            this.splitContainer1.Panel2.Controls.Add(this.chartTransactionTypesDistribution);
             this.splitContainer1.Size = new System.Drawing.Size(912, 590);
-            this.splitContainer1.SplitterDistance = 561;
+            this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.TabIndex = 16;
+            // 
+            // gbShortCuts
+            // 
+            this.gbShortCuts.BackColor = System.Drawing.Color.Transparent;
+            this.gbShortCuts.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gbShortCuts.BorderRadius = 10;
+            this.gbShortCuts.BorderThickness = 3;
+            this.gbShortCuts.Controls.Add(this.btnFindPerson);
+            this.gbShortCuts.Controls.Add(this.btnFindClient);
+            this.gbShortCuts.Controls.Add(this.btnFindUser);
+            this.gbShortCuts.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gbShortCuts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbShortCuts.ForeColor = System.Drawing.Color.White;
+            this.gbShortCuts.Location = new System.Drawing.Point(537, 260);
+            this.gbShortCuts.Name = "gbShortCuts";
+            this.gbShortCuts.Size = new System.Drawing.Size(300, 272);
+            this.gbShortCuts.TabIndex = 20;
+            this.gbShortCuts.Text = "ShortCuts";
+            // 
+            // btnFindPerson
+            // 
+            this.btnFindPerson.Animated = true;
+            this.btnFindPerson.BorderRadius = 2;
+            this.btnFindPerson.BorderThickness = 1;
+            this.btnFindPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFindPerson.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindPerson.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindPerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindPerson.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindPerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFindPerson.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFindPerson.ForeColor = System.Drawing.Color.White;
+            this.btnFindPerson.Location = new System.Drawing.Point(64, 61);
+            this.btnFindPerson.Name = "btnFindPerson";
+            this.btnFindPerson.Size = new System.Drawing.Size(180, 45);
+            this.btnFindPerson.TabIndex = 18;
+            this.btnFindPerson.Text = "Find Person";
+            this.btnFindPerson.Click += new System.EventHandler(this.btnFindPerson_Click);
+            // 
+            // btnFindClient
+            // 
+            this.btnFindClient.Animated = true;
+            this.btnFindClient.BorderRadius = 2;
+            this.btnFindClient.BorderThickness = 1;
+            this.btnFindClient.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFindClient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindClient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindClient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindClient.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindClient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFindClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFindClient.ForeColor = System.Drawing.Color.White;
+            this.btnFindClient.Location = new System.Drawing.Point(64, 133);
+            this.btnFindClient.Name = "btnFindClient";
+            this.btnFindClient.Size = new System.Drawing.Size(180, 45);
+            this.btnFindClient.TabIndex = 18;
+            this.btnFindClient.Text = "Find Client";
+            this.btnFindClient.Click += new System.EventHandler(this.btnFindClient_Click);
+            // 
+            // btnFindUser
+            // 
+            this.btnFindUser.Animated = true;
+            this.btnFindUser.BorderRadius = 2;
+            this.btnFindUser.BorderThickness = 1;
+            this.btnFindUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFindUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFindUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFindUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFindUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFindUser.ForeColor = System.Drawing.Color.White;
+            this.btnFindUser.Location = new System.Drawing.Point(64, 206);
+            this.btnFindUser.Name = "btnFindUser";
+            this.btnFindUser.Size = new System.Drawing.Size(180, 45);
+            this.btnFindUser.TabIndex = 18;
+            this.btnFindUser.Text = "Find User";
+            this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
             // 
             // guna2GroupBox1
             // 
@@ -251,66 +359,6 @@
             this.btnDeletedClients.TabIndex = 18;
             this.btnDeletedClients.Text = "Clients";
             this.btnDeletedClients.Click += new System.EventHandler(this.btnDeletedClients_Click);
-            // 
-            // btnFindUser
-            // 
-            this.btnFindUser.Animated = true;
-            this.btnFindUser.BorderRadius = 2;
-            this.btnFindUser.BorderThickness = 1;
-            this.btnFindUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFindUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindUser.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFindUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFindUser.ForeColor = System.Drawing.Color.White;
-            this.btnFindUser.Location = new System.Drawing.Point(64, 206);
-            this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(180, 45);
-            this.btnFindUser.TabIndex = 18;
-            this.btnFindUser.Text = "Find User";
-            this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
-            // 
-            // btnFindClient
-            // 
-            this.btnFindClient.Animated = true;
-            this.btnFindClient.BorderRadius = 2;
-            this.btnFindClient.BorderThickness = 1;
-            this.btnFindClient.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFindClient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindClient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindClient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindClient.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindClient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFindClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFindClient.ForeColor = System.Drawing.Color.White;
-            this.btnFindClient.Location = new System.Drawing.Point(64, 133);
-            this.btnFindClient.Name = "btnFindClient";
-            this.btnFindClient.Size = new System.Drawing.Size(180, 45);
-            this.btnFindClient.TabIndex = 18;
-            this.btnFindClient.Text = "Find Client";
-            this.btnFindClient.Click += new System.EventHandler(this.btnFindClient_Click);
-            // 
-            // btnFindPerson
-            // 
-            this.btnFindPerson.Animated = true;
-            this.btnFindPerson.BorderRadius = 2;
-            this.btnFindPerson.BorderThickness = 1;
-            this.btnFindPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFindPerson.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindPerson.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFindPerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindPerson.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFindPerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFindPerson.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnFindPerson.ForeColor = System.Drawing.Color.White;
-            this.btnFindPerson.Location = new System.Drawing.Point(64, 61);
-            this.btnFindPerson.Name = "btnFindPerson";
-            this.btnFindPerson.Size = new System.Drawing.Size(180, 45);
-            this.btnFindPerson.TabIndex = 18;
-            this.btnFindPerson.Text = "Find Person";
-            this.btnFindPerson.Click += new System.EventHandler(this.btnFindPerson_Click);
             // 
             // guna2CustomGradientPanel11
             // 
@@ -376,7 +424,6 @@
             // guna2CustomGradientPanel10
             // 
             this.guna2CustomGradientPanel10.BorderRadius = 20;
-            this.guna2CustomGradientPanel10.Controls.Add(this.guna2CircleProgressBar6);
             this.guna2CustomGradientPanel10.Controls.Add(this.lbRegisters);
             this.guna2CustomGradientPanel10.Controls.Add(this.label11);
             this.guna2CustomGradientPanel10.FillColor = System.Drawing.Color.Yellow;
@@ -387,28 +434,6 @@
             this.guna2CustomGradientPanel10.Name = "guna2CustomGradientPanel10";
             this.guna2CustomGradientPanel10.Size = new System.Drawing.Size(113, 175);
             this.guna2CustomGradientPanel10.TabIndex = 17;
-            // 
-            // guna2CircleProgressBar6
-            // 
-            this.guna2CircleProgressBar6.Animated = true;
-            this.guna2CircleProgressBar6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar6.Controls.Add(this.pictureBox7);
-            this.guna2CircleProgressBar6.EnsureVisible = true;
-            this.guna2CircleProgressBar6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.guna2CircleProgressBar6.FillThickness = 3;
-            this.guna2CircleProgressBar6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2CircleProgressBar6.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleProgressBar6.Location = new System.Drawing.Point(18, 12);
-            this.guna2CircleProgressBar6.Minimum = 0;
-            this.guna2CircleProgressBar6.Name = "guna2CircleProgressBar6";
-            this.guna2CircleProgressBar6.ProgressColor = System.Drawing.Color.Red;
-            this.guna2CircleProgressBar6.ProgressColor2 = System.Drawing.Color.Red;
-            this.guna2CircleProgressBar6.ProgressThickness = 3;
-            this.guna2CircleProgressBar6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleProgressBar6.Size = new System.Drawing.Size(81, 81);
-            this.guna2CircleProgressBar6.TabIndex = 2;
-            this.guna2CircleProgressBar6.UseTransparentBackground = true;
-            this.guna2CircleProgressBar6.Value = 10;
             // 
             // lbRegisters
             // 
@@ -470,7 +495,7 @@
             this.guna2CircleProgressBar5.FillThickness = 3;
             this.guna2CircleProgressBar5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2CircleProgressBar5.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleProgressBar5.Location = new System.Drawing.Point(18, 12);
+            this.guna2CircleProgressBar5.Location = new System.Drawing.Point(18, 17);
             this.guna2CircleProgressBar5.Minimum = 0;
             this.guna2CircleProgressBar5.Name = "guna2CircleProgressBar5";
             this.guna2CircleProgressBar5.ProgressColor = System.Drawing.Color.Red;
@@ -758,10 +783,10 @@
             // 
             // guna2CustomGradientPanel4
             // 
+            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
             this.guna2CustomGradientPanel4.Controls.Add(this.label2);
             this.guna2CustomGradientPanel4.Controls.Add(this.toglrQueckSearch);
             this.guna2CustomGradientPanel4.Controls.Add(this.lbUserName);
-            this.guna2CustomGradientPanel4.Controls.Add(this.btnCLose);
             this.guna2CustomGradientPanel4.Controls.Add(this.guna2HtmlLabel1);
             this.guna2CustomGradientPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.Indigo;
@@ -776,8 +801,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(598, 17);
+            this.label2.Location = new System.Drawing.Point(576, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 24);
             this.label2.TabIndex = 4;
@@ -792,7 +818,7 @@
             this.toglrQueckSearch.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.toglrQueckSearch.CheckedState.InnerColor = System.Drawing.Color.White;
             this.toglrQueckSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toglrQueckSearch.Location = new System.Drawing.Point(739, 17);
+            this.toglrQueckSearch.Location = new System.Drawing.Point(717, 20);
             this.toglrQueckSearch.Name = "toglrQueckSearch";
             this.toglrQueckSearch.Size = new System.Drawing.Size(55, 25);
             this.toglrQueckSearch.TabIndex = 3;
@@ -863,6 +889,7 @@
             // guna2CustomGradientPanel5
             // 
             this.guna2CustomGradientPanel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel5.Controls.Add(this.btnRefreshReports);
             this.guna2CustomGradientPanel5.Controls.Add(this.btnReports);
             this.guna2CustomGradientPanel5.Controls.Add(this.pnClickedButton);
             this.guna2CustomGradientPanel5.Controls.Add(this.btnLogout);
@@ -912,6 +939,153 @@
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // chartTransactionTypesDistribution
+            // 
+            this.chartTransactionTypesDistribution.BackColor = System.Drawing.Color.Sienna;
+            chartArea4.Name = "ChartArea1";
+            this.chartTransactionTypesDistribution.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartTransactionTypesDistribution.Legends.Add(legend4);
+            this.chartTransactionTypesDistribution.Location = new System.Drawing.Point(504, 45);
+            this.chartTransactionTypesDistribution.Name = "chartTransactionTypesDistribution";
+            series4.BackImageTransparentColor = System.Drawing.Color.Black;
+            series4.BackSecondaryColor = System.Drawing.Color.DarkOliveGreen;
+            series4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series4.IsValueShownAsLabel = true;
+            series4.LabelAngle = 5;
+            series4.LabelBackColor = System.Drawing.Color.Transparent;
+            series4.LabelBorderColor = System.Drawing.Color.Transparent;
+            series4.LabelForeColor = System.Drawing.Color.White;
+            series4.Legend = "Legend1";
+            series4.MarkerBorderColor = System.Drawing.Color.Black;
+            series4.MarkerColor = System.Drawing.Color.Red;
+            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series4.Name = "Series1";
+            series4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series4.ShadowColor = System.Drawing.Color.Black;
+            series4.ShadowOffset = 1;
+            this.chartTransactionTypesDistribution.Series.Add(series4);
+            this.chartTransactionTypesDistribution.Size = new System.Drawing.Size(392, 265);
+            this.chartTransactionTypesDistribution.TabIndex = 5;
+            this.chartTransactionTypesDistribution.Text = "chart1";
+            // 
+            // chartClientBalanceOverview
+            // 
+            this.chartClientBalanceOverview.BackColor = System.Drawing.Color.Firebrick;
+            chartArea3.Name = "ChartArea1";
+            this.chartClientBalanceOverview.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartClientBalanceOverview.Legends.Add(legend3);
+            this.chartClientBalanceOverview.Location = new System.Drawing.Point(27, 343);
+            this.chartClientBalanceOverview.Name = "chartClientBalanceOverview";
+            series3.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            series3.BorderColor = System.Drawing.Color.Black;
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Color = System.Drawing.Color.Blue;
+            series3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.chartClientBalanceOverview.Series.Add(series3);
+            this.chartClientBalanceOverview.Size = new System.Drawing.Size(410, 211);
+            this.chartClientBalanceOverview.TabIndex = 6;
+            this.chartClientBalanceOverview.Text = "chart1";
+            // 
+            // chartTotalTransfers
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartTotalTransfers.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartTotalTransfers.Legends.Add(legend2);
+            this.chartTotalTransfers.Location = new System.Drawing.Point(493, 340);
+            this.chartTotalTransfers.Name = "chartTotalTransfers";
+            series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.IsValueShownAsLabel = true;
+            series2.IsXValueIndexed = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Transfers";
+            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series2.ShadowOffset = 2;
+            series2.YValuesPerPoint = 6;
+            this.chartTotalTransfers.Series.Add(series2);
+            this.chartTotalTransfers.Size = new System.Drawing.Size(403, 214);
+            this.chartTotalTransfers.TabIndex = 7;
+            this.chartTotalTransfers.Text = "chart1";
+            // 
+            // lbTotalTransactionsForEachDay
+            // 
+            this.lbTotalTransactionsForEachDay.AutoSize = true;
+            this.lbTotalTransactionsForEachDay.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalTransactionsForEachDay.Location = new System.Drawing.Point(82, 10);
+            this.lbTotalTransactionsForEachDay.Name = "lbTotalTransactionsForEachDay";
+            this.lbTotalTransactionsForEachDay.Size = new System.Drawing.Size(336, 24);
+            this.lbTotalTransactionsForEachDay.TabIndex = 8;
+            this.lbTotalTransactionsForEachDay.Text = "Total Transaction Of Last 5 Days";
+            // 
+            // lbBalancesRanges
+            // 
+            this.lbBalancesRanges.AutoSize = true;
+            this.lbBalancesRanges.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBalancesRanges.Location = new System.Drawing.Point(82, 316);
+            this.lbBalancesRanges.Name = "lbBalancesRanges";
+            this.lbBalancesRanges.Size = new System.Drawing.Size(249, 24);
+            this.lbBalancesRanges.TabIndex = 8;
+            this.lbBalancesRanges.Text = "Clients Balance Ranges";
+            // 
+            // lbTotalTransfersByEachDay
+            // 
+            this.lbTotalTransfersByEachDay.AutoSize = true;
+            this.lbTotalTransfersByEachDay.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalTransfersByEachDay.Location = new System.Drawing.Point(514, 316);
+            this.lbTotalTransfersByEachDay.Name = "lbTotalTransfersByEachDay";
+            this.lbTotalTransfersByEachDay.Size = new System.Drawing.Size(359, 24);
+            this.lbTotalTransfersByEachDay.TabIndex = 8;
+            this.lbTotalTransfersByEachDay.Text = "Total Of Transfers For  Last 5 Days";
+            // 
+            // lbTotalTransactionTypes
+            // 
+            this.lbTotalTransactionTypes.AutoSize = true;
+            this.lbTotalTransactionTypes.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalTransactionTypes.Location = new System.Drawing.Point(553, 15);
+            this.lbTotalTransactionTypes.Name = "lbTotalTransactionTypes";
+            this.lbTotalTransactionTypes.Size = new System.Drawing.Size(260, 24);
+            this.lbTotalTransactionTypes.TabIndex = 9;
+            this.lbTotalTransactionTypes.Text = "Total Transactions Types";
+            // 
+            // chartTotalTransactionsOverTime
+            // 
+            this.chartTotalTransactionsOverTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea1.Name = "ChartArea1";
+            this.chartTotalTransactionsOverTime.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTotalTransactionsOverTime.Legends.Add(legend1);
+            this.chartTotalTransactionsOverTime.Location = new System.Drawing.Point(17, 45);
+            this.chartTotalTransactionsOverTime.Name = "chartTotalTransactionsOverTime";
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            series1.BorderColor = System.Drawing.Color.Blue;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Transactions";
+            this.chartTotalTransactionsOverTime.Series.Add(series1);
+            this.chartTotalTransactionsOverTime.Size = new System.Drawing.Size(478, 265);
+            this.chartTotalTransactionsOverTime.TabIndex = 10;
+            this.chartTotalTransactionsOverTime.Text = "chart1";
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::ZakaBank_24.Properties.Resources.Types_64;
@@ -921,16 +1095,6 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::ZakaBank_24.Properties.Resources.LoginRegister_64;
-            this.pictureBox7.Location = new System.Drawing.Point(21, 27);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(42, 34);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 1;
-            this.pictureBox7.TabStop = false;
             // 
             // pictureBox5
             // 
@@ -981,6 +1145,36 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnRefreshReports
+            // 
+            this.btnRefreshReports.Animated = true;
+            this.btnRefreshReports.AnimatedGIF = true;
+            this.btnRefreshReports.AutoRoundedCorners = true;
+            this.btnRefreshReports.BorderColor = System.Drawing.Color.White;
+            this.btnRefreshReports.BorderRadius = 21;
+            this.btnRefreshReports.BorderThickness = 1;
+            this.btnRefreshReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefreshReports.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRefreshReports.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRefreshReports.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRefreshReports.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRefreshReports.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRefreshReports.FillColor = System.Drawing.Color.BlueViolet;
+            this.btnRefreshReports.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnRefreshReports.FocusedColor = System.Drawing.Color.Red;
+            this.btnRefreshReports.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Bold);
+            this.btnRefreshReports.ForeColor = System.Drawing.Color.White;
+            this.btnRefreshReports.Image = global::ZakaBank_24.Properties.Resources.History_48;
+            this.btnRefreshReports.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRefreshReports.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnRefreshReports.Location = new System.Drawing.Point(24, 467);
+            this.btnRefreshReports.Name = "btnRefreshReports";
+            this.btnRefreshReports.PressedColor = System.Drawing.Color.HotPink;
+            this.btnRefreshReports.Size = new System.Drawing.Size(192, 45);
+            this.btnRefreshReports.TabIndex = 17;
+            this.btnRefreshReports.Text = "      Refresh Reports";
+            this.btnRefreshReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnReports
             // 
@@ -1034,7 +1228,7 @@
             this.btnLogout.Image = global::ZakaBank_24.Properties.Resources.sign_out_32__2;
             this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnLogout.Location = new System.Drawing.Point(15, 517);
+            this.btnLogout.Location = new System.Drawing.Point(15, 539);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.PressedColor = System.Drawing.Color.GreenYellow;
             this.btnLogout.Size = new System.Drawing.Size(192, 45);
@@ -1286,7 +1480,7 @@
             // 
             this.btnCLose.Animated = true;
             this.btnCLose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.Close_64;
+            this.btnCLose.BackgroundImage = global::ZakaBank_24.Properties.Resources.CloseBlack;
             this.btnCLose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCLose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.btnCLose.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1411,24 +1605,6 @@
             this.curToolStripMenuItem.Text = "Currencies";
             this.curToolStripMenuItem.Click += new System.EventHandler(this.curToolStripMenuItem_Click_1);
             // 
-            // gbShortCuts
-            // 
-            this.gbShortCuts.BackColor = System.Drawing.Color.Transparent;
-            this.gbShortCuts.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbShortCuts.BorderRadius = 10;
-            this.gbShortCuts.BorderThickness = 3;
-            this.gbShortCuts.Controls.Add(this.btnFindPerson);
-            this.gbShortCuts.Controls.Add(this.btnFindClient);
-            this.gbShortCuts.Controls.Add(this.btnFindUser);
-            this.gbShortCuts.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbShortCuts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbShortCuts.ForeColor = System.Drawing.Color.White;
-            this.gbShortCuts.Location = new System.Drawing.Point(537, 260);
-            this.gbShortCuts.Name = "gbShortCuts";
-            this.gbShortCuts.Size = new System.Drawing.Size(300, 272);
-            this.gbShortCuts.TabIndex = 20;
-            this.gbShortCuts.Text = "ShortCuts";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1449,15 +1625,17 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbShortCuts.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2CustomGradientPanel11.ResumeLayout(false);
             this.guna2CustomGradientPanel11.PerformLayout();
             this.guna2CircleProgressBar7.ResumeLayout(false);
             this.guna2CustomGradientPanel10.ResumeLayout(false);
             this.guna2CustomGradientPanel10.PerformLayout();
-            this.guna2CircleProgressBar6.ResumeLayout(false);
             this.guna2CustomGradientPanel9.ResumeLayout(false);
             this.guna2CustomGradientPanel9.PerformLayout();
             this.guna2CircleProgressBar5.ResumeLayout(false);
@@ -1478,14 +1656,16 @@
             this.guna2CustomGradientPanel5.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTransactionTypesDistribution)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartClientBalanceOverview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalTransfers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalTransactionsOverTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.gbShortCuts.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1549,7 +1729,6 @@
         private System.Windows.Forms.Label lbAccountType;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel10;
-        private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar6;
         private System.Windows.Forms.Label lbRegisters;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
@@ -1561,7 +1740,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
         private Guna.UI2.WinForms.Guna2GradientButton btnReports;
         private System.Windows.Forms.ToolStripMenuItem FindUsertoolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem ATMtoolStripMenuItem;
@@ -1576,5 +1754,14 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnDeletedUsers;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2GroupBox gbShortCuts;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTransactionTypesDistribution;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartClientBalanceOverview;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTotalTransfers;
+        private System.Windows.Forms.Label lbTotalTransactionsForEachDay;
+        private System.Windows.Forms.Label lbTotalTransactionTypes;
+        private System.Windows.Forms.Label lbTotalTransfersByEachDay;
+        private System.Windows.Forms.Label lbBalancesRanges;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTotalTransactionsOverTime;
+        private Guna.UI2.WinForms.Guna2GradientButton btnRefreshReports;
     }
 }

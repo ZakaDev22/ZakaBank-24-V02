@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using ZakaBank_24.Account_Types;
 using ZakaBank_24.Client_Forms;
 using ZakaBank_24.Currencies_Forms;
@@ -80,6 +83,9 @@ namespace ZakaBank_24.Main_And_Login_Forms
             lbTransfers.Text = transfersTask.Rows.Count.ToString();
             lbRegisters.Text = registersTask.Rows.Count.ToString();
             lbAccountType.Text = accountTypesTask.Rows.Count.ToString();
+
+            _CreatNewSeriesForEachChart();
+            _CreateNewBarChartSeries();
         }
 
 
@@ -177,9 +183,11 @@ namespace ZakaBank_24.Main_And_Login_Forms
             _Logout();
         }
 
-        private void btnReports_Click(object sender, EventArgs e)
+        private async void btnReports_Click(object sender, EventArgs e)
         {
             toglrQueckSearch.Checked = false;
+
+            await _LoadChartDataAsync();
         }
 
         private void showPersonInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,9 +231,32 @@ namespace ZakaBank_24.Main_And_Login_Forms
             if (toglrQueckSearch.Checked)
             {
                 splitContainer1.SplitterDistance = 580; // this if the user Want to see The Charts Data If He click Reports Button
+
+                chartTotalTransactionsOverTime.Visible = false;
+                chartClientBalanceOverview.Visible = false;
+                chartTotalTransfers.Visible = false;
+                chartTransactionTypesDistribution.Visible = false;
+
+
+                lbTotalTransactionsForEachDay.Visible = false;
+                lbTotalTransfersByEachDay.Visible = false;
+                lbTotalTransactionTypes.Visible = false;
+                lbBalancesRanges.Visible = false;
             }
             else
+            {
                 splitContainer1.SplitterDistance = 15; // this If He Click In Quick Search And Want To Find The Short Cuts
+
+                chartTotalTransactionsOverTime.Visible = true;
+                chartClientBalanceOverview.Visible = true;
+                chartTotalTransfers.Visible = true;
+                chartTransactionTypesDistribution.Visible = true;
+
+                lbTotalTransactionsForEachDay.Visible = true;
+                lbTotalTransfersByEachDay.Visible = true;
+                lbTotalTransactionTypes.Visible = true;
+                lbBalancesRanges.Visible = true;
+            }
         }
 
         private void btnDeletedUsers_Click(object sender, EventArgs e)
@@ -256,6 +287,182 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             ShowFindUserForm frm = new ShowFindUserForm();
             frm.ShowDialog();
+        }
+
+        // Dashboard Charts Methods 
+
+        /// <summary>
+        /// Load The Reports Charts with Data
+        /// </summary>
+        /// <returns></returns>
+        private async Task _LoadChartDataAsync()
+        {
+            try
+            {
+                // Load total transactions
+                var totalTransactionsData = await clsDashboard.GetTotalTransactionsAsync();
+                PopulateTotalTransactionsChart(totalTransactionsData);
+
+                // Load total transfers
+                var totalTransfersData = await clsDashboard.GetTotalTransfersAsync();
+                PopulateTotalTransfersChart(totalTransfersData);
+
+                // Load transaction types
+                var transactionTypesData = await clsDashboard.GetTransactionTypesAsync();
+                PopulateTransactionTypesChart(transactionTypesData);
+
+                // Load client balance overview
+                var clientBalanceData = await clsDashboard.GetClientBalanceOverviewAsync();
+                PopulateClientBalanceChart(clientBalanceData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading chart data: " + ex.Message);
+            }
+        }
+
+
+
+        private void _CreatNewSeriesForEachChart()
+        {
+            // Ensure the series exists before adding data
+            if (chartTotalTransactionsOverTime.Series.Count == 0)
+            {
+                Series Transactionseries = new Series("Transaction For Each Day")
+                {
+                    ChartType = SeriesChartType.Column,
+                    XValueType = ChartValueType.DateTime // Ensure X-values are treated as DateTime
+                };
+                chartTotalTransactionsOverTime.Series.Add(Transactionseries);
+            }
+
+            // Configure the X-axis to show DateTime correctly
+            chartTotalTransactionsOverTime.Series[0].XValueType = ChartValueType.DateTime;
+            chartTotalTransactionsOverTime.Series[0].YValueType = ChartValueType.Int32;
+            chartTotalTransactionsOverTime.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+            chartTotalTransactionsOverTime.ChartAreas[0].AxisX.LabelStyle.Format = "dd-MM";
+
+            // Set font for X-axis labels
+            chartTotalTransactionsOverTime.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 10, FontStyle.Bold); // Change to desired font, size, and style
+
+            // Increase border width and set other visual properties
+            chartTotalTransactionsOverTime.Series[0].BorderWidth = 3;  // Increase for visibility
+            chartTotalTransactionsOverTime.Series[0].IsValueShownAsLabel = true; // Show values on bars
+            chartTotalTransactionsOverTime.Series[0].BorderDashStyle = ChartDashStyle.Solid; // Border style
+
+            // Adjust the space between the columns
+            chartTotalTransactionsOverTime.Series[0]["PointWidth"] = "0.5";  // 0.5 creates more space between columns
+            chartTotalTransactionsOverTime.Series[0]["PixelPointWidth"] = "25"; // Adjust width of columns for better spacing
+
+            // Ensure that the X-Axis fits all columns with better spacing
+            chartTotalTransactionsOverTime.ChartAreas[0].AxisX.IsStartedFromZero = false; // Prevent starting from zero to fit dates
+
+            // Set the margins to give more space to the columns
+            chartTotalTransactionsOverTime.ChartAreas[0].InnerPlotPosition = new ElementPosition(5, 5, 90, 75); // Adjust the plot area
+            chartTotalTransactionsOverTime.ChartAreas[0].Position = new ElementPosition(10, 10, 85, 80); // Ensure full chart is visible
+            chartTotalTransactionsOverTime.ChartAreas[0].AxisX.MajorGrid.Enabled = false; // Disable grid lines to avoid clutter
+        }
+
+
+        private void PopulateTotalTransactionsChart(DataTable data)
+        {
+            // Clear previous data points
+            chartTotalTransactionsOverTime.Series[0].Points.Clear();
+
+
+            // Loop through the data and add points to the existing series
+            foreach (DataRow row in data.Rows)
+            {
+                DateTime transactionDate = Convert.ToDateTime(row["TransactionDate"]);
+                int totalTransactions = Convert.ToInt32(row["TotalTransactions"]);
+
+                // Add the data point to the series, ensuring the X value is DateTime
+                chartTotalTransactionsOverTime.Series[0].Points.AddXY(transactionDate, totalTransactions);
+            }
+
+
+        }
+
+        private void _CreateNewBarChartSeries()
+        {
+            // Check if the series already exists
+            if (chartTotalTransfers.Series.Count == 0)
+            {
+                Series barSeries = new Series("Transaction Bar Chart")
+                {
+                    ChartType = SeriesChartType.Bar,
+                    XValueType = ChartValueType.DateTime // Ensure X values are treated as DateTime
+                };
+                chartTotalTransfers.Series.Add(barSeries);
+            }
+
+            // Configure the X-axis to show DateTime correctly
+            chartTotalTransfers.Series[0].XValueType = ChartValueType.DateTime;
+            chartTotalTransfers.Series[0].YValueType = ChartValueType.Int32;
+            chartTotalTransfers.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+            chartTotalTransfers.ChartAreas[0].AxisX.LabelStyle.Format = "dd-MM"; // Date format
+
+            // Set font for X-axis labels
+            chartTotalTransfers.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 9, FontStyle.Bold);
+
+
+            // Increase border width and set other visual properties
+            chartTotalTransfers.Series[0].BorderWidth = 3;  // Increase for visibility
+            chartTotalTransfers.Series[0].IsValueShownAsLabel = true; // Show values on bars
+            chartTotalTransfers.Series[0].BorderDashStyle = ChartDashStyle.Solid; // Border style
+
+            // Adjust the space between the bars
+            chartTotalTransfers.Series[0]["PointWidth"] = "0.3"; // 0.5 creates more space between bars
+            chartTotalTransfers.Series[0]["PixelPointWidth"] = "15"; // Adjust width of bars for better spacing
+
+            // Optional: Adjust the plot area for better visibility
+            chartTotalTransfers.ChartAreas[0].InnerPlotPosition = new ElementPosition(10, 10, 80, 80); // Adjust the plot area
+            chartTotalTransfers.ChartAreas[0].Position = new ElementPosition(10, 10, 80, 80); // Ensure full chart is visible
+        }
+        private void PopulateTotalTransfersChart(DataTable data)
+        {
+            chartTotalTransfers.Series[0].Points.Clear();
+
+            foreach (DataRow row in data.Rows)
+            {
+                DateTime TransferDate = Convert.ToDateTime(row["TransferDate"]);
+                int TotalTransfers = Convert.ToInt32(row["TotalTransfers"]);
+
+
+                chartTotalTransfers.Series[0].Points.AddXY(TransferDate, TotalTransfers);
+            }
+        }
+
+        private void PopulateTransactionTypesChart(DataTable data)
+        {
+
+            chartTransactionTypesDistribution.Series[0].Points.Clear();
+
+            foreach (DataRow row in data.Rows)
+            {
+                int transactionTypeID = Convert.ToInt32(row["TransactionTypeID"]);
+                string transactionTypeName = row["TransactionTypeName"].ToString();
+                int transactionCount = Convert.ToInt32(row["TransactionCount"]);
+
+
+                chartTransactionTypesDistribution.Series[0].Points.AddXY(transactionTypeName, transactionCount);
+            }
+
+
+        }
+
+        private void PopulateClientBalanceChart(DataTable data)
+        {
+            chartClientBalanceOverview.Series[0].Points.Clear();
+
+            foreach (DataRow row in data.Rows)
+            {
+                string BalanceRange = Convert.ToString(row["BalanceRange"]);
+                int ClientCount = Convert.ToInt32(row["ClientCount"]);
+
+
+                chartClientBalanceOverview.Series[0].Points.AddXY(BalanceRange, ClientCount);
+            }
         }
     }
 }
