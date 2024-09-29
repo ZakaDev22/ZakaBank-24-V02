@@ -84,7 +84,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
             lbRegisters.Text = registersTask.Rows.Count.ToString();
             lbAccountType.Text = accountTypesTask.Rows.Count.ToString();
 
-            _CreatNewSeriesForEachChart();
+            _CreatNewSeriesForColumnChart();
             _CreateNewBarChartSeries();
         }
 
@@ -172,6 +172,11 @@ namespace ZakaBank_24.Main_And_Login_Forms
             await _RefreshDashboardInformation();
         }
 
+        /// <summary>
+        /// This Is The Main Form Load Event Where we Will Start Loading the Dashboard Information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void MainForm_Load(object sender, System.EventArgs e)
         {
             lbUserName.Text = clsGlobal._CurrentUser.UserName;
@@ -230,7 +235,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
         {
             if (toglrQueckSearch.Checked)
             {
-                splitContainer1.SplitterDistance = 580; // this if the user Want to see The Charts Data If He click Reports Button
+                splitContainer1.SplitterDistance = 561; // this if the user Want to see The Charts Data If He click Reports Button
 
                 chartTotalTransactionsOverTime.Visible = false;
                 chartClientBalanceOverview.Visible = false;
@@ -245,7 +250,7 @@ namespace ZakaBank_24.Main_And_Login_Forms
             }
             else
             {
-                splitContainer1.SplitterDistance = 15; // this If He Click In Quick Search And Want To Find The Short Cuts
+                splitContainer1.SplitterDistance = 25; // this If He Click In Quick Search And Want To Find The Short Cuts
 
                 chartTotalTransactionsOverTime.Visible = true;
                 chartClientBalanceOverview.Visible = true;
@@ -318,12 +323,15 @@ namespace ZakaBank_24.Main_And_Login_Forms
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while loading chart data: " + ex.Message);
+
+                // log the exception in the log viewer to track it latter
+                clsLogExceptionsClass.LogExseptionsToLogerViewr(ex.Message, System.Diagnostics.EventLogEntryType.FailureAudit);
             }
         }
 
 
 
-        private void _CreatNewSeriesForEachChart()
+        private void _CreatNewSeriesForColumnChart()
         {
             // Ensure the series exists before adding data
             if (chartTotalTransactionsOverTime.Series.Count == 0)
