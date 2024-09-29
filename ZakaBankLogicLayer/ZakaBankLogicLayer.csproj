@@ -45,6 +45,7 @@
     <Compile Include="clsClients.cs" />
     <Compile Include="clsCountry.cs" />
     <Compile Include="clsCurrency.cs" />
+    <Compile Include="clsDashboard.cs" />
     <Compile Include="clsLoginRegisters.cs" />
     <Compile Include="clsPeople.cs" />
     <Compile Include="clsTransactions.cs" />

@@ -189,7 +189,8 @@ namespace ZakaBank_24.Transfer_Forms
 
         private void linkClientHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            ShowClientHistoryForm frm = new ShowClientHistoryForm(_Transfer.FromAccountID);
+            frm.ShowDialog();
         }
     }
 }
