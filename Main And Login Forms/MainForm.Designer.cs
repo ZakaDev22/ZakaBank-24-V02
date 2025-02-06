@@ -224,7 +224,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.chartClientBalanceOverview);
             this.splitContainer1.Panel2.Controls.Add(this.chartTransactionTypesDistribution);
             this.splitContainer1.Size = new System.Drawing.Size(924, 597);
-            this.splitContainer1.SplitterDistance = 567;
+            this.splitContainer1.SplitterDistance = 566;
             this.splitContainer1.TabIndex = 16;
             // 
             // gbShortCuts
