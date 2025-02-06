@@ -5,6 +5,11 @@ The **Bank Management System (BMS)** is a desktop application designed for effic
 - **User Interface (UI):** Built using **WinForms** with the **Guna UI Framework** for an enhanced user experience.
 
 ---
+## Database Resources
+- **Database Backup:** Download the complete database backup file [ZakaBank.bak](./My%20Database/ZakaBank.bak).
+- **Database Schema Screenshot:**  
+  ![Database Schema](./My%20Database/Database%20Diagram%20V.01.png)
+---
 
 ## 🛠️ Technologies Used
 - **C# WinForms** (with Guna UI Framework)
@@ -16,8 +21,47 @@ The **Bank Management System (BMS)** is a desktop application designed for effic
 - **Data Visualization** using charts (Line, Pie, Bar, Doughnut)
 
 ---
+## Permissions and Data Visualization
 
-## 🔧 Key Features
+### Security & Permissions
+The Bank Management System (BMS) uses a robust permissions system based on role-based access control (RBAC):
+
+- **Binary Permissions:**  
+  User roles are managed using a binary bitwise approach. Each permission is represented as a bit in a single integer, allowing for efficient storage and quick permission checks.  
+  - For example, if a role has a permissions value of `13` (binary `1101`), this means the role has access to the first, third, and fourth permission flags.
+  
+- **Password Security:**  
+  User passwords are secured using `System.Security.Cryptography` for hashing. This ensures that even if the database is compromised, the actual passwords remain protected.
+
+- **Role-Based Access:**  
+  Each user is assigned a role, and their permissions are determined by the integer value stored in the database. This system allows for flexible permission management, making it easy to add, remove, or modify access rights as needed.
+
+---
+
+### Data Visualization with Charts
+To provide a clear view of banking activities, BMS includes interactive charts that visualize key metrics:
+
+- **Line Chart:**  
+  Displays the total transactions for the last 5 days, helping track daily performance trends.
+
+- **Bar Chart:**  
+  Illustrates the total transfers made in the last 5 days. This chart provides insights into the frequency and volume of transfers.
+
+- **Pie Chart:**  
+  Breaks down the transactions by type, including deposits, withdrawals, refunds, and payments. This helps in understanding the composition of banking operations.
+
+- **Doughnut Chart:**  
+  Visualizes client balance ranges. It segments clients into various balance groups to identify patterns and financial health across the client base.
+
+These charts are dynamically generated and updated, providing real-time insights into the performance and usage of the system. The combination of role-based security and data visualization ensures that administrators and users can both manage access effectively and gain valuable insights into the system’s operations.
+
+---
+
+*Feel free to reach out or contribute if you have any suggestions or improvements regarding the permissions system or chart functionalities.*
+
+---
+
+## Stored Procedurs Key Features :
 
 ### 1️⃣ Transaction Handling: `sp_Transactions_AddNewTransaction`
 This stored procedure manages multiple transaction types (Deposit, Withdrawal, Payment, Refund) in a single operation:
